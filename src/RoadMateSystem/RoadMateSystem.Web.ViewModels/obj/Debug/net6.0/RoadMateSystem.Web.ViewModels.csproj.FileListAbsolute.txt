@@ -1,0 +1,15 @@
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\bin\Debug\net6.0\RoadMateSystem.Web.ViewModels.deps.json
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\bin\Debug\net6.0\RoadMateSystem.Web.ViewModels.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\bin\Debug\net6.0\RoadMateSystem.Web.ViewModels.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\bin\Debug\net6.0\RoadMateSystem.Common.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\bin\Debug\net6.0\RoadMateSystem.Common.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\RoadMateSystem.Web.ViewModels.csproj.AssemblyReference.cache
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\RoadMateSystem.Web.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\RoadMateSystem.Web.ViewModels.AssemblyInfoInputs.cache
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\RoadMateSystem.Web.ViewModels.AssemblyInfo.cs
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\RoadMateSystem.Web.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\RoadMateSystem.Web.ViewModels.csproj.CopyComplete
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\RoadMateSystem.Web.ViewModels.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\refint\RoadMateSystem.Web.ViewModels.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\RoadMateSystem.Web.ViewModels.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.ViewModels\obj\Debug\net6.0\ref\RoadMateSystem.Web.ViewModels.dll

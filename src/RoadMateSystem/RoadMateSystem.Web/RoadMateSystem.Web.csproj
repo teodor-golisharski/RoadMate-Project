@@ -15,4 +15,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMateSystem.Common\RoadMateSystem.Common.csproj" />
+    <ProjectReference Include="..\RoadMateSystem.Data\RoadMateSystem.Data.csproj" />
+    <ProjectReference Include="..\RoadMateSystem.Web.ViewModels\RoadMateSystem.Web.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

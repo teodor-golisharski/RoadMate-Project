@@ -1,0 +1,14 @@
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\bin\Debug\net6.0\RoadMateSystem.Data.deps.json
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\bin\Debug\net6.0\RoadMateSystem.Data.runtimeconfig.json
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\bin\Debug\net6.0\RoadMateSystem.Data.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\bin\Debug\net6.0\RoadMateSystem.Data.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.csproj.AssemblyReference.cache
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.AssemblyInfoInputs.cache
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.AssemblyInfo.cs
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.csproj.CoreCompileInputs.cache
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\refint\RoadMateSystem.Data.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.genruntimeconfig.cache
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\ref\RoadMateSystem.Data.dll

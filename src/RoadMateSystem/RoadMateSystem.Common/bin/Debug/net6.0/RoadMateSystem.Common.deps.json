@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "RoadMateSystem.Common/1.0.0": {
+        "runtime": {
+          "RoadMateSystem.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RoadMateSystem.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

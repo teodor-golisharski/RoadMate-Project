@@ -5,6 +5,18 @@ VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Web", "RoadMateSystem.Web\RoadMateSystem.Web.csproj", "{D4DFA8A5-C2F4-4D2D-8F5A-3516A9CB8183}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Common", "RoadMateSystem.Common\RoadMateSystem.Common.csproj", "{EA3952BF-B5CC-4FFD-8228-F4D73838D495}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{48C45376-C688-49E1-A2E8-F66A74F44F3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{30A94670-414B-4553-8BF3-799348B93673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Data", "RoadMateSystem.Data\RoadMateSystem.Data.csproj", "{49D8CED6-EB5E-4621-8781-DFEF6896489F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Data.Models", "RoadMateSystem.Data.Models\RoadMateSystem.Data.Models.csproj", "{504A675F-244E-4227-8BE9-E7AA16607D52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Web.ViewModels", "RoadMateSystem.Web.ViewModels\RoadMateSystem.Web.ViewModels.csproj", "{12DE5E6B-DC43-461A-BF86-09E6896065DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +27,31 @@ Global
 		{D4DFA8A5-C2F4-4D2D-8F5A-3516A9CB8183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4DFA8A5-C2F4-4D2D-8F5A-3516A9CB8183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4DFA8A5-C2F4-4D2D-8F5A-3516A9CB8183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3952BF-B5CC-4FFD-8228-F4D73838D495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3952BF-B5CC-4FFD-8228-F4D73838D495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3952BF-B5CC-4FFD-8228-F4D73838D495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3952BF-B5CC-4FFD-8228-F4D73838D495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D8CED6-EB5E-4621-8781-DFEF6896489F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D8CED6-EB5E-4621-8781-DFEF6896489F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D8CED6-EB5E-4621-8781-DFEF6896489F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D8CED6-EB5E-4621-8781-DFEF6896489F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504A675F-244E-4227-8BE9-E7AA16607D52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504A675F-244E-4227-8BE9-E7AA16607D52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504A675F-244E-4227-8BE9-E7AA16607D52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504A675F-244E-4227-8BE9-E7AA16607D52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12DE5E6B-DC43-461A-BF86-09E6896065DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12DE5E6B-DC43-461A-BF86-09E6896065DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12DE5E6B-DC43-461A-BF86-09E6896065DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12DE5E6B-DC43-461A-BF86-09E6896065DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D4DFA8A5-C2F4-4D2D-8F5A-3516A9CB8183} = {48C45376-C688-49E1-A2E8-F66A74F44F3B}
+		{49D8CED6-EB5E-4621-8781-DFEF6896489F} = {30A94670-414B-4553-8BF3-799348B93673}
+		{504A675F-244E-4227-8BE9-E7AA16607D52} = {30A94670-414B-4553-8BF3-799348B93673}
+		{12DE5E6B-DC43-461A-BF86-09E6896065DA} = {48C45376-C688-49E1-A2E8-F66A74F44F3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F186EF6D-1D61-4914-BB2F-9F002E394F3B}
