@@ -864,6 +864,30 @@
             "rid": "win"
           }
         }
+      },
+      "RoadMateSystem.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/RoadMateSystem.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RoadMateSystem.Common.dll": {}
+        }
+      },
+      "RoadMateSystem.Data.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.16",
+          "RoadMateSystem.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RoadMateSystem.Data.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RoadMateSystem.Data.Models.dll": {}
+        }
       }
     }
   },
@@ -2176,13 +2200,25 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "RoadMateSystem.Common/1.0.0": {
+      "type": "project",
+      "path": "../RoadMateSystem.Common/RoadMateSystem.Common.csproj",
+      "msbuildProject": "../RoadMateSystem.Common/RoadMateSystem.Common.csproj"
+    },
+    "RoadMateSystem.Data.Models/1.0.0": {
+      "type": "project",
+      "path": "../RoadMateSystem.Data.Models/RoadMateSystem.Data.Models.csproj",
+      "msbuildProject": "../RoadMateSystem.Data.Models/RoadMateSystem.Data.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.16",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.16"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.16",
+      "RoadMateSystem.Common >= 1.0.0",
+      "RoadMateSystem.Data.Models >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2216,7 +2252,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj": {
+              "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj"
+            },
+            "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

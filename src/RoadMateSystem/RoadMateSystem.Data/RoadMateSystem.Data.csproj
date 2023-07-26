@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMateSystem.Common\RoadMateSystem.Common.csproj" />
+    <ProjectReference Include="..\RoadMateSystem.Data.Models\RoadMateSystem.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>

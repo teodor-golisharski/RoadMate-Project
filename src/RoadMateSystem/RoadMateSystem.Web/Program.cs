@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using RoadMateSystem.Data.Models;
 using RoadMateSystem.Web.Data;
 
 namespace RoadMateSystem.Web
@@ -12,15 +13,15 @@ namespace RoadMateSystem.Web
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            builder.Services.AddDbContext<RoadMateDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
             {
                 options.SignIn.RequireConfirmedAccount = true;
             })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<RoadMateDbContext>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
