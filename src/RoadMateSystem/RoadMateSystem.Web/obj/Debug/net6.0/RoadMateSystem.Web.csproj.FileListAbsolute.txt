@@ -81,3 +81,5 @@ C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\Ro
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Data.pdb
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Web.ViewModels.dll
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Web.ViewModels.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Data.Models.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Data.Models.pdb

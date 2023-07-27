@@ -12,3 +12,8 @@ C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\r
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.pdb
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.genruntimeconfig.cache
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\ref\RoadMateSystem.Data.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\bin\Debug\net6.0\RoadMateSystem.Common.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\bin\Debug\net6.0\RoadMateSystem.Data.Models.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\bin\Debug\net6.0\RoadMateSystem.Common.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\bin\Debug\net6.0\RoadMateSystem.Data.Models.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Data\obj\Debug\net6.0\RoadMateSystem.Data.csproj.CopyComplete

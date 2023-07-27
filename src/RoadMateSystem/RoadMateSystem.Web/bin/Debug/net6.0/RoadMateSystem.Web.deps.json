@@ -15,6 +15,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.16",
           "RoadMateSystem.Common": "1.0.0",
           "RoadMateSystem.Data": "1.0.0",
+          "RoadMateSystem.Data.Models": "1.0.0",
           "RoadMateSystem.Web.ViewModels": "1.0.0"
         },
         "runtime": {
@@ -554,10 +555,21 @@
       "RoadMateSystem.Data/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.16",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.16"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.16",
+          "RoadMateSystem.Common": "1.0.0",
+          "RoadMateSystem.Data.Models": "1.0.0"
         },
         "runtime": {
           "RoadMateSystem.Data.dll": {}
+        }
+      },
+      "RoadMateSystem.Data.Models/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.16",
+          "RoadMateSystem.Common": "1.0.0"
+        },
+        "runtime": {
+          "RoadMateSystem.Data.Models.dll": {}
         }
       },
       "RoadMateSystem.Web.ViewModels/1.0.0": {
@@ -946,6 +958,11 @@
       "sha512": ""
     },
     "RoadMateSystem.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RoadMateSystem.Data.Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
