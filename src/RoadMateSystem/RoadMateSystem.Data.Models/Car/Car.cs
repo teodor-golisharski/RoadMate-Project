@@ -1,17 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace RoadMateSystem.Data.Models.Car
+﻿namespace RoadMateSystem.Data.Models.Car
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    using static Common.EntityValidationConstants.Car;
+
     public class Car
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
+        [StringLength(MakeMaxLength, MinimumLength = MakeMinLength)]
         public string Make { get; set; } = null!;
 
         [Required]
-
+        [StringLength(ModelMaxLength, MinimumLength = ModelMinLength)]
         public string Model { get; set; } = null!;
 
         [Required]
@@ -23,20 +27,25 @@ namespace RoadMateSystem.Data.Models.Car
         [Required]
         public int ColorId { get; set; }
 
-        public CarColor Color { get; set; } = null!;
+        [ForeignKey(nameof(ColorId))]
+        public virtual CarColor Color { get; set; } = null!;
 
         [Required]
+        [Range(HorsepowerMinValue, HorsepowerMaxValue)]
         public int Horsepower { get; set; }
 
-        [Required]
+        [Range(EngineCapacityMinValue, EngineCapacityMaxValue)]
         public int EngineCapacity { get; set; }
 
         [Required]
+        [Range(SeatsMinValue, SeatsMaxValue)]
         public int Seats { get; set; }
 
         [Required]
+        [Range(DoorsMinValue, DoorsMaxValue)]
         public int Doors { get; set; }
 
+        [MaxLength(DescriptionMaxLength)]
         public string Description { get; set; } = null!;
 
         [Required]
@@ -49,14 +58,16 @@ namespace RoadMateSystem.Data.Models.Car
         public Drivetrain Drivetrain { get; set; }
 
         [Required]
+        [Range(PricePerDayMinValue, PricePerDayMaxValue)]
         public decimal PricePerDay { get; set; }
 
-        public decimal PricePerWeek { get; set; }
-        
+        public decimal? PricePerWeek { get; set; }
+
         public int ThumbnailImageId { get; set; }
 
-        public CarImage ThumbnailImage { get; set; } = null!;
+        [ForeignKey(nameof(ThumbnailImageId))]
+        public virtual CarImage? ThumbnailImage { get; set; }
 
-        public ICollection<CarImage> Images { get; set; } = new HashSet<CarImage>();
+        public virtual ICollection<CarImage> Images { get; set; } = new HashSet<CarImage>();
     }
 }

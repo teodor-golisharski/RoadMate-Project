@@ -1,10 +1,11 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using RoadMateSystem.Data.Models;
-using RoadMateSystem.Web.Data;
-
 namespace RoadMateSystem.Web
 {
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+    using RoadMateSystem.Data.Models;
+    using RoadMateSystem.Web.Data;
+
     public class Program
     {
         public static void Main(string[] args)
@@ -16,6 +17,8 @@ namespace RoadMateSystem.Web
             builder.Services.AddDbContext<RoadMateDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
             {

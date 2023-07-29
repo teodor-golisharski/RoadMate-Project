@@ -1,17 +1,33 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace RoadMateSystem.Data.Models
+﻿namespace RoadMateSystem.Data.Models
 {
+    using Microsoft.AspNetCore.Identity;
+    using System.ComponentModel.DataAnnotations;
+
+    using static Common.EntityValidationConstants.ApplicationUser;
+    
     public class ApplicationUser : IdentityUser<Guid>
     {
+        public ApplicationUser()
+        {
+            Rentals = new HashSet<Rental>();
+        }
+
+        [Required]
+        [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
         public string FirstName { get; set; } = null!;
-        
+
+        [Required]
+        [StringLength(LastNameMaxLength, MinimumLength = LastNameMinLength)]
         public string LastName { get; set; } = null!;
-        
-        public string Password { get; set; } = null!;
-        
+
+        [Required]
+        [StringLength(PhoneNumberLength, MinimumLength = PhoneNumberLength)]
         public string Phone { get; set; } = null!;
-        
+
+        [Required]
+        [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
+
+        public virtual ICollection<Rental> Rentals { get; set; }
     }
 }

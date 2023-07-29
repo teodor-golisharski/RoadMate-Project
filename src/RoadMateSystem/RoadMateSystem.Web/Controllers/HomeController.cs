@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using RoadMateSystem.Web.ViewModels.Home;
-
-namespace RoadMateSystem.Web.Controllers
+﻿namespace RoadMateSystem.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using System.Diagnostics;
+
+    using RoadMateSystem.Web.ViewModels.Home;
+
     public class HomeController : Controller
     {
         public HomeController()
