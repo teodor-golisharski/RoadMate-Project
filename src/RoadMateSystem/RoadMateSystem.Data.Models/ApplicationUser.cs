@@ -10,6 +10,7 @@
         public ApplicationUser()
         {
             Rentals = new HashSet<Rental>();
+            Reviews = new HashSet<Review>();
         }
 
         [Required]
@@ -29,5 +30,7 @@
         public string Address { get; set; } = null!;
 
         public virtual ICollection<Rental> Rentals { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

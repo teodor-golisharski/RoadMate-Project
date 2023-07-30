@@ -69,5 +69,9 @@
         public virtual CarImage? ThumbnailImage { get; set; }
 
         public virtual ICollection<CarImage> Images { get; set; } = new HashSet<CarImage>();
+
+        public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+
+        public virtual ICollection<Rental> Rentals { get; set; } = new HashSet<Rental>();
     }
 }

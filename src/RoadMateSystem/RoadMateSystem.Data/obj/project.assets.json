@@ -2217,7 +2217,6 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.16",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.16",
-      "RoadMateSystem.Common >= 1.0.0",
       "RoadMateSystem.Data.Models >= 1.0.0"
     ]
   },
@@ -2253,9 +2252,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj": {
-              "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj"
-            },
             "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj": {
               "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj"
             }

@@ -11,7 +11,6 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.16",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.16",
-          "RoadMateSystem.Common": "1.0.0",
           "RoadMateSystem.Data.Models": "1.0.0"
         },
         "runtime": {
