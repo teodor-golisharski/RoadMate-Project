@@ -1,11 +1,8 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using RoadMateSystem.Web.Data;
+
 namespace RoadMateSystem.Web
 {
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    
     using RoadMateSystem.Data.Models;
     using RoadMateSystem.Web.Data;
 
