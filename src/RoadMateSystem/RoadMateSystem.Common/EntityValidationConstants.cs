@@ -28,6 +28,15 @@
             public const int PricePerDayMinValue = 20;
         }
 
+        public static class CarColor
+        {
+            public const int NameMaxLength = 15;
+            public const int NameMinLength = 3;
+
+            public const int HexMaxLength = 7;
+            public const int HexMinLength = 4;
+        }
+
         public static class Review
         {
             public const int RatingMaxValue = 10;
@@ -44,7 +53,7 @@
             public const int LastNameMaxLength = 20;
             public const int LastNameMinLength = 2;
 
-            public const int PhoneNumberLength = 9;
+            public const int PhoneNumberLength = 10;
 
             public const int AddressMaxLength = 70;
             public const int AddressMinLength = 10;

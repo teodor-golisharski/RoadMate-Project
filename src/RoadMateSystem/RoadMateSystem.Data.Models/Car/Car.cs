@@ -11,8 +11,9 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(MakeMaxLength, MinimumLength = MakeMinLength)]
-        public string Make { get; set; } = null!;
+        public int CarMakeId { get; set; }
+
+        public virtual CarMake CarMake { get; set; } = null!;
 
         [Required]
         [StringLength(ModelMaxLength, MinimumLength = ModelMinLength)]

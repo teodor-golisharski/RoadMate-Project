@@ -19,7 +19,8 @@
         }
 
         public DbSet<Car> Cars { get; set; } = null!;
-        public DbSet<CarImage> CarImages { get; set; } = null!;  
+        public DbSet<CarMake> CarMakes { get; set; } = null!;
+        public DbSet<CarImage> CarImages { get; set; } = null!; 
         public DbSet<CarColor> Colors { get; set; } = null!;  
         public DbSet<Rental> Rentals { get; set; } = null!; 
         public DbSet<Review> Reviews { get; set; } = null!;

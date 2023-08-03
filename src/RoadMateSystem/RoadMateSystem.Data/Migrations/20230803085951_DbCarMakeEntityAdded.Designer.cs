@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RoadMateSystem.Web.Data;
 
@@ -11,9 +12,10 @@ using RoadMateSystem.Web.Data;
 namespace RoadMateSystem.Data.Migrations
 {
     [DbContext(typeof(RoadMateDbContext))]
-    partial class RoadMateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230803085951_DbCarMakeEntityAdded")]
+    partial class DbCarMakeEntityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,8 +213,8 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(9)
+                        .HasColumnType("nvarchar(9)");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");

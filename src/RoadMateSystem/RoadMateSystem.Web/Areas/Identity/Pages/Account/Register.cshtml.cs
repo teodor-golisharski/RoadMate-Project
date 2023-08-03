@@ -2,23 +2,18 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
 using RoadMateSystem.Data.Models;
+
+using static RoadMateSystem.Common.EntityValidationConstants.ApplicationUser;
 
 namespace RoadMateSystem.Web.Areas.Identity.Pages.Account
 {
@@ -97,18 +92,22 @@ namespace RoadMateSystem.Web.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "First Name")]
+            [StringLength(FirstNameMaxLength, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = FirstNameMinLength)]
             public string FirstName { get; set; } = null!;
 
             [Required]
             [Display(Name = "Last Name")]
+            [StringLength(LastNameMaxLength, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = LastNameMinLength)]
             public string LastName { get; set; } = null!;
 
             [Required]
             [Display(Name = "Phone")]
+            [StringLength(PhoneNumberLength, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = PhoneNumberLength)]
             public string Phone { get; set; } = null!;
 
             [Required]
             [Display(Name = "Address")]
+            [StringLength(AddressMaxLength, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = AddressMinLength)]
             public string Address { get; set; } = null!;
         }
 
@@ -129,6 +128,12 @@ namespace RoadMateSystem.Web.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.Address = Input.Address;
+                user.Phone = Input.Phone;
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
