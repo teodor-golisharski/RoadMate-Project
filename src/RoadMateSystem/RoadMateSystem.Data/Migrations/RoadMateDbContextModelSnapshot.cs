@@ -252,7 +252,9 @@ namespace RoadMateSystem.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("Availability")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("CarMakeId")
                         .HasColumnType("int");
@@ -329,15 +331,73 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.Property<string>("Hex")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Colors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Hex = "#FFFFFF",
+                            Name = "White"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Hex = "#000000",
+                            Name = "Black"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Hex = "#D9D9D9",
+                            Name = "Silver"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Hex = "#003399",
+                            Name = "Blue"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Hex = "#737373",
+                            Name = "Grey"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Hex = "B30000",
+                            Name = "Red"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Hex = "FF9900",
+                            Name = "Orange"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Hex = "008000",
+                            Name = "Green"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Hex = "#FFE800",
+                            Name = "Yellow"
+                        });
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarImage", b =>
@@ -385,6 +445,83 @@ namespace RoadMateSystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CarMakes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Make = "Renault"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Make = "Dacia"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Make = "Ford"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Make = "Honda"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Make = "Peugeot"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Make = "Skoda"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Make = "Volkswagen"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Make = "Toyota"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Make = "Mazda"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Make = "BMW"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Make = "Audi"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Make = "Mercedes-Benz"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Make = "Porsche"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Make = "Range Rover"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Make = "Maserati"
+                        });
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Payment.Payment", b =>

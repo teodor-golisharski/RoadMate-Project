@@ -27,6 +27,10 @@
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
+                .Property(p => p.Availability)
+                .HasDefaultValue(true);
+
+            builder
                 .Property(c => c.Drivetrain)
                 .HasConversion<string>();
              
@@ -42,196 +46,61 @@
                 .Property(c => c.Transmission)
                 .HasConversion<string>();
 
-            // Seeding
-            builder.HasData(this.GenerateCarMakes());
-
-            builder.HasData(this.GenerateCarColors());
+            //builder.HasData(this.GenerateCars());
         }
 
-        private CarMake[] GenerateCarMakes()
+        private Car[] GenerateCars()
         {
-            ICollection<CarMake> carMakes = new HashSet<CarMake>();
+            ICollection<Car> cars = new HashSet<Car>();
 
-            CarMake carMake;
-
-            carMake = new CarMake() 
-            { 
-                Id = 1,
-                Make = "Renault"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 2,
-                Make = "Dacia"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 3,
-                Make = "Ford"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 4,
-                Make = "Honda"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 5,
-                Make = "Peugeot"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 6,
-                Make = "Skoda"
-            };
-            carMakes.Add(carMake);
-            
-            carMake = new CarMake()
-            {
-                Id = 7,
-                Make = "Volkswagen"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 8,
-                Make = "Toyota"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 9,
-                Make = "Mazda"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 10,
-                Make = "BMW"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 11,
-                Make = "Audi"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 12,
-                Make = "Mercedes-Benz"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 13,
-                Make = "Porsche"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 14,
-                Make = "Range Rover"
-            };
-            carMakes.Add(carMake);
-
-            carMake = new CarMake()
-            {
-                Id = 15,
-                Make = "Maserati"
-            };
-            carMakes.Add(carMake);
-
-            return carMakes.ToArray();
-        }
-
-        private CarColor[] GenerateCarColors()
-        {
-            ICollection<CarColor> carColors = new HashSet<CarColor>();
-
-            CarColor carColor;
-
-            carColor = new CarColor()
+            Car car;
+            car = new Car()
             {
                 Id = 1,
-                Name = "White",
-                Hex = "#FFFFFF"
+                CarMakeId = 1,
+                Model = "Clio",
+                Type = CarType.Hatchback,
+                Fuel = FuelType.Hybrid,
+                ColorId = 4,
+                Horsepower = 140,
+                EngineCapacity = 1598,
+                Seats = 5,
+                Doors = 5,
+                Description = "The car's advanced technology includes a user-friendly 9.3-inch touchscreen with the Easy Link system. It seamlessly integrates with Android Auto and Apple CarPlay, allowing you to access your favorite apps and stay connected on the go. The navigation system, powered by Google Maps and TomTom, ensures you'll never lose your way. " +
+                "Enjoy a personalized driving experience with the customizable instrument cluster, which utilizes a TFT LCD display. The redesigned, compact steering wheel adds a touch of modernity to the cabin. " +
+                "Renault Clio comes equipped with an array of impressive features. The electric parking brake enhances convenience, while the wireless smartphone charger keeps your device powered up without messy cables. The hands-free parking feature takes the stress out of parking in tight spots.",
+                Availability = true,
+                Transmission = Transmission.Automatic,
+                Drivetrain = Drivetrain.FWD,
+                PricePerDay = 52.99M,
+                PricePerWeek = 319.99M
             };
-            carColors.Add(carColor);
+            cars.Add(car);
 
-            carColor = new CarColor()
+            car = new Car()
             {
                 Id = 2,
-                Name = "Black",
-                Hex = "#000000"
+                CarMakeId = 2,
+                Model = "Duster",
+                Type = CarType.SUV,
+                Fuel = FuelType.Diesel,
+                ColorId = 1,
+                Horsepower = 115,
+                EngineCapacity = 1461,
+                Seats = 5,
+                Doors = 5,
+                Description = "Dacia Duster features an electric power steering, a MultiView camera system consisting of four cameras, blind spot warning system, automatic climate control, keyless entry and ignition system, and daytime running lights. " +
+                "It also offers as standard Bluetooth, air conditioning, SatNav, rear parking sensors, rear camera, cruise control, six speed gearbox, alloy wheels, sports front seats. " +
+                "The ground clearance has been increased and a hill-start assist system is also offered, as well as hill descent control.",
+                Availability = true,
+                Transmission = Transmission.Manual,
+                Drivetrain = Drivetrain.AWD,
+                PricePerDay = 45.99M,
+                PricePerWeek = 269.99M
             };
-            carColors.Add(carColor);
+            cars.Add(car);
 
-            carColor = new CarColor()
-            {
-                Id = 3,
-                Name = "Silver",
-                Hex = " #D9D9D9"
-            };
-            carColors.Add(carColor);
-
-            carColor = new CarColor()
-            {
-                Id = 4,
-                Name = "Blue",
-                Hex = "#003399"
-            };
-            carColors.Add(carColor);
-
-            carColor = new CarColor()
-            {
-                Id = 5,
-                Name = "Grey",
-                Hex = "#737373"
-            };
-            carColors.Add(carColor);
-
-            carColor = new CarColor()
-            {
-                Id = 6,
-                Name = "Red",
-                Hex = "B30000"
-            };
-            carColors.Add(carColor);
-
-            carColor = new CarColor()
-            {
-                Id = 7,
-                Name = "Orange",
-                Hex = "FF9900"
-            };
-
-            carColor = new CarColor()
-            {
-                Id = 8,
-                Name = "Green",
-                Hex = "008000"
-            };
-            carColors.Add(carColor);
-
-            return carColors.ToArray();
+            return cars.ToArray();
         }
     }
 }

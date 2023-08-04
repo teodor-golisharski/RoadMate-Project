@@ -13,6 +13,7 @@
         [Required]
         public int CarMakeId { get; set; }
 
+        [ForeignKey(nameof(CarMakeId))]
         public virtual CarMake CarMake { get; set; } = null!;
 
         [Required]

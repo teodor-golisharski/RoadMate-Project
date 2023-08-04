@@ -9,6 +9,7 @@
     {
         public ApplicationUser()
         {
+            Id = new Guid();
             Rentals = new HashSet<Rental>();
             Reviews = new HashSet<Review>();
         }
