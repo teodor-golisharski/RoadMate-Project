@@ -65,7 +65,7 @@
 
         public decimal? PricePerWeek { get; set; }
 
-        public int ThumbnailImageId { get; set; }
+        public Guid ThumbnailImageId { get; set; }
 
         [ForeignKey(nameof(ThumbnailImageId))]
         public virtual CarImage? ThumbnailImage { get; set; }

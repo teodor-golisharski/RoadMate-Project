@@ -5,9 +5,13 @@
 
     public class CarImage
     {
+        public CarImage()
+        {
+            Id = Guid.NewGuid();
+        }
+
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string FileName { get; set; } = null!;

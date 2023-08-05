@@ -5,6 +5,11 @@
 
     public class Rental
     {
+        public Rental()
+        {
+            RentalId = Guid.NewGuid();
+        }
+
         [Key]
         public Guid RentalId { get; set; }
 

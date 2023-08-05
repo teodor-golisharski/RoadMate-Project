@@ -7,6 +7,11 @@
 
     public class Review
     {
+        public Review()
+        {
+            ReviewId = Guid.NewGuid();    
+        }
+
         [Key]
         public Guid ReviewId { get; set; }
 

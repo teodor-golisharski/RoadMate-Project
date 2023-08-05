@@ -8,10 +8,12 @@
     {
         public void Configure(EntityTypeBuilder<CarImage> builder)
         {
-            builder.Property(p => p.Id)
-                .UseIdentityColumn();
+            //builder.HasOne(b => b.Car)
+            //    .WithMany(b => b.Images)
+            //    .HasForeignKey(b => b.CarId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasData(GenerateCarImages());
+            //builder.HasData(GenerateCarImages());
         }
 
         private CarImage[] GenerateCarImages()

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RoadMateSystem.Web.Data;
 
@@ -11,9 +12,10 @@ using RoadMateSystem.Web.Data;
 namespace RoadMateSystem.Data.Migrations
 {
     [DbContext(typeof(RoadMateDbContext))]
-    partial class RoadMateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230805135803_SeedCarMake")]
+    partial class SeedCarMake
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -318,7 +320,7 @@ namespace RoadMateSystem.Data.Migrations
                     b.HasIndex("ThumbnailImageId")
                         .IsUnique();
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarColor", b =>
@@ -341,7 +343,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors", (string)null);
+                    b.ToTable("Colors");
 
                     b.HasData(
                         new
@@ -424,7 +426,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("CarImages", (string)null);
+                    b.ToTable("CarImages");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarMake", b =>
@@ -442,7 +444,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarMakes", (string)null);
+                    b.ToTable("CarMakes");
 
                     b.HasData(
                         new
@@ -545,7 +547,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("RentalId");
 
-                    b.ToTable("Payment", (string)null);
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Rental", b =>
@@ -578,7 +580,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Rentals", (string)null);
+                    b.ToTable("Rentals");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Review", b =>
@@ -609,7 +611,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

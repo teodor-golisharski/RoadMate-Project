@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RoadMateSystem.Web.Data;
 
@@ -11,9 +12,10 @@ using RoadMateSystem.Web.Data;
 namespace RoadMateSystem.Data.Migrations
 {
     [DbContext(typeof(RoadMateDbContext))]
-    partial class RoadMateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230805113010_InitializeDatabase")]
+    partial class InitializeDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -318,7 +320,7 @@ namespace RoadMateSystem.Data.Migrations
                     b.HasIndex("ThumbnailImageId")
                         .IsUnique();
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarColor", b =>
@@ -341,63 +343,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Hex = "#FFFFFF",
-                            Name = "White"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Hex = "#000000",
-                            Name = "Black"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Hex = "#D9D9D9",
-                            Name = "Silver"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Hex = "#003399",
-                            Name = "Blue"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Hex = "#737373",
-                            Name = "Grey"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Hex = "B30000",
-                            Name = "Red"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Hex = "FF9900",
-                            Name = "Orange"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Hex = "008000",
-                            Name = "Green"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Hex = "#FFE800",
-                            Name = "Yellow"
-                        });
+                    b.ToTable("Colors");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarImage", b =>
@@ -424,7 +370,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("CarImages", (string)null);
+                    b.ToTable("CarImages");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarMake", b =>
@@ -442,84 +388,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarMakes", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Make = "Renault"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Make = "Dacia"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Make = "Ford"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Make = "Honda"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Make = "Peugeot"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Make = "Skoda"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Make = "Volkswagen"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Make = "Toyota"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Make = "Mazda"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Make = "BMW"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Make = "Audi"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Make = "Mercedes-Benz"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Make = "Porsche"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Make = "Range Rover"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Make = "Maserati"
-                        });
+                    b.ToTable("CarMakes");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Payment.Payment", b =>
@@ -545,7 +414,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("RentalId");
 
-                    b.ToTable("Payment", (string)null);
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Rental", b =>
@@ -578,7 +447,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Rentals", (string)null);
+                    b.ToTable("Rentals");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Review", b =>
@@ -609,7 +478,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

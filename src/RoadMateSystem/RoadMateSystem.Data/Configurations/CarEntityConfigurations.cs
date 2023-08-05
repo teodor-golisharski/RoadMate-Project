@@ -53,6 +53,7 @@
         {
             ICollection<Car> cars = new HashSet<Car>();
 
+            // Renault Clio
             Car car;
             car = new Car()
             {
@@ -77,6 +78,7 @@
             };
             cars.Add(car);
 
+            // Dacia Duster
             car = new Car()
             {
                 Id = 2,
@@ -84,6 +86,126 @@
                 Model = "Duster",
                 Type = CarType.SUV,
                 Fuel = FuelType.Diesel,
+                ColorId = 1,
+                Horsepower = 115,
+                EngineCapacity = 1461,
+                Seats = 5,
+                Doors = 5,
+                Description = "Dacia Duster features an electric power steering, a MultiView camera system consisting of four cameras, blind spot warning system, automatic climate control, keyless entry and ignition system, and daytime running lights. " +
+                "It also offers as standard Bluetooth, air conditioning, SatNav, rear parking sensors, rear camera, cruise control, six speed gearbox, alloy wheels, sports front seats. " +
+                "The ground clearance has been increased and a hill-start assist system is also offered, as well as hill descent control.",
+                Availability = true,
+                Transmission = Transmission.Manual,
+                Drivetrain = Drivetrain.AWD,
+                PricePerDay = 45.99M,
+                PricePerWeek = 279.99M
+            };
+            cars.Add(car);
+
+            // Ford Fiesta
+            car = new Car()
+            {
+                Id = 3,
+                CarMakeId = 3,
+                Model = "Fiesta",
+                Type = CarType.Hatchback,
+                Fuel = FuelType.Gasoline,
+                ColorId = 2,
+                Horsepower = 200,
+                EngineCapacity = 1496,
+                Seats = 5,
+                Doors = 5,
+                Description = "Dacia Duster features an electric power steering, a MultiView camera system consisting of four cameras, blind spot warning system, automatic climate control, keyless entry and ignition system, and daytime running lights. " +
+                "It also offers as standard Bluetooth, air conditioning, SatNav, rear parking sensors, rear camera, cruise control, six speed gearbox, alloy wheels, sports front seats. " +
+                "The ground clearance has been increased and a hill-start assist system is also offered, as well as hill descent control.",
+                Availability = true,
+                Transmission = Transmission.Automatic,
+                Drivetrain = Drivetrain.FWD,
+                PricePerDay = 59.99M,
+                PricePerWeek = 374.99M
+            };
+            cars.Add(car);
+
+            // Honda Jazz
+            car = new Car()
+            {
+                Id = 4,
+                CarMakeId = 4,
+                Model = "Jazz",
+                Type = CarType.Hatchback,
+                Fuel = FuelType.Hybrid,
+                ColorId = 1,
+                Horsepower = 122,
+                EngineCapacity = 1498,
+                Seats = 5,
+                Doors = 5,
+                Description = "Dacia Duster features an electric power steering, a MultiView camera system consisting of four cameras, blind spot warning system, automatic climate control, keyless entry and ignition system, and daytime running lights. " +
+                "It also offers as standard Bluetooth, air conditioning, SatNav, rear parking sensors, rear camera, cruise control, six speed gearbox, alloy wheels, sports front seats. " +
+                "The ground clearance has been increased and a hill-start assist system is also offered, as well as hill descent control.",
+                Availability = true,
+                Transmission = Transmission.Automatic,
+                Drivetrain = Drivetrain.FWD,
+                PricePerDay = 49.99M,
+                PricePerWeek = 289.99M
+            };
+            cars.Add(car);
+
+            // Peugeot 308
+            car = new Car()
+            {
+                Id = 5,
+                CarMakeId = 5,
+                Model = "308",
+                Type = CarType.Hatchback,
+                Fuel = FuelType.Hybrid,
+                ColorId = 1,
+                Horsepower = 220,
+                EngineCapacity = 1598,
+                Seats = 5,
+                Doors = 5,
+                Description = "Dacia Duster features an electric power steering, a MultiView camera system consisting of four cameras, blind spot warning system, automatic climate control, keyless entry and ignition system, and daytime running lights. " +
+                "It also offers as standard Bluetooth, air conditioning, SatNav, rear parking sensors, rear camera, cruise control, six speed gearbox, alloy wheels, sports front seats. " +
+                "The ground clearance has been increased and a hill-start assist system is also offered, as well as hill descent control.",
+                Availability = true,
+                Transmission = Transmission.Automatic,
+                Drivetrain = Drivetrain.FWD,
+                PricePerDay = 61.99M,
+                PricePerWeek = 384.99M
+            };
+            cars.Add(car);
+
+            // Skoda Fabia
+            car = new Car()
+            {
+                Id = 7,
+                CarMakeId = 7,
+                Model = "Golf",
+                Type = CarType.Hatchback,
+                Fuel = FuelType.Gasoline,
+                ColorId = 1,
+                Horsepower = 115,
+                EngineCapacity = 1461,
+                Seats = 5,
+                Doors = 5,
+                Description = "Dacia Duster features an electric power steering, a MultiView camera system consisting of four cameras, blind spot warning system, automatic climate control, keyless entry and ignition system, and daytime running lights. " +
+                "It also offers as standard Bluetooth, air conditioning, SatNav, rear parking sensors, rear camera, cruise control, six speed gearbox, alloy wheels, sports front seats. " +
+                "The ground clearance has been increased and a hill-start assist system is also offered, as well as hill descent control.",
+                Availability = true,
+                Transmission = Transmission.Manual,
+                Drivetrain = Drivetrain.AWD,
+                PricePerDay = 45.99M,
+                PricePerWeek = 269.99M
+            };
+            cars.Add(car);
+
+            // Volkswagen Golf
+            car = new Car()
+            {
+                Id = 6,
+                CarMakeId = 6,
+                Model = "",
+                Type = CarType.Hatchback,
+                Fuel = FuelType.Gasoline,
                 ColorId = 1,
                 Horsepower = 115,
                 EngineCapacity = 1461,
