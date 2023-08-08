@@ -3,19 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Web", "RoadMateSystem.Web\RoadMateSystem.Web.csproj", "{D4DFA8A5-C2F4-4D2D-8F5A-3516A9CB8183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadMateSystem.Web", "RoadMateSystem.Web\RoadMateSystem.Web.csproj", "{D4DFA8A5-C2F4-4D2D-8F5A-3516A9CB8183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Common", "RoadMateSystem.Common\RoadMateSystem.Common.csproj", "{EA3952BF-B5CC-4FFD-8228-F4D73838D495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadMateSystem.Common", "RoadMateSystem.Common\RoadMateSystem.Common.csproj", "{EA3952BF-B5CC-4FFD-8228-F4D73838D495}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{48C45376-C688-49E1-A2E8-F66A74F44F3B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{30A94670-414B-4553-8BF3-799348B93673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Data", "RoadMateSystem.Data\RoadMateSystem.Data.csproj", "{49D8CED6-EB5E-4621-8781-DFEF6896489F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadMateSystem.Data", "RoadMateSystem.Data\RoadMateSystem.Data.csproj", "{49D8CED6-EB5E-4621-8781-DFEF6896489F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Data.Models", "RoadMateSystem.Data.Models\RoadMateSystem.Data.Models.csproj", "{504A675F-244E-4227-8BE9-E7AA16607D52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadMateSystem.Data.Models", "RoadMateSystem.Data.Models\RoadMateSystem.Data.Models.csproj", "{504A675F-244E-4227-8BE9-E7AA16607D52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Web.ViewModels", "RoadMateSystem.Web.ViewModels\RoadMateSystem.Web.ViewModels.csproj", "{12DE5E6B-DC43-461A-BF86-09E6896065DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadMateSystem.Web.ViewModels", "RoadMateSystem.Web.ViewModels\RoadMateSystem.Web.ViewModels.csproj", "{12DE5E6B-DC43-461A-BF86-09E6896065DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FB8C4E82-6924-45DF-AD12-B95AE680391A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Services.Data", "RoadMateSystem.Services.Data\RoadMateSystem.Services.Data.csproj", "{F31EE873-0B46-4899-B8F2-DDDB09E81FBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Web.Infrastructure", "RoadMateSystem.Web.Infrastructure\RoadMateSystem.Web.Infrastructure.csproj", "{639FC1C6-22BD-41ED-A924-22F63659EE17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +49,14 @@ Global
 		{12DE5E6B-DC43-461A-BF86-09E6896065DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12DE5E6B-DC43-461A-BF86-09E6896065DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12DE5E6B-DC43-461A-BF86-09E6896065DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F31EE873-0B46-4899-B8F2-DDDB09E81FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31EE873-0B46-4899-B8F2-DDDB09E81FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31EE873-0B46-4899-B8F2-DDDB09E81FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31EE873-0B46-4899-B8F2-DDDB09E81FBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{639FC1C6-22BD-41ED-A924-22F63659EE17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{639FC1C6-22BD-41ED-A924-22F63659EE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{639FC1C6-22BD-41ED-A924-22F63659EE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{639FC1C6-22BD-41ED-A924-22F63659EE17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +66,8 @@ Global
 		{49D8CED6-EB5E-4621-8781-DFEF6896489F} = {30A94670-414B-4553-8BF3-799348B93673}
 		{504A675F-244E-4227-8BE9-E7AA16607D52} = {30A94670-414B-4553-8BF3-799348B93673}
 		{12DE5E6B-DC43-461A-BF86-09E6896065DA} = {48C45376-C688-49E1-A2E8-F66A74F44F3B}
+		{F31EE873-0B46-4899-B8F2-DDDB09E81FBB} = {FB8C4E82-6924-45DF-AD12-B95AE680391A}
+		{639FC1C6-22BD-41ED-A924-22F63659EE17} = {48C45376-C688-49E1-A2E8-F66A74F44F3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F186EF6D-1D61-4914-BB2F-9F002E394F3B}

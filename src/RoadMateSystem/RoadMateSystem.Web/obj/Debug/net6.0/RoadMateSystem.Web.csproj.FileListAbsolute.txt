@@ -265,3 +265,7 @@ C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\ru
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Services.Data.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Services.Data.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Web.Infrastructure.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Web.Infrastructure.pdb

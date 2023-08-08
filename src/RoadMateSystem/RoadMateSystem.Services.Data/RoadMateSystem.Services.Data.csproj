@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMateSystem.Common\RoadMateSystem.Common.csproj" />
+    <ProjectReference Include="..\RoadMateSystem.Data.Models\RoadMateSystem.Data.Models.csproj" />
+    <ProjectReference Include="..\RoadMateSystem.Data\RoadMateSystem.Data.csproj" />
+    <ProjectReference Include="..\RoadMateSystem.Web.ViewModels\RoadMateSystem.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

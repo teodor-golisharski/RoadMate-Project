@@ -1,8 +1,65 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model ImagesViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Carousel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .slideshow-container {
+            margin: auto;
+            position: relative;
+        }
+
+        .mySlides {
+            display: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="b-example-divider"></div>
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <h1 class="text-body-emphasis">Welcome to RoadMate</h1>
+            <p class="lead text-danger text-primary">
+                Discover the Freedom of Mobility
+            </p>
+        </div>
+    </div>
+    <div class="b-example-divider"></div>
+    <div class="slideshow-container">
+        @foreach (var imageUrl in Model.ImageUrls)
+        {
+            <div class="mySlides">
+                <img src="@imageUrl.FileUrl" class="img-fluid" alt="Slideshow Image">
+            </div>
+        }
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            let currentIndex = 0;
+            const slides = $(".mySlides");
+
+            function showSlide() {
+                slides.hide();
+                slides.eq(currentIndex).fadeIn(400);
+                currentIndex = (currentIndex + 1) % slides.length;
+            }
+
+            setInterval(showSlide, 2500);
+        });
+    </script>
+
+</body>
+</html>

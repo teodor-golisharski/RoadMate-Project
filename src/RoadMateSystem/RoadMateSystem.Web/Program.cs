@@ -2,9 +2,12 @@
 namespace RoadMateSystem.Web
 {
     using Microsoft.EntityFrameworkCore;
-    
+
     using RoadMateSystem.Data.Models;
+    using RoadMateSystem.Services.Data;
+    using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Web.Data;
+    using RoadMateSystem.Web.Infrastructure.Extensions;
 
     public class Program
     {
@@ -12,13 +15,10 @@ namespace RoadMateSystem.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<RoadMateDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
             {
@@ -35,11 +35,12 @@ namespace RoadMateSystem.Web
             })
             .AddEntityFrameworkStores<RoadMateDbContext>();
 
+            builder.Services.AddApplicationServices(typeof(ICarService));
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
@@ -48,7 +49,6 @@ namespace RoadMateSystem.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

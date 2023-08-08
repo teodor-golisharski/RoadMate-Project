@@ -4,17 +4,23 @@
     using System.Diagnostics;
 
     using RoadMateSystem.Web.ViewModels.Home;
+    using RoadMateSystem.Services.Data;
+    using RoadMateSystem.Services.Data.Interfaces;
 
     public class HomeController : Controller
     {
-        public HomeController()
-        {
+        private readonly ICarService carService;
 
+        public HomeController(ICarService carService)
+        {
+            this.carService = carService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ImagesViewModel model = await carService.PreviewCarImagesAsync();
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

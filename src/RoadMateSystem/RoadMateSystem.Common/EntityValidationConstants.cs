@@ -22,7 +22,7 @@
             public const int DoorsMaxValue = 5;
             public const int DoorsMinValue = 2;
 
-            public const int DescriptionMaxLength = 1000;
+            public const int DescriptionMaxLength = 1500;
 
             public const int PricePerDayMaxValue = 500;
             public const int PricePerDayMinValue = 20;

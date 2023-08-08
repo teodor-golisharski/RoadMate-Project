@@ -264,8 +264,8 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)");
 
                     b.Property<int>("Doors")
                         .HasColumnType("int");
@@ -298,8 +298,8 @@ namespace RoadMateSystem.Data.Migrations
                     b.Property<int>("Seats")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("ThumbnailImageId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("ThumbnailImageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Transmission")
                         .IsRequired()
@@ -316,9 +316,612 @@ namespace RoadMateSystem.Data.Migrations
                     b.HasIndex("ColorId");
 
                     b.HasIndex("ThumbnailImageId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ThumbnailImageId] IS NOT NULL");
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Availability = true,
+                            CarMakeId = 1,
+                            ColorId = 4,
+                            Description = "The car's advanced technology includes a user-friendly 9.3-inch touchscreen with the Easy Link system. It seamlessly integrates with Android Auto and Apple CarPlay, allowing you to access your favorite apps and stay connected on the go. The navigation system, powered by Google Maps and TomTom, ensures you'll never lose your way. Enjoy a personalized driving experience with the customizable instrument cluster, which utilizes a TFT LCD display. The redesigned, compact steering wheel adds a touch of modernity to the cabin. Renault Clio comes equipped with an array of impressive features. The electric parking brake enhances convenience, while the wireless smartphone charger keeps your device powered up without messy cables. The hands-free parking feature takes the stress out of parking in tight spots.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1598,
+                            Fuel = "Hybrid",
+                            Horsepower = 140,
+                            Model = "Clio",
+                            PricePerDay = 52.99m,
+                            PricePerWeek = 319.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 1,
+                            Transmission = "Automatic",
+                            Type = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Availability = true,
+                            CarMakeId = 2,
+                            ColorId = 1,
+                            Description = "Dacia Duster features an electric power steering, a MultiView camera system consisting of four cameras, blind spot warning system, automatic climate control, keyless entry and ignition system, and daytime running lights. It also offers as standard Bluetooth, air conditioning, SatNav, rear parking sensors, rear camera, cruise control, six speed gearbox, alloy wheels, sports front seats. The ground clearance has been increased and a hill-start assist system is also offered, as well as hill descent control.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 1461,
+                            Fuel = "Diesel",
+                            Horsepower = 115,
+                            Model = "Duster",
+                            PricePerDay = 45.99m,
+                            PricePerWeek = 279.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 8,
+                            Transmission = "Manual",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Availability = true,
+                            CarMakeId = 3,
+                            ColorId = 2,
+                            Description = "Ford Fiesta as standard is equipped with user-friendly infotainment system with a vibrant touchscreen display, supporting smartphone integration through Apple CarPlay and Android Auto. Safety is not compromised, as the base model boasts advanced safety features like a rearview camera, traction control, and multiple airbags.Optional equipment includes a power sunroof, and advanced driver-assistance technologies like blind-spot monitoring and adaptive cruise control. Furthermore, the optional infotainment package offers a premium sound system and built-in navigation for enhanced entertainment and seamless navigation.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1496,
+                            Fuel = "Gasoline",
+                            Horsepower = 200,
+                            Model = "Fiesta",
+                            PricePerDay = 59.99m,
+                            PricePerWeek = 374.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 14,
+                            Transmission = "Automatic",
+                            Type = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Availability = true,
+                            CarMakeId = 4,
+                            ColorId = 1,
+                            Description = "The Honda Jazz is a versatile and practical subcompact car that offers a remarkable balance of efficiency and functionality. The base model of the Honda Jazz comes generously equipped with modern features, including a user-friendly infotainment system with a touchscreen display, Bluetooth connectivity, and a rearview camera for added convenience and safety.Additionally, the car boasts a suite of advanced safety technologies, such as collision mitigation braking, lane-keeping assist, and adaptive cruise control.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1498,
+                            Fuel = "Hybrid",
+                            Horsepower = 122,
+                            Model = "Jazz",
+                            PricePerDay = 49.99m,
+                            PricePerWeek = 289.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 22,
+                            Transmission = "Automatic",
+                            Type = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Availability = true,
+                            CarMakeId = 5,
+                            ColorId = 1,
+                            Description = "Peugeot 308 is equipped with LED headlights complemented by vertical LED daytime running lights. These headlights feature the Peugeot Matrix LED Technology on GT and GT Premium variants. It is also equipped with the Drive Assist pack that adds adaptive cruise control with Stop and Go function, lane keeping assistance, semi-automatic lane change, anticipated speed recommendation, and curve speed adaptation. Other features offered as standard or optional include long-range blind-spot monitoring, 360-degree surround-view parking assistance with four cameras, rear cross-traffic alert, heating for the windscreen and steering wheel, and an E-call+ emergency call function.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1598,
+                            Fuel = "Hybrid",
+                            Horsepower = 220,
+                            Model = "308",
+                            PricePerDay = 61.99m,
+                            PricePerWeek = 384.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 31,
+                            Transmission = "Automatic",
+                            Type = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Availability = true,
+                            CarMakeId = 6,
+                            ColorId = 7,
+                            Description = "The Skoda Fabia comes equipped with modern features, including a user-friendly infotainment system with a touchscreen display, smartphone connectivity via Android Auto and Apple CarPlay, and a rearview camera for easy parking maneuvers. Optional features may include premium upholstery materials, a panoramic sunroof for a more airy cabin feel, and upgraded sound systems for enhanced entertainment. Advanced driver-assistance technologies, such as adaptive cruise control and parking sensors, are also available to provide added convenience and peace of mind.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 999,
+                            Fuel = "Gasoline",
+                            Horsepower = 110,
+                            Model = "Fabia",
+                            PricePerDay = 48.99m,
+                            PricePerWeek = 279.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 40,
+                            Transmission = "Manual",
+                            Type = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Availability = true,
+                            CarMakeId = 7,
+                            ColorId = 1,
+                            Description = "The Golf VIII's interior receives a major overhaul with an entirely digital driver's display and digital control panel. All Mk8s have advanced safety features available such as travel assist, Car2X, and an oncoming vehicle while braking function, the latter two of which are the first to be used on a production Volkswagen model",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1968,
+                            Fuel = "Diesel",
+                            Horsepower = 150,
+                            Model = "Golf",
+                            PricePerDay = 59.99m,
+                            PricePerWeek = 374.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 46,
+                            Transmission = "Automatic",
+                            Type = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Availability = true,
+                            CarMakeId = 2,
+                            ColorId = 1,
+                            Description = "Dacia Spring is the first electric model of the Romanian brand Dacia. According to the WLTP City cycle, the Spring should do 305 km (189 miles) in town, while its combined WLTP range rating is 230 km (143 miles).In terms of base equipment, the Dacia Spring boasts a simple yet functional interior with comfortable seating for passengers and a spacious cargo area. The infotainment system includes a 7-inch touchscreen display with smartphone integration, enabling seamless connectivity on the go. Safety features like ABS, electronic stability control, and multiple airbags come as standard, ensuring passenger safety.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 0,
+                            Fuel = "Electric",
+                            Horsepower = 65,
+                            Model = "Spring",
+                            PricePerDay = 42.99m,
+                            PricePerWeek = 239.99m,
+                            Seats = 4,
+                            ThumbnailImageId = 52,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Availability = true,
+                            CarMakeId = 7,
+                            ColorId = 3,
+                            Description = "The Volkswagen T-Cross is a stylish and compact SUV that offers a perfect combination of versatility and modern design.The base model of the Volkswagen T-Cross comes equipped with a range of standard features, including a user-friendly infotainment system with a touchscreen display, Bluetooth connectivity, and USB ports for seamless smartphone integration. Safety is prioritized with advanced driver-assistance technologies, such as automatic emergency braking, lane-keeping assist, and adaptive cruise control.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 999,
+                            Fuel = "Gasoline",
+                            Horsepower = 110,
+                            Model = "T-Cross",
+                            PricePerDay = 52.99m,
+                            PricePerWeek = 329.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 57,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Availability = true,
+                            CarMakeId = 8,
+                            ColorId = 1,
+                            Description = "The Toyota Corolla is an iconic and reliable compact sedan that has been a favorite among drivers worldwide for generations. As a practical and efficient daily driver, the Corolla offers a smooth and comfortable ride with its responsive 2.0 liter four-cylinder hybrid engine, delivering excellent fuel efficiency.All Corolla trim levels feature power windows and door locks, LED front headlamps and LED rear lamps, the Toyota STAR Safety System, a 4.2-inch multi-information display in the gauge cluster, and the Entune 3.0 touchscreen infotainment system with Apple CarPlay and Amazon Alexa integration (Android Auto was added for the 2021 model year).",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1987,
+                            Fuel = "Hybrid",
+                            Horsepower = 196,
+                            Model = "Corolla",
+                            PricePerDay = 61.99m,
+                            PricePerWeek = 379.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 64,
+                            Transmission = "Automatic",
+                            Type = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Availability = true,
+                            CarMakeId = 6,
+                            ColorId = 1,
+                            Description = "The fourth generation Octavia features many new technologies. It is the first Škoda model to use a heads-up display. Other new technologies include two 10\" displays, wireless smartphone charging, up to 5 USB-C ports, a new Sound System by Canton, and the classic shifting stick for the automatic gearbox has been replaced with a small joystick. New safety features include taking control of steering in case of a possible accident, checking for oncoming vehicles when opening doors, and detection of the driver falling asleep or losing consciousness.The top model vRS includes sporty vRS seats, personalized vRS steering wheel, more aggresive looking exterior and powerful engines making the compact family saloon accelerates from 0 to 100 km/h in just 6.7 seconds.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1968,
+                            Fuel = "Gasoline",
+                            Horsepower = 245,
+                            Model = "Octavia",
+                            PricePerDay = 84.99m,
+                            PricePerWeek = 579.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 71,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Availability = true,
+                            CarMakeId = 6,
+                            ColorId = 2,
+                            Description = "The flagship of Skoda, the Superb is a large comfortable liftback providing even more luxurious experience than Skoda Octavia. All Superbs come equipped with virtual cockpit, advanced driver-assistance features, powerful engines, spacious and comfort interior. The top model Laurin & Klement adds to the car adaptive suspension, full-leather interior, upgraded sound system by Canton, matrix LED headlights, ambient lighting, ventilated seats and 3-zone climate control.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 1968,
+                            Fuel = "Diesel",
+                            Horsepower = 200,
+                            Model = "Superb",
+                            PricePerDay = 94.99m,
+                            PricePerWeek = 619.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 80,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Availability = true,
+                            CarMakeId = 7,
+                            ColorId = 2,
+                            Description = "Passat is equipped with a great number of advanced driver-assistance systems, including a semi-automatic parking system, emergency driver assistant, which will automatically take control of the vehicle if the driver has suffered a medical emergency, autonomous cruise control system for highway speeds up to 210 km/h, a collision avoidance system with pedestrian monitoring and variable ratio steering marketed as \"progressive steering\" which will adjust the steering gear ratios in relation to the current speed.Volkswagen Passat also offers a spacious interior, a relativeley large boot compartment, R-line exterior and interior package and comfortable seats upholstered in a combination of leather and alcantara.",
+                            Doors = 4,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 1968,
+                            Fuel = "Diesel",
+                            Horsepower = 200,
+                            Model = "Passat",
+                            PricePerDay = 89.99m,
+                            PricePerWeek = 574.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 90,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Availability = true,
+                            CarMakeId = 7,
+                            ColorId = 2,
+                            Description = "The Volkswagen Touareg II may have a slightly outdated appearance, but don't let its looks deceive you. This large SUV stands as the premium model in the current brand lineup. Under the hood, the Touareg II is equipped with a robust 3.0 V6 turbo diesel engine, producing an impressive 262 horsepower, and granting this 2.3-ton vehicle the power to reign supreme on the road.The Touareg boasts exceptional ride comfort, thanks to highly noise-insulated cabin and the adaptive air suspension, providing a serene driving experience. Inside, the spacious and comfortable interior is luxuriously upholstered with leather and features 3-zone climate control, a panoramic sunroof, and more, ensuring an opulent journey.When it comes to technology, this SUV is by no means inferior to newer models, boasting advanced features like adaptive cruise control, blind-spot assist, reverse-parking assist, and 360-view cameras, providing both convenience and safety.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 2967,
+                            Fuel = "Diesel",
+                            Horsepower = 262,
+                            Model = "Touareg",
+                            PricePerDay = 94.99m,
+                            PricePerWeek = 619.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 97,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Availability = true,
+                            CarMakeId = 5,
+                            ColorId = 2,
+                            Description = "The Peugeot 508 is a sophisticated and stylish mid-size sedan that exudes elegance and performance. In its base model, the 508 comes equipped with a range of standard features to enhance the driving experience. It boasts a user-friendly infotainment system with a large touchscreen display, offering seamless smartphone integration through Apple CarPlay and Android Auto. Safety is prioritized with standard driver-assistance technologies like automatic emergency braking, lane-keeping assist, and blind-spot monitoring.",
+                            Doors = 4,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1997,
+                            Fuel = "Diesel",
+                            Horsepower = 180,
+                            Model = "508",
+                            PricePerDay = 79.99m,
+                            PricePerWeek = 519.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 104,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Availability = true,
+                            CarMakeId = 5,
+                            ColorId = 2,
+                            Description = "Peugeot 3008 features Peugeot's new iCockpit, which is an improved design compared to the current iCockpit featured in the Peugeot 208, Peugeot 2008 and Peugeot 308. Features include an eight inch touch screen to the centre console, a 12.3 inch customisable heads up display, and the small style steering wheel, which has become standard in all current models of Peugeot.Peugeot 3008 is equipped with full-leather interior, matrix LED headlights, all driver assistants and panoramic sunroof.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 1598,
+                            Fuel = "Hybrid",
+                            Horsepower = 225,
+                            Model = "3008",
+                            PricePerDay = 79.99m,
+                            PricePerWeek = 529.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 113,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Availability = true,
+                            CarMakeId = 9,
+                            ColorId = 6,
+                            Description = "The Mazda 6 Estate 2022 is a versatile and stylish midsize wagon that combines practicality with Mazda's signature driving dynamics. In its base model, the Mazda 6 Estate offers a comprehensive set of standard features to enhance the driving experience. The spacious interior is crafted with premium materials, and the infotainment system features an intuitive 8-inch touchscreen display with seamless smartphone integration through Apple CarPlay and Android Auto.Safety is a top priority, as the Mazda 6 Estate comes equipped with standard driver-assistance technologies, including automatic emergency braking, lane-keeping assist, and adaptive cruise control, ensuring a safe and confident journey.",
+                            Doors = 5,
+                            Drivetrain = "FWD",
+                            EngineCapacity = 2191,
+                            Fuel = "Diesel",
+                            Horsepower = 184,
+                            Model = "6",
+                            PricePerDay = 79.99m,
+                            PricePerWeek = 529.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 121,
+                            Transmission = "Automatic",
+                            Type = "Estate"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Availability = true,
+                            CarMakeId = 9,
+                            ColorId = 5,
+                            Description = "The Mazda CX-5 2021 is a stylish and well-rounded compact SUV that combines performance with a touch of elegance. In its base model, the CX-5 offers a comprehensive set of standard features to elevate the driving experience. The interior is crafted with high-quality materials, and the infotainment system features a user-friendly 10.25-inch touchscreen display with seamless smartphone integration through Apple CarPlay and Android Auto.Mazda CX-5 introduce premium amenities such as leather upholstery, a power liftgate for easy access to the cargo area, and an upgraded Bose sound system for a captivating audio experience.Additionally, optional technology packages include an advanced head-up display, a 360-degree view camera system for enhanced visibility, and an upgraded navigation system with real-time traffic updates, delivering added convenience and sophistication.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 2191,
+                            Fuel = "Diesel",
+                            Horsepower = 184,
+                            Model = "CX-5",
+                            PricePerDay = 79.99m,
+                            PricePerWeek = 529.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 127,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Availability = true,
+                            CarMakeId = 10,
+                            ColorId = 3,
+                            Description = "The BMW 120d F40 is a sporty and dynamic compact luxury car that exudes performance and sophistication. In its base model, the BMW 120d comes equipped with a powerful 2.0-liter TwinPower Turbo diesel engine, providing impressive acceleration and fuel efficiency. The interior features premium materials and the latest BMW iDrive infotainment system with an intuitive 8.8-inch touchscreen display, supporting seamless smartphone integration through Apple CarPlay and Android Auto.BMW 120d is equipped with luxurious leather upholstery, a panoramic sunroof for an airy cabin ambiance, and a Harman Kardon premium sound system for an immersive audio experience.Optional technology package gives the car a head-up display for enhanced visibility, advanced parking assistance with a surround-view camera, and BMW's Live Cockpit Professional for an advanced digital instrument cluster.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 1995,
+                            Fuel = "Diesel",
+                            Horsepower = 190,
+                            Model = "120d",
+                            PricePerDay = 89.99m,
+                            PricePerWeek = 549.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 136,
+                            Transmission = "Automatic",
+                            Type = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Availability = true,
+                            CarMakeId = 11,
+                            ColorId = 4,
+                            Description = "The A4 Allroad 2022 is a versatile and adventurous luxury wagon that blends sophistication with off-road capabilities. In its base model, the A4 Allroad comes equipped with Audi's renowned quattro all-wheel-drive system, providing enhanced traction and stability in various driving conditions. The interior features premium materials and the latest Audi MMI infotainment system with a user-friendly 10.1-inch touchscreen display, supporting seamless smartphone integration through Apple CarPlay and Android Auto.Safety is a top priority, as the A4 Allroad 2022 comes with standard driver-assistance technologies, including automatic emergency braking, lane departure warning, and adaptive cruise control, ensuring a safe and confident driving experience.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 2967,
+                            Fuel = "Diesel",
+                            Horsepower = 286,
+                            Model = "A4 Allroad",
+                            PricePerDay = 109.99m,
+                            PricePerWeek = 689.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 145,
+                            Transmission = "Automatic",
+                            Type = "Estate"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Availability = true,
+                            CarMakeId = 12,
+                            ColorId = 2,
+                            Description = "The GT 63 S is a high-performance luxury sports 4-door coupe that represents the pinnacle of Mercedes-AMG engineering and craftsmanship. It is a better equipped variant of the GT 4-Door and features the AMG M177 4.0L twin-turbocharged V8 engine, which produces 430 kW (630 hp; 639 PS) and 900 N⋅m (664 lbf⋅ft). The GT 63S will reportedly accelerate from 0–100 km/h (0–62 mph) in 3.2 seconds and attain a top speed of 315 km/h (196 mph) as tested by the manufacturer. The GT 63 also has an optional selectable \"Drift Mode\" which directs power solely to the rear wheels.Some of the features of this exclusive car are Nappa leather upholstery, a panoramic sunroof, ambient lighting in 64 different colors and a Burmester high-end 3D surround sound system for an immersive audio experience.",
+                            Doors = 4,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 3982,
+                            Fuel = "Gasoline",
+                            Horsepower = 639,
+                            Model = "AMG GT63 S",
+                            PricePerDay = 249.99m,
+                            PricePerWeek = 1649.99m,
+                            Seats = 4,
+                            ThumbnailImageId = 154,
+                            Transmission = "Automatic",
+                            Type = "Coupe"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Availability = true,
+                            CarMakeId = 12,
+                            ColorId = 3,
+                            Description = "The W213 AMG E63 S is a high-performance luxury sedan that embodies the perfect blend of power, sophistication, and cutting-edge technology. The car is powered by the AMG M177 twin-turbo 4.0-liter V8 engine, generating an astonishing 612 horsepower.The interior showcases luxurious materials and advanced features, including a widescreen digital instrument cluster, a 12.3-inch infotainment display with smartphone integration, fully automated heated and ventilated seats with 7 different massage options, and premium Nappa leather upholstery.",
+                            Doors = 4,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 3982,
+                            Fuel = "Gasoline",
+                            Horsepower = 612,
+                            Model = "E63 S",
+                            PricePerDay = 229.99m,
+                            PricePerWeek = 1549.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 162,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Availability = true,
+                            CarMakeId = 12,
+                            ColorId = 2,
+                            Description = "The W223 S-Class is the epitome of luxury and innovation, representing Mercedes-Benz's flagship sedan with a perfect fusion of opulence and cutting-edge technology. In its base model, the S-Class offers an unparalleled level of sophistication, featuring premium materials, handcrafted details, and the latest technology. The interior boasts a widescreen digital dashboard with a 12.8-inch OLED infotainment display and MBUX voice-activated system, providing seamless smartphone integration and advanced driver-assistance features like adaptive cruise control and lane-keeping assist for a secure and effortless drive.The car is equipped with rear-seat entertainment screens, a virtual reality head-up display for enhanced visibility, and Magic Body Control for an advanced adaptive suspension system, ensuring an unrivaled level of comfort and handling.",
+                            Doors = 4,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 2925,
+                            Fuel = "Diesel",
+                            Horsepower = 286,
+                            Model = "S350d",
+                            PricePerDay = 239.99m,
+                            PricePerWeek = 1599.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 171,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Availability = true,
+                            CarMakeId = 10,
+                            ColorId = 4,
+                            Description = "The BMW M5 Competition F90 is a high-performance sports sedan that exemplifies the perfect fusion of power and luxury. In its base model, the M5 Competition is equipped with a potent 4.4-liter BMW M TwinPower Turbo V8 engine, producing an impressive 625 horsepower, resulting in breathtaking acceleration and dynamic driving capabilities. The interior exudes sophistication with premium materials, ergonomically designed seats, and advanced technology, including a 12.3-inch digital instrument cluster and a 10.25-inch infotainment display with seamless smartphone integration.The car is equipped with premium Merino leather upholstery, a panoramic sunroof for an enhanced cabin ambiance, and a Bowers & Wilkins Diamond Surround Sound System for an immersive audio experience.",
+                            Doors = 4,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 4395,
+                            Fuel = "Gasoline",
+                            Horsepower = 625,
+                            Model = "M5 Competition",
+                            PricePerDay = 229.99m,
+                            PricePerWeek = 1549.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 181,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Availability = true,
+                            CarMakeId = 10,
+                            ColorId = 5,
+                            Description = "The BMW 730d 2020 is a luxurious and sophisticated executive sedan that epitomizes the perfect blend of comfort, performance, and advanced technology. In its base model, the 730d comes equipped with a robust 3.0-liter six-cylinder diesel engine, offering an impressive balance of power and fuel efficiency. The interior is exquisitely designed with premium materials, plush leather upholstery, and advanced features, including a 12.3-inch digital instrument cluster and a 10.25-inch infotainment display with smartphone integration.Optional equipment includes a rear-seat entertainment system for passengers' enjoyment, refrigerator in the back, gesture control for intuitive infotainment control, and BMW's Driving Assistance Professional package for an elevated level of safety and convenience.",
+                            Doors = 4,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 2993,
+                            Fuel = "Diesel",
+                            Horsepower = 286,
+                            Model = "730d",
+                            PricePerDay = 229.99m,
+                            PricePerWeek = 1549.99m,
+                            Seats = 4,
+                            ThumbnailImageId = 188,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Availability = true,
+                            CarMakeId = 11,
+                            ColorId = 2,
+                            Description = "The Audi Q7 2022 is a stylish and versatile luxury SUV that exudes a perfect combination of performance and sophistication. In its base model, the Q7 offers a spacious and refined interior, featuring premium materials and advanced technology. The infotainment system includes a 10.1-inch touchscreen display with seamless smartphone integration through Apple CarPlay and Android Auto, ensuring a connected and enjoyable driving experience.Our Audi Q7 is equipped with plush leather upholstery, a panoramic sunroof for an open and airy cabin ambiance, and a premium Bang & Olufsen 3D sound system for an immersive audio experience.Furthermore, optional technology package includes Audi's Virtual Cockpit for a customizable digital instrument cluster, a head-up display for enhanced visibility, and adaptive air suspension for a smooth and adjustable ride, ensuring an unmatched level of comfort and handling.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 2995,
+                            Fuel = "Gasoline",
+                            Horsepower = 340,
+                            Model = "Q7",
+                            PricePerDay = 189.99m,
+                            PricePerWeek = 1299.99m,
+                            Seats = 7,
+                            ThumbnailImageId = 197,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Availability = true,
+                            CarMakeId = 13,
+                            ColorId = 3,
+                            Description = "The Porsche Cayenne Turbo S E-Hybrid 2022 is a remarkable and powerful luxury SUV that embodies the perfect fusion of performance and sustainability. In its base model, the Cayenne Turbo S E-Hybrid is equipped with a cutting-edge hybrid powertrain, combining a twin-turbocharged V8 engine with an electric motor, producing an astonishing 680 horsepower and delivering electrifying acceleration and efficiency. The interior boasts premium materials and advanced technology, featuring a 12.3-inch touchscreen infotainment display, smartphone integration, and Porsche Communication Management (PCM) for seamless connectivity.Optional technology package includes Porsche InnoDrive with adaptive cruise control, Night Vision Assist for enhanced visibility in low-light conditions, and Porsche Dynamic Chassis Control for superior handling and agility.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 3996,
+                            Fuel = "Hybrid",
+                            Horsepower = 680,
+                            Model = "Cayenne",
+                            PricePerDay = 279.99m,
+                            PricePerWeek = 1699.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 205,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Availability = true,
+                            CarMakeId = 13,
+                            ColorId = 5,
+                            Description = "The Porsche 4S E-Hybrid 2022 is a cutting-edge and high-performance plug-in hybrid that exemplifies the perfect blend of exhilarating power and sustainability. In its base model, the 4S E-Hybrid is equipped with a sophisticated hybrid powertrain, combining a twin-turbocharged V6 engine with an electric motor, producing an impressive 552 horsepower and offering thrilling acceleration and efficiency. The interior features premium materials and advanced technology, including a 12.3-inch touchscreen infotainment display, smartphone integration, and Porsche Communication Management (PCM) for seamless connectivity.Optional equipment includes exclusive leather upholstery, a panoramic sunroof for an open and airy cabin ambiance, and a high-end Burmester sound system for an immersive audio experience.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 2894,
+                            Fuel = "Hybrid",
+                            Horsepower = 560,
+                            Model = "Panamera",
+                            PricePerDay = 269.99m,
+                            PricePerWeek = 1649.99m,
+                            Seats = 4,
+                            ThumbnailImageId = 214,
+                            Transmission = "Automatic",
+                            Type = "Saloon"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Availability = true,
+                            CarMakeId = 14,
+                            ColorId = 2,
+                            Description = "The Range Rover Sport SVR 5.0 is a breathtaking and performance-oriented luxury SUV that embodies the perfect combination of power and refinement. In its base model, the Range Rover Sport SVR is equipped with a robust 5.0-liter supercharged V8 engine, generating a jaw-dropping 575 horsepower, resulting in exhilarating acceleration and exceptional off-road capabilities. The interior showcases premium materials and advanced features, including a Touch Pro Duo infotainment system with a 10-inch touchscreen display, smartphone integration, and a Meridian sound system for immersive audio quality.Optional equipment includes premium Windsor leather upholstery, a panoramic sunroof for an expansive cabin ambiance, and a rear-seat entertainment system for passengers' enjoyment.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 5000,
+                            Fuel = "Gasoline",
+                            Horsepower = 575,
+                            Model = "Sport",
+                            PricePerDay = 229.99m,
+                            PricePerWeek = 1499.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 224,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Availability = true,
+                            CarMakeId = 15,
+                            ColorId = 4,
+                            Description = "The Maserati Levante Trofeo is a high-performance luxury SUV that represents the pinnacle of Maserati's engineering and craftsmanship. In its base model, the Levante Trofeo comes equipped with a ferocious 3.8-liter twin-turbocharged V8 engine, producing a remarkable 580 horsepower, resulting in breathtaking acceleration and agile handling.The interior is a testament to opulence with premium leather upholstery and advanced technology, featuring an 8.4-inch touchscreen infotainment display with smartphone integration and a Harman Kardon sound system for a captivating audio experience.It is equipped with exclusive Pieno Fiore leather upholstery, a panoramic sunroof for an expansive cabin ambiance, and a high-end Bowers & Wilkins Diamond Surround Sound System for an unparalleled audio experience.",
+                            Doors = 5,
+                            Drivetrain = "AWD",
+                            EngineCapacity = 3799,
+                            Fuel = "Gasoline",
+                            Horsepower = 590,
+                            Model = "Levante",
+                            PricePerDay = 229.99m,
+                            PricePerWeek = 1499.99m,
+                            Seats = 5,
+                            ThumbnailImageId = 231,
+                            Transmission = "Automatic",
+                            Type = "SUV"
+                        });
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarColor", b =>
@@ -341,7 +944,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors", (string)null);
+                    b.ToTable("Colors");
 
                     b.HasData(
                         new
@@ -402,9 +1005,11 @@ namespace RoadMateSystem.Data.Migrations
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarImage", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Caption")
                         .HasColumnType("nvarchar(max)");
@@ -424,7 +1029,1689 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("CarImages", (string)null);
+                    b.ToTable("CarImages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarId = 1,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CarId = 1,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CarId = 1,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CarId = 1,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CarId = 1,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CarId = 1,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CarId = 1,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CarId = 2,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CarId = 2,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CarId = 2,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CarId = 2,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CarId = 2,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CarId = 2,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CarId = 3,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CarId = 3,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CarId = 3,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CarId = 3,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CarId = 3,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CarId = 3,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CarId = 3,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CarId = 3,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CarId = 4,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CarId = 5,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CarId = 6,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CarId = 6,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CarId = 6,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            CarId = 6,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CarId = 6,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CarId = 6,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CarId = 7,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CarId = 7,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            CarId = 7,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            CarId = 7,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            CarId = 7,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            CarId = 7,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            CarId = 8,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            CarId = 8,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            CarId = 8,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            CarId = 8,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CarId = 8,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CarId = 9,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            CarId = 9,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            CarId = 9,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            CarId = 9,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            CarId = 9,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            CarId = 9,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            CarId = 9,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            CarId = 10,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            CarId = 10,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            CarId = 10,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            CarId = 10,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            CarId = 10,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            CarId = 10,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            CarId = 10,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            CarId = 11,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            CarId = 12,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo10"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            CarId = 13,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 91,
+                            CarId = 13,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 92,
+                            CarId = 13,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 93,
+                            CarId = 13,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 94,
+                            CarId = 13,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 95,
+                            CarId = 13,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 96,
+                            CarId = 13,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            CarId = 14,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            CarId = 14,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 99,
+                            CarId = 14,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 100,
+                            CarId = 14,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CarId = 14,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CarId = 14,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CarId = 14,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 106,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            CarId = 15,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CarId = 16,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            CarId = 16,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 115,
+                            CarId = 16,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 116,
+                            CarId = 16,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 117,
+                            CarId = 16,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 118,
+                            CarId = 16,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 119,
+                            CarId = 16,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 120,
+                            CarId = 16,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 121,
+                            CarId = 17,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 122,
+                            CarId = 17,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 123,
+                            CarId = 17,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 124,
+                            CarId = 17,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 125,
+                            CarId = 17,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 126,
+                            CarId = 17,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 127,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 128,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 129,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 130,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 131,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 132,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 133,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 134,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 135,
+                            CarId = 18,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 136,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 137,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 138,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 139,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 140,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 141,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 142,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 143,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 144,
+                            CarId = 19,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 145,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 146,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 147,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 148,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 149,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 150,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 151,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 152,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 153,
+                            CarId = 20,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 154,
+                            CarId = 21,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 155,
+                            CarId = 21,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 156,
+                            CarId = 21,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 157,
+                            CarId = 21,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 158,
+                            CarId = 21,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 159,
+                            CarId = 21,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 160,
+                            CarId = 21,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 161,
+                            CarId = 21,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 162,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 163,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 164,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 165,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 166,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 167,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 168,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 169,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 170,
+                            CarId = 22,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 171,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 172,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 173,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 174,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 175,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 176,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 177,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 178,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 179,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 180,
+                            CarId = 23,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo10"
+                        },
+                        new
+                        {
+                            Id = 181,
+                            CarId = 24,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 182,
+                            CarId = 24,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 183,
+                            CarId = 24,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 184,
+                            CarId = 24,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 185,
+                            CarId = 24,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 186,
+                            CarId = 24,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 187,
+                            CarId = 24,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 188,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 189,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 190,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 191,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 192,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 193,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 194,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 195,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 196,
+                            CarId = 25,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 197,
+                            CarId = 26,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 198,
+                            CarId = 26,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 199,
+                            CarId = 26,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 200,
+                            CarId = 26,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 201,
+                            CarId = 26,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 202,
+                            CarId = 26,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 203,
+                            CarId = 26,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 204,
+                            CarId = 26,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 205,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 206,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 207,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 208,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 209,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 210,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 211,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 212,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 213,
+                            CarId = 27,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 214,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 215,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 216,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 217,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 218,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 219,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 220,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 221,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 222,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 223,
+                            CarId = 28,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo10"
+                        },
+                        new
+                        {
+                            Id = 224,
+                            CarId = 29,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 225,
+                            CarId = 29,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 226,
+                            CarId = 29,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 227,
+                            CarId = 29,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 228,
+                            CarId = 29,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 229,
+                            CarId = 29,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 230,
+                            CarId = 29,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 231,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo1"
+                        },
+                        new
+                        {
+                            Id = 232,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo2"
+                        },
+                        new
+                        {
+                            Id = 233,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo3"
+                        },
+                        new
+                        {
+                            Id = 234,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo4"
+                        },
+                        new
+                        {
+                            Id = 235,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo5"
+                        },
+                        new
+                        {
+                            Id = 236,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo6"
+                        },
+                        new
+                        {
+                            Id = 237,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo7"
+                        },
+                        new
+                        {
+                            Id = 238,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo8"
+                        },
+                        new
+                        {
+                            Id = 239,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo9"
+                        },
+                        new
+                        {
+                            Id = 240,
+                            CarId = 30,
+                            FileExtension = ".jpeg",
+                            FileName = "Photo10"
+                        });
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Car.CarMake", b =>
@@ -442,7 +2729,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarMakes", (string)null);
+                    b.ToTable("CarMakes");
 
                     b.HasData(
                         new
@@ -545,7 +2832,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("RentalId");
 
-                    b.ToTable("Payment", (string)null);
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Rental", b =>
@@ -578,7 +2865,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Rentals", (string)null);
+                    b.ToTable("Rentals");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Review", b =>
@@ -609,7 +2896,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -680,8 +2967,8 @@ namespace RoadMateSystem.Data.Migrations
                     b.HasOne("RoadMateSystem.Data.Models.Car.CarImage", "ThumbnailImage")
                         .WithOne("Car")
                         .HasForeignKey("RoadMateSystem.Data.Models.Car.Car", "ThumbnailImageId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .HasConstraintName("FK_Cars_CarImages_ThumbnailImageId");
 
                     b.Navigation("CarMake");
 
