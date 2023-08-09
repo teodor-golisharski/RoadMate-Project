@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RoadMateSystem.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" />
 </head>
-<body>
+<body style="background-color: #edeef0;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RoadMateSystem.Web</a>
+                <a class="navbar-brand navbar-brand-custom text-warning" asp-area="" asp-controller="Home" asp-action="Index">RoadMate</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,18 +23,18 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         @if (this.User.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Rental" asp-action="Rent">Rent a Car</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Rental" asp-action="Rent">Rent a Car</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="All">All cars</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Car" asp-action="All">All cars</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Rental" asp-action="Mine">My rents</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Rental" asp-action="Mine">My rents</a>
                             </li>
                         }
                     </ul>
@@ -43,16 +44,25 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 bg-light rounded border mb-5">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer align-content-center dark-footer mt-5 position-static">
+        @if (this.User.Identity?.IsAuthenticated ?? false)
+        {
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3 dark-footer">
+                <li class="nav-item fs-6"><a href="#" class="nav-link px-2 text-body-secondary text-warning">Home</a></li>
+                <li class="nav-item fs-6"><a href="#" class="nav-link px-2 text-body-secondary text-warning">Features</a></li>
+                <li class="nav-item fs-6"><a href="#" class="nav-link px-2 text-body-secondary text-warning">Pricing</a></li>
+                <li class="nav-item fs-6"><a href="#" class="nav-link px-2 text-body-secondary text-warning">FAQs</a></li>
+                <li class="nav-item fs-6"><a href="#" class="nav-link px-2 text-body-secondary text-warning">About</a></li>
+            </ul>
+        }
+        <div class="container text-center">
             &copy; RoadMate System @ReleaseYear
             @{
-                if(DateTime.UtcNow.Year != ReleaseYear)
+                if (DateTime.UtcNow.Year != ReleaseYear)
                 {
                     @Html.Raw($" - {DateTime.UtcNow.Year}");
                 }

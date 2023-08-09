@@ -1,0 +1,52 @@
+﻿@using RoadMateSystem.Web.ViewModels.Car;
+
+@model IEnumerable<AllCarsViewModel>
+
+@{
+    ViewBag.Title = "Our cars";
+    ViewBag.Description = string.Empty;
+}
+
+<h2 class="text-center m-3 navbar-brand-custom text-warning">@ViewBag.Title</h2>
+<hr style="border: 5px solid #ffc107" />
+
+<div class="row px-3 rounded">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-8 container-fluid">
+        @foreach (var car in Model)
+        {
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="@car.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@car.MakeModel">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <a class="nav-link" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@car.Id"><h2 class="card-title">@car.MakeModel</h2></a>
+                            <p class="card-text fs-5 mb-0">Car Type: @car.CarType</p>
+                            <p class="card-text fs-5 mb-0">Horsepower: @car.Horsepower</p>
+                            <div class="row fs-5">
+                                <div class="col-sm-6">
+                                    <p class="card-text">Fuel: @car.Fuel</p>
+                                </div>
+                                <div class="col-sm-6 mb-sm-0">
+                                    <span class="badge bg-primary text-bg-primary rounded-pill">Daily price: €@car.PricePerDay</span>
+                                </div>
+                            </div>
+                            <div class="row fs-5">
+                                <div class="col-sm-6">
+                                    <p class="card-text">Transmission: @car.Transmission</p>
+                                </div>
+                                <div class="col-sm-6 mb-sm-0">
+                                    <span class="badge bg-success text-bg-success rounded-pill">Weekly price: €@car.PricePerWeek</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

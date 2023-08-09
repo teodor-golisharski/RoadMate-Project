@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+
 }
 
 .b-example-divider {
@@ -24,4 +24,13 @@ body {
     border: solid rgba(0, 0, 0, .15);
     border-width: 1px 0;
     box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, .1), inset 0 0.125em 0.5em rgba(0, 0, 0, .15);
+}
+
+.dark-footer {
+    background-color: #343a40; 
+    color: white; 
+}
+
+.navbar-brand-custom {
+    font-family: 'Lemon', sans-serif; /* Apply the lemon font */
 }

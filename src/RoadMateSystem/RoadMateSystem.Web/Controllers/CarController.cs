@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using RoadMateSystem.Services.Data.Interfaces;
+    using RoadMateSystem.Web.ViewModels.Car;
 
     [Authorize]
     public class CarController : Controller
@@ -16,7 +17,9 @@
 
         public async Task<IActionResult> All()
         {
-            return View();
+            IEnumerable<AllCarsViewModel> model = await carService.GetAllCarsAsync();
+
+            return View(model);
         }
 
         public async Task<IActionResult> Edit()
@@ -24,9 +27,11 @@
             return View();
         }
 
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            CarDetailViewModel model = await carService.GetCarDetailAsync(id);
+
+            return View(model);
         }
     }
 }

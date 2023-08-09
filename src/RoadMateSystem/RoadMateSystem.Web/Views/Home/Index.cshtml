@@ -3,8 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image Carousel</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
@@ -19,45 +17,108 @@
             overflow: hidden;
         }
 
-        .mySlides img {
-            width: 100%;
-            height: auto;
-        }
+            .mySlides img {
+                width: 100%;
+                height: auto;
+            }
     </style>
 </head>
 <body>
-    <div class="b-example-divider"></div>
     <div class="container my-5">
         <div class="p-5 text-center bg-body-tertiary rounded-3">
-            <h1 class="text-body-emphasis">Welcome to RoadMate</h1>
-            <p class="lead text-danger text-primary">
+            <h1 class="text-body-emphasis fw-bolder">Welcome to RoadMate</h1>
+            <p class="lead text-warning fw-medium badge fs-4">
                 Discover the Freedom of Mobility
             </p>
         </div>
     </div>
     <div class="b-example-divider"></div>
-    <div class="slideshow-container">
-        @foreach (var imageUrl in Model.ImageUrls)
-        {
-            <div class="mySlides">
-                <img src="@imageUrl.FileUrl" class="img-fluid" alt="Slideshow Image">
-            </div>
-        }
+    <div class="row">
+        <div class="col-md-6 slideshow-container">
+            @foreach (var imageUrl in Model.ImageUrls.Where(x => x.Id % 2 == 0))
+            {
+                <div class="mySlides">
+                    <img src="@imageUrl.FileUrl" class="img-fluid" alt="Slideshow Image">
+                </div>
+            }
+        </div>
+        <div class="col-md-6 slideshow-container">
+            @foreach (var imageUrl in Model.ImageUrls.Where(x => x.Id % 2 != 0))
+            {
+                <div class="mySlides1">
+                    <img src="@imageUrl.FileUrl" class="img-fluid" alt="Slideshow Image">
+                </div>
+            }
+        </div>
     </div>
-
+    <div class="b-example-divider"></div>
+    <div class="container my-5 px-5">
+        <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded">
+            <h1 class="text-body-emphasis mt-5 text-warning">Placeholder jumbotron</h1>
+            <p class="col-lg-6 mx-auto mb-4 text-white fs-5">
+                At RoadMate, we redefine convenience and flexibility when it comes to getting you on the road. Whether you're a business traveler seeking efficiency or a leisure explorer embracing adventure, we have the perfect wheels for your journey. Our extensive fleet of vehicles caters to all preferences and needs, ensuring you find the right vehicle to suit your style.
+            </p>
+            @if (this.User.Identity?.IsAuthenticated ?? false)
+            {
+                <a class="text-dark fs-4 btn btn-warning px-5 mb-5" asp-area="" asp-controller="Rental" asp-action="Rent">Rent a Car</a>
+            }
+            else
+            {
+                <a class="text-dark fs-4 btn btn-warning px-5 mb-5" asp-area="Identity" asp-page="/Account/Register">Register Now!</a>
+            }
+        </div>
+    </div>
+    <h1 class="navbar-brand-custom px-5">
+        Why Choose Us?
+    </h1>
+    <div class="container px-5">
+        <div class="row py-5 row-cols-1 row-cols-lg-3">
+            <div class="col p-4 bg-warning">
+                <h3 class="fs-2 text-body-emphasis">Diverse Fleet</h3>
+                <p>From sleek sedans to spacious SUVs, we have a vehicle to match every occasion and preference.</p>
+            </div>
+            <div class="col p-4 bg-dark text-light">
+                <h3 class="fs-2 text-body-emphasis">Easy Booking</h3>
+                <p>Our user-friendly online platform makes reserving your desired car a breeze, so you can focus on planning your trip.</p>
+            </div>
+            <div class="col p-4 bg-warning">
+                <h3 class="fs-2 text-body-emphasis">Safe and Clean</h3>
+                <p>Your safety is our priority. Our vehicles undergo rigorous maintenance and cleaning protocols to ensure your peace of mind.</p>
+            </div>
+        </div>
+    </div>
 
     <script>
         $(document).ready(function () {
-            let currentIndex = 0;
-            const slides = $(".mySlides");
+            const slides1 = $(".mySlides");
+            const slides2 = $(".mySlides1");
+            let currentIndex1 = 0;
+            let currentIndex2 = 0;
 
-            function showSlide() {
-                slides.hide();
-                slides.eq(currentIndex).fadeIn(400);
-                currentIndex = (currentIndex + 1) % slides.length;
+            function showSlide1() {
+                slides1.hide();
+                slides1.eq(currentIndex1).fadeIn(400);
+                currentIndex1 = (currentIndex1 + 1) % slides1.length;
             }
 
-            setInterval(showSlide, 2500);
+            function showSlide2() {
+                slides2.hide();
+                slides2.eq(currentIndex2).fadeIn(400);
+                currentIndex2 = (currentIndex2 + 1) % slides2.length;
+            }
+
+            slides1.hide();
+            slides2.hide();
+
+            showSlide1();
+
+            setInterval(showSlide1, 3000);
+
+            setTimeout(function () {
+                showSlide2();
+
+                setInterval(showSlide2, 3000);
+            }, 1000); 
         });
     </script>
 
