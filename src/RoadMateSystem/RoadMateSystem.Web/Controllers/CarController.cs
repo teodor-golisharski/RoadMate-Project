@@ -6,7 +6,7 @@
     using RoadMateSystem.Web.ViewModels.Car;
 
     [Authorize]
-    public class CarController : Controller
+    public class CarController : BaseController
     {
         private readonly ICarService carService;
 

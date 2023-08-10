@@ -1,11 +1,24 @@
-﻿@using RoadMateSystem.Web.ViewModels.Car;
-
-@model IEnumerable<AllCarsViewModel>
+﻿@model IEnumerable<AllCarsViewModel>
 
 @{
     ViewBag.Title = "Our cars";
     ViewBag.Description = string.Empty;
 }
+<style>
+    .image-container {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .image-container img {
+            transition: transform 0.3s;
+    }
+
+    .image-container:hover img {
+            transform: scale(1.05);
+    }
+</style>
+
 
 <h2 class="text-center m-3 navbar-brand-custom text-warning">@ViewBag.Title</h2>
 <hr style="border: 5px solid #ffc107" />
@@ -18,12 +31,14 @@
         {
             <div class="card mb-3">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="@car.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@car.MakeModel">
+                    <div class="col-md-4 image-container">
+                        <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@car.Id">
+                            <img src="@car.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@car.MakeModel">
+                        </a>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <a class="nav-link" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@car.Id"><h2 class="card-title">@car.MakeModel</h2></a>
+                            <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@car.Id"><h2 class="card-title">@car.MakeModel</h2></a>
                             <p class="card-text fs-5 mb-0">Car Type: @car.CarType</p>
                             <p class="card-text fs-5 mb-0">Horsepower: @car.Horsepower</p>
                             <div class="row fs-5">
@@ -42,7 +57,7 @@
                                     <span class="badge bg-success text-bg-success rounded-pill">Weekly price: €@car.PricePerWeek</span>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

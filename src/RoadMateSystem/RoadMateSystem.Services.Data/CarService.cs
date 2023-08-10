@@ -46,15 +46,38 @@
 
         public async Task<CarDetailViewModel> GetCarDetailAsync(int id)
         {
+            CarMakeModelViewModel carMakeModel = await dbContext
+                .Cars
+                .Select(cmm => new CarMakeModelViewModel
+                {
+                    Id = cmm.Id,
+                    Make = cmm.CarMake.Make,
+                    Model = cmm.Model
+                })
+                .FirstAsync(cmm => cmm.Id == id);
+
+            string makeModel = string.Concat(carMakeModel.Make, carMakeModel.Model);
+            
+            CarColorViewModel colorModel = await dbContext
+                .Cars
+                .Select(cm => new CarColorViewModel
+                {
+                    Id = cm.Color.Id,
+                    Name = cm.Color.Name,
+                    Hex = cm.Color.Hex,
+                    CarId = cm.Id
+                })
+                .FirstAsync(cm => cm.CarId == id);
+
             ICollection<CarImageViewModel> images = await dbContext
                 .CarImages
                 .Select(ci => new CarImageViewModel
                 {
                     Id = ci.Id,
-                    FileUrl = $"..\\..\\CarImages\\{string.Concat(ci.Car.CarMake.Make, ci.Car.Model)}\\{string.Concat(ci.FileName, ci.FileExtension)}",
-                    CarId = ci.Car.Id
+                    FileUrl = $"..\\..\\CarImages\\{makeModel}\\{string.Concat(ci.FileName, ci.FileExtension)}",
+                    CarId = ci.CarId
                 })
-                .Where(x => x.CarId == id) 
+                .Where(ci => ci.CarId == id) 
                 .ToListAsync();
 
             ICollection<ReviewViewModel> reviews = await dbContext
@@ -80,7 +103,7 @@
                     Model = c.Model,
                     Type = c.Type,
                     Fuel = c.Fuel,
-                    Color = c.Color.Name,
+                    Color = colorModel,
                     Horsepower = c.Horsepower,
                     EngineCapacity = c.EngineCapacity,
                     Seats = c.Seats,    

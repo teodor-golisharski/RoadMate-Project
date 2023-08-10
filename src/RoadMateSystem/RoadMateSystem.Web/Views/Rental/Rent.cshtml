@@ -1,0 +1,21 @@
+﻿@model RentalViewModel
+
+<div class="row fs-5">
+    <div class="col-md-6 pb-3 mx-auto">
+        <form asp-action="Rent" method="post">
+            <div class="mb-3">
+                <label asp-for="@Model.StartDate" class="form-label-add-edit">From:</label>
+                <input asp-for="@Model.StartDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
+                <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.EndDate" class="form-label-add-edit">To (inclusive):</label>
+                <input asp-for="@Model.EndDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
+                <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button asp-route-id="@Model.CarId" type="submit" class="w-100 btn btn-lg btn-warning fw-bolder" value="Rent">Rent</button>
+            </div>
+        </form>
+    </div>
+</div>

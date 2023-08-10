@@ -19,6 +19,10 @@
                 .WithMany(r => r.Rentals)
                 .HasForeignKey(r => r.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Property(r => r.IsPaid)
+                .HasDefaultValue(false);
         }
     }
 }

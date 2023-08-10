@@ -13,7 +13,7 @@
         public string Model { get; set; } = null!;
         public CarType Type { get; set; }
         public FuelType Fuel { get; set; }
-        public string Color { get; set; } = null!;
+        public CarColorViewModel Color { get; set; } = null!;
         public int Horsepower { get; set; }
         public int EngineCapacity { get; set; }
         public int Seats { get; set; }
@@ -25,8 +25,8 @@
         public decimal? PricePerWeek { get; set; }
         public string ThumbnailUrl { get; set; } = null!;
 
-        public virtual ICollection<CarImageViewModel> Images { get; set; } = new HashSet<CarImageViewModel>();
+        public virtual IEnumerable<CarImageViewModel> Images { get; set; } = new List<CarImageViewModel>();
 
-        public virtual ICollection<ReviewViewModel> Reviews { get; set; } = new HashSet<ReviewViewModel>();
+        public virtual IEnumerable<ReviewViewModel> Reviews { get; set; } = new List<ReviewViewModel>();
     }
 }

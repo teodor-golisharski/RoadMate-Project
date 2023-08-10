@@ -1,17 +1,41 @@
-﻿@using RoadMateSystem.Web.ViewModels.Car;
+﻿@model CarDetailViewModel
+@{
+    var images = Model.Images.ToList();
+}
 
-@model CarDetailViewModel
 
-<div class="container mt-4">
+<div class="container mt-4 px-4">
+    <div class="container my-1 bg-dark bg-opacity-10 rounded">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+                <li class="breadcrumb-item fw-bold">
+                    <a class="text-dark link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="breadcrumb-item fw-bold">
+                    <a class="text-dark link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Car" asp-action="All">All Cars</a>
+                </li>
+                <li class="breadcrumb-item active text-warning fw-bold" aria-current="page">
+                    <a class="text-warning link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Car" asp-route-id="@Model.Id" asp-action="Details">@Model.CarMake @Model.Model</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
     <div class="row">
-        <div class="col-md-6">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="col-xl-6 pb-4">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
                 <div class="carousel-inner">
-                    @foreach (var image in Model.Images)
+                    @for (int i = 0; i < images.Count; i++)
                     {
-                        <div class="carousel-item @(image == Model.Images.First() ? "active" : "")">
+                        var image = images[i];
+                        <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
                             <img src="@image.FileUrl" class="d-block w-100" alt="Car Image">
                         </div>
+                    }
+                </div>
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < images.Count; i++)
+                    {
+                        <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")"></button>
                     }
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -23,19 +47,62 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+            <div class="container my-5 px-5">
+                <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded">
+                    <h1 class="text-body-emphasis mt-4 pb-3 text-warning">Like the car?</h1>
+                    <a class="text-dark fs-4 btn btn-warning px-5 mb-4" asp-area="" asp-controller="Rental" asp-action="Rent" asp-route-id="@Model.Id">Rent @Model.CarMake @Model.Model</a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-xl-6">
             <h2>@Model.CarMake @Model.Model</h2>
-            <p class="fw-bold">@Model.PricePerDay €/day</p>
-            <p class="mb-2">@Model.Description</p>
-            <p class="mb-0">Color: @Model.Color</p>
-            <p>Horsepower: @Model.Horsepower HP</p>
-            <p>Engine Capacity: @Model.EngineCapacity cc</p>
-            <p>Transmission: @Model.Transmission</p>
-            <p>Drivetrain: @Model.Drivetrain</p>
-            <p>Fuel Type: @Model.Fuel</p>
-            <p>Seats: @Model.Seats</p>
-            <p>Doors: @Model.Doors</p>
+            <div class="container px-0">
+                <span class="badge bg-primary text-bg-primary rounded-pill fs-6 my-2 mb-4 p-3" style="margin-right: 1rem;">Daily price: €@Model.PricePerDay</span>
+                <span class="badge bg-success text-bg-success rounded-pill fs-6 my-2 mb-4 p-3">Weekly price: €@Model.PricePerWeek</span>
+            </div>
+            <div class="container border rounded border-2 border-warning p-3 mb-4">
+                <p class="mb-2">@Model.Description</p>
+            </div>
+
+            <div class="bd-example m-0 border-0">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th colspan="2" scope="col" class="navbar-brand-custom fs-5 p-2">Technical parameters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Type</th>
+                            <td>@Model.Type</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fuel</th>
+                            <td>@Model.Fuel</</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Horsepower</th>
+                            <td>@Model.Horsepower</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Engine capacity</th>
+                            <td>@Model.EngineCapacity cm³</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Transmission</th>
+                            <td>@Model.Transmission</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Drivetrain</th>
+                            <td>@Model.Drivetrain</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Color</th>
+                            <td><span class="badge rounded-circle" style="color: @Model.Color.Hex; background-color: @Model.Color.Hex; margin-right: 0.5rem;">_</span>@Model.Color.Name</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

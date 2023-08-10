@@ -61,7 +61,7 @@
             {
                 Id = 6,
                 Name = "Red",
-                Hex = "B30000"
+                Hex = "#B30000"
             };
             carColors.Add(carColor);
 
@@ -69,7 +69,7 @@
             {
                 Id = 7,
                 Name = "Orange",
-                Hex = "FF9900"
+                Hex = "#FF9900"
             };
             carColors.Add(carColor);
 
@@ -77,7 +77,7 @@
             {
                 Id = 8,
                 Name = "Green",
-                Hex = "008000"
+                Hex = "#008000"
             };
             carColors.Add(carColor);
 

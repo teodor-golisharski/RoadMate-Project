@@ -36,6 +36,7 @@ namespace RoadMateSystem.Web
             .AddEntityFrameworkStores<RoadMateDbContext>();
 
             builder.Services.AddApplicationServices(typeof(ICarService));
+            builder.Services.AddApplicationServices(typeof(IRentalService));
 
             builder.Services.AddControllersWithViews();
 

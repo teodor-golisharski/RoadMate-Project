@@ -328,7 +328,7 @@ namespace RoadMateSystem.Data.Migrations
                             Availability = true,
                             CarMakeId = 1,
                             ColorId = 4,
-                            Description = "The car's advanced technology includes a user-friendly 9.3-inch touchscreen with the Easy Link system. It seamlessly integrates with Android Auto and Apple CarPlay, allowing you to access your favorite apps and stay connected on the go. The navigation system, powered by Google Maps and TomTom, ensures you'll never lose your way. Enjoy a personalized driving experience with the customizable instrument cluster, which utilizes a TFT LCD display. The redesigned, compact steering wheel adds a touch of modernity to the cabin. Renault Clio comes equipped with an array of impressive features. The electric parking brake enhances convenience, while the wireless smartphone charger keeps your device powered up without messy cables. The hands-free parking feature takes the stress out of parking in tight spots.",
+                            Description = "The car's advanced technology includes a user-friendly 9.3-inch touchscreen with the Easy Link system. It seamlessly integrates with Android Auto and Apple CarPlay, allowing you to access your favorite apps and stay connected on the go. The navigation system, powered by Google Maps and TomTom, ensures you'll never lose your way.Enjoy a personalized driving experience with the customizable instrument cluster, which utilizes a TFT LCD display. The redesigned, compact steering wheel adds a touch of modernity to the cabin.Renault Clio comes equipped with an array of impressive features. The electric parking brake enhances convenience, while the wireless smartphone charger keeps your device powered up without messy cables. The hands-free parking feature takes the stress out of parking in tight spots.",
                             Doors = 5,
                             Drivetrain = "FWD",
                             EngineCapacity = 1598,
@@ -980,19 +980,19 @@ namespace RoadMateSystem.Data.Migrations
                         new
                         {
                             Id = 6,
-                            Hex = "B30000",
+                            Hex = "#B30000",
                             Name = "Red"
                         },
                         new
                         {
                             Id = 7,
-                            Hex = "FF9900",
+                            Hex = "#FF9900",
                             Name = "Orange"
                         },
                         new
                         {
                             Id = 8,
-                            Hex = "008000",
+                            Hex = "#008000",
                             Name = "Green"
                         },
                         new
@@ -2848,7 +2848,9 @@ namespace RoadMateSystem.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsPaid")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");

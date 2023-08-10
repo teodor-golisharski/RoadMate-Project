@@ -50,7 +50,6 @@ C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\Ro
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.AssemblyInfoInputs.cache
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.AssemblyInfo.cs
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.csproj.CoreCompileInputs.cache
-C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.RazorAssemblyInfo.cache
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.RazorAssemblyInfo.cs
@@ -269,3 +268,4 @@ C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\Ro
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Services.Data.pdb
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Web.Infrastructure.dll
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Web.Infrastructure.pdb
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.MvcApplicationPartsAssemblyInfo.cs

@@ -7,7 +7,7 @@
     using RoadMateSystem.Services.Data;
     using RoadMateSystem.Services.Data.Interfaces;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ICarService carService;
 
