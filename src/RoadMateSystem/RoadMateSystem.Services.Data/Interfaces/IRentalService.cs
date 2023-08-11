@@ -8,5 +8,7 @@
         Task RentCarAsync(RentalViewModel model, string userId, int id);
 
         Task<RentalViewModel> GetRentCarAsync(int carId);
+
+        Task<RentalViewModel> GetCurrentRentCarAsync(int id, RentalViewModel currentModel);
     }
 }

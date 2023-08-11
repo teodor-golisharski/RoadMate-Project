@@ -2844,6 +2844,11 @@ namespace RoadMateSystem.Data.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 8, 11, 19, 17, 48, 929, DateTimeKind.Utc).AddTicks(6953));
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 

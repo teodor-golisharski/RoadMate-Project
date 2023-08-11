@@ -34,3 +34,16 @@ body {
 .navbar-brand-custom {
     font-family: 'Lemon', sans-serif; /* Apply the lemon font */
 }
+
+.image-container {
+    overflow: hidden;
+    position: relative;
+}
+
+    .image-container img {
+        transition: transform 0.3s;
+    }
+
+    .image-container:hover img {
+        transform: scale(1.05);
+    }

@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Microsoft.EntityFrameworkCore.Metadata.Internal;
     using RoadMateSystem.Services.Data.Interfaces;
+    using RoadMateSystem.Web.ViewModels.Car;
     using RoadMateSystem.Web.ViewModels.Rental;
     using System.Globalization;
 
@@ -29,6 +30,8 @@
         [HttpPost]
         public async Task<IActionResult> Rent(int id, RentalViewModel model)
         {
+            model = await rentalService.GetCurrentRentCarAsync(id, model);
+
             if (model.StartDate > model.EndDate)
             {
                 ModelState.AddModelError("StartDate", "Start date must be less than or equal to end date.");
@@ -48,7 +51,7 @@
 
             await rentalService.RentCarAsync(model, GetUserId(), id);
 
-            return RedirectToAction("Details", "Car");
+            return RedirectToAction("Details", "Car", new { id = id });
         }
 
         public async Task<IActionResult> Mine()

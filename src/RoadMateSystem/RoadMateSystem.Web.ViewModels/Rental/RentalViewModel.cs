@@ -12,6 +12,8 @@
         [Required]
         public int CarId { get; set; }
 
+        public RentCarViewModel? Car { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }

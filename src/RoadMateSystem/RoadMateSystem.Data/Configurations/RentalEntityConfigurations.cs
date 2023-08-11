@@ -23,6 +23,10 @@
             builder
                 .Property(r => r.IsPaid)
                 .HasDefaultValue(false);
+
+            builder
+                .Property(r => r.CreatedOn)
+                .HasDefaultValue(DateTime.UtcNow);
         }
     }
 }

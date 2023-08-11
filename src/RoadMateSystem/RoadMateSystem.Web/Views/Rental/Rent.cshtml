@@ -1,21 +1,151 @@
 ﻿@model RentalViewModel
 
-<div class="row fs-5">
-    <div class="col-md-6 pb-3 mx-auto">
-        <form asp-action="Rent" method="post">
-            <div class="mb-3">
-                <label asp-for="@Model.StartDate" class="form-label-add-edit">From:</label>
-                <input asp-for="@Model.StartDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
-                <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+
+<div class="col-md-12 container-fluid p-5 pt-4">
+    <div class="container mb-4 bg-dark bg-opacity-10 rounded">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+                <li class="breadcrumb-item fw-bold">
+                    <a class="text-dark link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="breadcrumb-item fw-bold">
+                    <a class="text-dark link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Car" asp-action="All">All Cars</a>
+                </li>
+                <li class="breadcrumb-item fw-bold" aria-current="page">
+                    <a class="text-dark link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Car" asp-route-id="@Model.CarId" asp-action="Details">@Model.Car!.MakeModel</a>
+                </li>
+                <li class="breadcrumb-item active text-warning fw-bold" aria-current="page">
+                    <a class="text-warning link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Rental" asp-route-id="@Model.CarId" asp-action="Rent">Renting car</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="card mb-5 border-warning border-3 rounded">
+        <div class="row g-0">
+            <div class="col-xxl-6 image-container">
+                <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@Model.Car!.Id">
+                    <img src="@Model.Car!.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@Model.Car.MakeModel">
+                </a>
             </div>
-            <div class="mb-3">
-                <label asp-for="@Model.EndDate" class="form-label-add-edit">To (inclusive):</label>
-                <input asp-for="@Model.EndDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
-                <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+            <div class="col-xxl-6 px-2">
+                <div class="card-body">
+                    <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@Model.Car.Id"><h2 class="card-title">@Model.Car.MakeModel</h2></a>
+                    <p class="small">@Model.Car.Description</p>
+
+                    <div class="container">
+                        <div class="row fs-5 align-item-end h-100">
+                            <div class="col-sm-6">
+                                <p class="card-text fs-5 mb-0">Car Type: @Model.Car.CarType</p>
+                            </div>
+                            <div class="col-sm-6 mb-sm-0">
+                                <p class="card-text fs-5 mb-0">Horsepower: @Model.Car.Horsepower</p>
+                            </div>
+                        </div>
+
+                        <div class="row fs-5 align-item-end h-100">
+                            <div class="col-sm-6">
+                                <p class="card-text">Fuel: @Model.Car.Fuel</p>
+                            </div>
+                            <div class="col-sm-6 mb-sm-0">
+                                <p class="card-text">Transmission: @Model.Car.Transmission</p>
+                            </div>
+                        </div>
+
+                        <div class="row fs-5 align-item-end h-100">
+                            <div class="col-sm-6 fs-4">
+                                <span class="badge bg-primary text-bg-primary rounded-pill">Daily price: €@Model.Car.PricePerDay</span>
+
+                            </div>
+                            <div class="col-sm-6 mb-sm-0 fs-4">
+                                <span class="badge bg-success text-bg-success rounded-pill">Weekly price: €@Model.Car.PricePerWeek</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <button asp-route-id="@Model.CarId" type="submit" class="w-100 btn btn-lg btn-warning fw-bolder" value="Rent">Rent</button>
+        </div>
+    </div>
+    <div class="row container-fluid p-5 pt-4 border border-3 border-warning rounded m-0" style="background-color: #edeef0;">
+        <h1 class="pb-3 navbar-brand-custom text-warning">Rent car form</h1>
+        <div class="col-lg-6 pb-3 border p-4 bg-dark rounded-3 text-white align-content-start mx-0 mb-3">
+            <form asp-action="Rent" method="post">
+                <div class="mb-3 fs-5">
+                    <label asp-for="@Model.StartDate" class="form-label-add-edit fw-bold">From:</label>
+                    <input asp-for="@Model.StartDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
+                    <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+                </div>
+                <div class="mb-4 fs-5">
+                    <label asp-for="@Model.EndDate" class="form-label-add-edit fw-bold">To (inclusive):</label>
+                    <input asp-for="@Model.EndDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
+                    <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="w-100 btn btn-lg btn-warning fw-bolder" value="Rent">Rent</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-6 px-5">
+            <h2 class="pb-3 navbar-brand-custom text-warning">Summary:</h2>
+            <div class="p-3 border border-2" id="summaryBox">
+                <h3 class="" id="rentalPrice"></h3>
+                <h3 class="" id="rentalDuration"></h3>
             </div>
-        </form>
+        </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var startDateInput = $("#StartDate");
+            var endDateInput = $("#EndDate");
+
+            var rentalPriceElement = $("#rentalPrice");
+
+            var pricePerDay = @Model.Car.PricePerDay;
+            var pricePerWeek = @Model.Car.PricePerWeek;
+
+            function calculatePrice() {
+                var startDate = new Date(startDateInput.val());
+                var endDate = new Date(endDateInput.val());
+                var daysDifference = Math.round((endDate - startDate) / (24 * 60 * 60 * 1000)) + 1;
+
+                var totalPrice = pricePerDay * daysDifference;
+
+                if (daysDifference >= 7) {
+                    totalPrice = pricePerWeek * Math.ceil(daysDifference / 7);
+                }
+
+                rentalPriceElement.text("Total Price: €" + totalPrice.toFixed(2));
+            }
+
+            startDateInput.change(calculatePrice);
+            endDateInput.change(calculatePrice);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var startDateInput = $("#StartDate");
+            var endDateInput = $("#EndDate");
+
+            function calculateDuration() {
+                var startDate = new Date(startDateInput.val());
+                var endDate = new Date(endDateInput.val());
+                var daysDifference = Math.ceil((endDate - startDate) / (24 * 60 * 60 * 1000)) + 1;
+
+                $("#rentalDuration").text("Rental Duration: " + daysDifference + " days");
+            }
+
+            startDateInput.change(calculateDuration);
+            endDateInput.change(calculateDuration);
+        });
+    </script>
+}
+
+
+
+
+
+
+
+

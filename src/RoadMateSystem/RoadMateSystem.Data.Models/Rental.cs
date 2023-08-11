@@ -36,5 +36,8 @@
 
         [Required]
         public bool IsPaid { get; set; }
+
+        [Required]
+        public DateTime CreatedOn { get; set; }
     }
 }
