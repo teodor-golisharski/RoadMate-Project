@@ -6,6 +6,7 @@
     using RoadMateSystem.Web.Data;
     using RoadMateSystem.Web.ViewModels.Car;
     using RoadMateSystem.Web.ViewModels.Rental;
+    using System.ComponentModel;
 
     public class RentalService : IRentalService
     {
@@ -78,6 +79,18 @@
         // Rent HttpPost
         public async Task RentCarAsync(RentalViewModel model, string userId, int id)
         {
+            TimeSpan rentalDuration = model.EndDate.Date - model.StartDate.Date;
+            double totalCost = 0;
+
+            if (rentalDuration.TotalDays + 1 >= 7)
+            {
+                totalCost = (rentalDuration.TotalDays + 1) / 7 * (double)model.Car!.PricePerWeek!;
+            }
+            else
+            {
+                totalCost = (rentalDuration.TotalDays + 1) * (double)model.Car!.PricePerDay;
+            }
+
             Rental @rent = new Rental()
             {
                 RentalId = Guid.NewGuid(),
@@ -85,13 +98,41 @@
                 UserId = Guid.Parse(userId),
                 StartDate = model.StartDate,
                 EndDate = model.EndDate,
-                TotalCost = model.TotalCost,
                 IsPaid = false,
+                TotalCost = (decimal)totalCost,
                 CreatedOn = DateTime.Now
             };
 
             await dbContext.Rentals.AddAsync(@rent);
             await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<AllRentalsByCarIdViewModel>> GetAllRentalsByCarIdAsync(int id)
+        {
+            IEnumerable<AllRentalsByCarIdViewModel> viewModel = 
+                await dbContext
+                .Rentals
+                .Select(r => new AllRentalsByCarIdViewModel 
+                { 
+                    RentalId = r.RentalId, 
+                    CarId = r.CarId,
+                    StartDate = r.StartDate,
+                    EndDate = r.EndDate,
+                })
+                .Where(r => r.CarId == id)
+                .ToListAsync();
+
+            return viewModel;
+        }
+
+        public async Task<bool> IsCarAvailableAsync(IEnumerable<AllRentalsByCarIdViewModel> carRentals, RentalViewModel model)
+        {
+            await Task.Yield();
+
+            bool result = carRentals
+                .Any(r => (model.StartDate >= r.StartDate && model.StartDate <= r.EndDate) || (model.EndDate >= r.StartDate && model.EndDate <= r.EndDate));
+
+            return result;
         }
     }
 }

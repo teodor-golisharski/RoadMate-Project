@@ -1,4 +1,4 @@
-﻿@model RentalViewModel
+﻿@model HybridRentalViewModel
 
 
 <div class="col-md-12 container-fluid p-5 pt-4">
@@ -12,10 +12,10 @@
                     <a class="text-dark link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Car" asp-action="All">All Cars</a>
                 </li>
                 <li class="breadcrumb-item fw-bold" aria-current="page">
-                    <a class="text-dark link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Car" asp-route-id="@Model.CarId" asp-action="Details">@Model.Car!.MakeModel</a>
+                    <a class="text-dark link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Car" asp-route-id="@Model.RentalViewModel.CarId" asp-action="Details">@Model.RentalViewModel.Car!.MakeModel</a>
                 </li>
                 <li class="breadcrumb-item active text-warning fw-bold" aria-current="page">
-                    <a class="text-warning link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Rental" asp-route-id="@Model.CarId" asp-action="Rent">Renting car</a>
+                    <a class="text-warning link-body-emphasis fw-bold text-decoration-none" asp-area="" asp-controller="Rental" asp-route-id="@Model.RentalViewModel.CarId" asp-action="Rent">Renting car</a>
                 </li>
             </ol>
         </nav>
@@ -23,41 +23,41 @@
     <div class="card mb-5 border-warning border-3 rounded">
         <div class="row g-0">
             <div class="col-xxl-6 image-container">
-                <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@Model.Car!.Id">
-                    <img src="@Model.Car!.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@Model.Car.MakeModel">
+                <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@Model.RentalViewModel.Car!.Id">
+                    <img src="@Model.RentalViewModel.Car!.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@Model.RentalViewModel.Car.MakeModel">
                 </a>
             </div>
             <div class="col-xxl-6 px-2">
                 <div class="card-body">
-                    <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@Model.Car.Id"><h2 class="card-title">@Model.Car.MakeModel</h2></a>
-                    <p class="small">@Model.Car.Description</p>
+                    <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@Model.RentalViewModel.Car.Id"><h2 class="card-title">@Model.RentalViewModel.Car.MakeModel</h2></a>
+                    <p class="small">@Model.RentalViewModel.Car.Description</p>
 
                     <div class="container">
                         <div class="row fs-5 align-item-end h-100">
                             <div class="col-sm-6">
-                                <p class="card-text fs-5 mb-0">Car Type: @Model.Car.CarType</p>
+                                <p class="card-text fs-5 mb-0">Car Type: @Model.RentalViewModel.Car.CarType</p>
                             </div>
                             <div class="col-sm-6 mb-sm-0">
-                                <p class="card-text fs-5 mb-0">Horsepower: @Model.Car.Horsepower</p>
+                                <p class="card-text fs-5 mb-0">Horsepower: @Model.RentalViewModel.Car.Horsepower</p>
                             </div>
                         </div>
 
                         <div class="row fs-5 align-item-end h-100">
                             <div class="col-sm-6">
-                                <p class="card-text">Fuel: @Model.Car.Fuel</p>
+                                <p class="card-text">Fuel: @Model.RentalViewModel.Car.Fuel</p>
                             </div>
                             <div class="col-sm-6 mb-sm-0">
-                                <p class="card-text">Transmission: @Model.Car.Transmission</p>
+                                <p class="card-text">Transmission: @Model.RentalViewModel.Car.Transmission</p>
                             </div>
                         </div>
 
                         <div class="row fs-5 align-item-end h-100">
                             <div class="col-sm-6 fs-4">
-                                <span class="badge bg-primary text-bg-primary rounded-pill">Daily price: €@Model.Car.PricePerDay</span>
+                                <span class="badge bg-primary text-bg-primary rounded-pill">Daily price: €@Model.RentalViewModel.Car.PricePerDay</span>
 
                             </div>
                             <div class="col-sm-6 mb-sm-0 fs-4">
-                                <span class="badge bg-success text-bg-success rounded-pill">Weekly price: €@Model.Car.PricePerWeek</span>
+                                <span class="badge bg-success text-bg-success rounded-pill">Weekly price: €@Model.RentalViewModel.Car.PricePerWeek</span>
                             </div>
                         </div>
                     </div>
@@ -70,14 +70,14 @@
         <div class="col-lg-6 pb-3 border p-4 bg-dark rounded-3 text-white align-content-start mx-0 mb-3">
             <form asp-action="Rent" method="post">
                 <div class="mb-3 fs-5">
-                    <label asp-for="@Model.StartDate" class="form-label-add-edit fw-bold">From:</label>
-                    <input asp-for="@Model.StartDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
-                    <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+                    <label asp-for="@Model.RentalViewModel.StartDate" class="form-label-add-edit fw-bold">From:</label>
+                    <input asp-for="@Model.RentalViewModel.StartDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" id="StartDate" />
+                    <span asp-validation-for="@Model.RentalViewModel.StartDate" class="text-danger"></span>
                 </div>
                 <div class="mb-4 fs-5">
-                    <label asp-for="@Model.EndDate" class="form-label-add-edit fw-bold">To (inclusive):</label>
-                    <input asp-for="@Model.EndDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
-                    <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+                    <label asp-for="@Model.RentalViewModel.EndDate" class="form-label-add-edit fw-bold">To (inclusive):</label>
+                    <input asp-for="@Model.RentalViewModel.EndDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("dd-MM-yyyy")" id="EndDate"/>
+                    <span asp-validation-for="@Model.RentalViewModel.EndDate" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="w-100 btn btn-lg btn-warning fw-bolder" value="Rent">Rent</button>
@@ -97,13 +97,27 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
+            
+            var rentedDays = @Html.Raw(Json.Serialize(Model.RentedDays));
+
+            $('#StartDate, #EndDate').datepicker({
+                startDate: new Date(),
+                datesDisabled: rentedDays, 
+                todayHighlight: true,
+                autoclose: true,
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
             var startDateInput = $("#StartDate");
             var endDateInput = $("#EndDate");
 
             var rentalPriceElement = $("#rentalPrice");
 
-            var pricePerDay = @Model.Car.PricePerDay;
-            var pricePerWeek = @Model.Car.PricePerWeek;
+            var pricePerDay = @Model.RentalViewModel.Car.PricePerDay;
+            var pricePerWeek = @Model.RentalViewModel.Car.PricePerWeek;
 
             function calculatePrice() {
                 var startDate = new Date(startDateInput.val());
@@ -113,7 +127,7 @@
                 var totalPrice = pricePerDay * daysDifference;
 
                 if (daysDifference >= 7) {
-                    totalPrice = pricePerWeek * Math.ceil(daysDifference / 7);
+                    totalPrice = pricePerWeek * daysDifference / 7;                    
                 }
 
                 rentalPriceElement.text("Total Price: €" + totalPrice.toFixed(2));

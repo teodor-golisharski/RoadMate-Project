@@ -10,5 +10,9 @@
         Task<RentalViewModel> GetRentCarAsync(int carId);
 
         Task<RentalViewModel> GetCurrentRentCarAsync(int id, RentalViewModel currentModel);
+
+        Task<IEnumerable<AllRentalsByCarIdViewModel>> GetAllRentalsByCarIdAsync(int id);
+
+        Task<bool> IsCarAvailableAsync(IEnumerable<AllRentalsByCarIdViewModel> carRentals, RentalViewModel model);
     }
 }

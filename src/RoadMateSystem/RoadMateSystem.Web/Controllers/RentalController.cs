@@ -22,15 +22,23 @@
         [HttpGet]
         public async Task<IActionResult> Rent(int id)
         {
-            RentalViewModel model = await rentalService.GetRentCarAsync(id);
+            HybridRentalViewModel hModel = new HybridRentalViewModel();
+            hModel.RentedDays = await rentalService.GetAllRentalsByCarIdAsync(id);
 
-            return View(model);
+            RentalViewModel model = await rentalService.GetRentCarAsync(id);
+            hModel.RentalViewModel = model;
+
+            return View(hModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Rent(int id, RentalViewModel model)
         {
+            IEnumerable<AllRentalsByCarIdViewModel> allRentalsByCarIdViewModels = await rentalService.GetAllRentalsByCarIdAsync(id);
+
             model = await rentalService.GetCurrentRentCarAsync(id, model);
+
+            
 
             if (model.StartDate > model.EndDate)
             {
