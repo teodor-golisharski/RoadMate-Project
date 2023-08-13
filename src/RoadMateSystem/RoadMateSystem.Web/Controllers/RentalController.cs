@@ -9,6 +9,9 @@
     using RoadMateSystem.Web.ViewModels.Rental;
     using System.Globalization;
 
+    using static RoadMateSystem.Common.NotificationMessagesConstants;
+
+
     [Authorize]
     public class RentalController : BaseController
     {
@@ -22,24 +25,14 @@
         [HttpGet]
         public async Task<IActionResult> Rent(int id)
         {
-            HybridRentalViewModel hModel = new HybridRentalViewModel();
-            hModel.RentedDays = await rentalService.GetAllRentalsByCarIdAsync(id);
-
             RentalViewModel model = await rentalService.GetRentCarAsync(id);
-            hModel.RentalViewModel = model;
 
-            return View(hModel);
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Rent(int id, RentalViewModel model)
         {
-            IEnumerable<AllRentalsByCarIdViewModel> allRentalsByCarIdViewModels = await rentalService.GetAllRentalsByCarIdAsync(id);
-
-            model = await rentalService.GetCurrentRentCarAsync(id, model);
-
-            
-
             if (model.StartDate > model.EndDate)
             {
                 ModelState.AddModelError("StartDate", "Start date must be less than or equal to end date.");
@@ -52,12 +45,28 @@
                 return View(model);
             }
 
+            IEnumerable<AllRentalsByCarIdViewModel> allRentalsByCarIdViewModels = await rentalService.GetAllRentalsByCarIdAsync(id);
+
+            model = await rentalService.GetCurrentRentCarAsync(id, model);
+
+            bool flag = await rentalService.IsCarAvailableAsync(allRentalsByCarIdViewModels, model);
+
+            if (flag)
+            {
+                TempData[ErrorMessage] = $"{model.Car!.MakeModel} is unavailable from {model.StartDate.ToString("dd-MMMM-yyyy")} to {model.EndDate.ToString("dd-MMMM-yyyy")}!";
+
+                return View(model);
+            }
+
             if (ModelState.IsValid == false)
             {
+                TempData[ErrorMessage] = $"Error occured!";
                 return View(model);
             }
 
             await rentalService.RentCarAsync(model, GetUserId(), id);
+
+            TempData[SuccessMessage] = $"You successfully rented {model.Car!.MakeModel} from {model.StartDate.ToString("dd-MMMM-yyyy")} to {model.EndDate.ToString("dd-MMMM-yyyy")}!";
 
             return RedirectToAction("Details", "Car", new { id = id });
         }

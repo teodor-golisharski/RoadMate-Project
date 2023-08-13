@@ -27,6 +27,16 @@
             return View();
         }
 
+        public async Task<IActionResult> Add()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Delete()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Details(int id)
         {
             CarDetailViewModel model = await carService.GetCarDetailAsync(id);
