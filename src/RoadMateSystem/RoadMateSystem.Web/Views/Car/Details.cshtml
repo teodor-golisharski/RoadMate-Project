@@ -1,4 +1,5 @@
 ﻿@model CarDetailViewModel
+
 @{
     var images = Model.Images.ToList();
 }
@@ -105,4 +106,5 @@
             </div>
         </div>
     </div>
+    @await Html.PartialAsync("_ReviewPartial", Model.Reviews)
 </div>

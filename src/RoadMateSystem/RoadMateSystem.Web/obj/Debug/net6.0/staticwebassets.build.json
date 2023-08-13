@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NJdomxNWQWMd3cC9cebmvkuEdqJnpsnSHjDB/XjdDDA=",
+  "Hash": "n8g3JaNEMM35QpiuT/WQ0VvX3e/NZMmuzbfr+nmfwGg=",
   "Source": "RoadMateSystem.Web",
   "BasePath": "_content/RoadMateSystem.Web",
   "Mode": "Default",
@@ -5183,6 +5183,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\js\\jquery-override.js",
+      "SourceId": "RoadMateSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\",
+      "BasePath": "_content/RoadMateSystem.Web",
+      "RelativePath": "js/jquery-override.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery-override.js"
     },
     {
       "Identity": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\js\\site.js",

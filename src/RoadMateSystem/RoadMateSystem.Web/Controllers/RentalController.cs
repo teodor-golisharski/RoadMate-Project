@@ -60,7 +60,7 @@
 
             if (ModelState.IsValid == false)
             {
-                TempData[ErrorMessage] = $"Error occured!";
+                TempData[ErrorMessage] = $"Error occurred!";
                 return View(model);
             }
 

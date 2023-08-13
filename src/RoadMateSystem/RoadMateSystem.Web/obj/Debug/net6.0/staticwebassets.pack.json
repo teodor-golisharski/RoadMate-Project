@@ -973,6 +973,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\js\\jquery-override.js",
+      "PackagePath": "staticwebassets\\js\\jquery-override.js"
+    },
+    {
       "Id": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

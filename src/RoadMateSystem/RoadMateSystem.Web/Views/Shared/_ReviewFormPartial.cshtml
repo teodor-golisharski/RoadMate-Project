@@ -1,0 +1,29 @@
+﻿@model ReviewFormModel 
+
+@{
+    ViewData["Title"] = "Car Review Form";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">ViewData.Title</h1>
+    <form asp-action="SubmitReview" method="post">
+        <div class="form-group">
+            <label for="rating">Rating:</label>
+            <div class="rating">
+                <!-- Render stars for rating using Bootstrap classes -->
+                @for (int i = 1; i <= 10; i++)
+                {
+                    <input type="radio" id="star@i" name="Rating" value="@i" class="star" />
+                    <label for="star@i"><i class="fas fa-star"></i></label>
+                }
+            </div>
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Comment">Comment (optional):</label>
+            <textarea asp-for="Comment" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Comment" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+</div>

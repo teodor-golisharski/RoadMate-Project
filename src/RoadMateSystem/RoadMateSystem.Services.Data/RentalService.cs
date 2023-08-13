@@ -93,7 +93,6 @@
 
             Rental @rent = new Rental()
             {
-                RentalId = Guid.NewGuid(),
                 CarId = id,
                 UserId = Guid.Parse(userId),
                 StartDate = model.StartDate,

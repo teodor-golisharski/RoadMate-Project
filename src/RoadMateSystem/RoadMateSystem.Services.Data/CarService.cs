@@ -44,7 +44,7 @@
             return queue;
         }
 
-        public async Task<CarDetailViewModel> GetCarDetailAsync(int id)
+        public async Task<CarDetailViewModel> GetCarDetailAsync(int id, ICollection<ReviewViewModel> reviews, ICollection<CarImageViewModel> images)
         {
             CarMakeModelViewModel carMakeModel = await dbContext
                 .Cars
@@ -69,30 +69,7 @@
                 })
                 .FirstAsync(cm => cm.CarId == id);
 
-            ICollection<CarImageViewModel> images = await dbContext
-                .CarImages
-                .Select(ci => new CarImageViewModel
-                {
-                    Id = ci.Id,
-                    FileUrl = $"..\\..\\CarImages\\{makeModel}\\{string.Concat(ci.FileName, ci.FileExtension)}",
-                    CarId = ci.CarId
-                })
-                .Where(ci => ci.CarId == id) 
-                .ToListAsync();
-
-            ICollection<ReviewViewModel> reviews = await dbContext
-                .Reviews
-                .Select(r => new ReviewViewModel 
-                { 
-                    ReviewId = r.ReviewId.ToString(),
-                    CarId = r.Car.Id,
-                    UserName = string.Concat(r.User.FirstName, " ", r.User.LastName),
-                    Rating = r.Rating,
-                    Comment = r.Comment,
-                    DatePosted = r.DatePosted
-                })
-                .Where(x => x.CarId == id)
-                .ToListAsync();
+            
 
             CarDetailViewModel viewModel = await dbContext
                 .Cars

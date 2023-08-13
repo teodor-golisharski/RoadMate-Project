@@ -2,16 +2,32 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
+    using RoadMateSystem.Services.Data;
+    using RoadMateSystem.Services.Data.Interfaces;
+    using RoadMateSystem.Web.ViewModels.Review;
+    using static RoadMateSystem.Common.NotificationMessagesConstants;
+
     public class ReviewController : BaseController
     {
-        public async Task<IActionResult> All()
+        private readonly IReviewService reviewService;
+        public ReviewController(IReviewService reviewService)
         {
-            return View();
+            this.reviewService = reviewService;
         }
 
-        public async Task<IActionResult> Add()
+        [HttpPost]
+        public async Task<IActionResult> Add(ReviewFormModel formModel, int id, string userId)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                TempData[ErrorMessage] = "Error occurred!";
+            }
+
+            await reviewService.AddReview(formModel, id, userId);
+
+            TempData[SuccessMessage] = $"You successfully added a review!";
+
+            return RedirectToAction("Details", "Car", new { id = id });
         }
 
         public async Task<IActionResult> Edit()

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ReviewViewModel>
+
+<div class="container mt-4">
+    <h1 class="text-center navbar-brand-custom text-warning border-bottom border-3 border-warning pb-2 mb-4">Car Reviews</h1>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+                <div class="card mb-4 rounded border-dark bg-dark bg-opacity-10">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5 class="card-title">@item.UserName</h5>
+                            </div>
+                            @if (true)
+                            {
+                                <div class="col-md-3 text-end">
+                                    <a href="#" class="text-primary mx-2 fs-5"><i class="fa fa-edit"></i></a>
+                                    <a href="#" class="text-danger mx-2 fs-5"><i class="fa fa-trash"></i></a>
+                                </div>
+                            }
+                        </div>
+                        <div class="rating">
+                            @for (int i = 0; i < item.Rating; i++)
+                            {
+                                <span class="fa fa-star text-warning"></span>
+                            }
+                        </div>
+                        <p class="card-text text-muted">Posted on: @item.DatePosted</p>
+                        <p class="card-text">@item.Comment</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
