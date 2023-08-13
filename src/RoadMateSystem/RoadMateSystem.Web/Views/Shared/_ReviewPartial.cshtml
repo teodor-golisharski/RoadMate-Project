@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ReviewViewModel>
+﻿@using System.Security.Claims;
+@model IEnumerable<ReviewViewModel>
 
 <div class="container mt-4">
     <h1 class="text-center navbar-brand-custom text-warning border-bottom border-3 border-warning pb-2 mb-4">Car Reviews</h1>
@@ -12,7 +13,7 @@
                             <div class="col-md-9">
                                 <h5 class="card-title">@item.UserName</h5>
                             </div>
-                            @if (true)
+                            @if (User.FindFirstValue(ClaimTypes.NameIdentifier) == item.UserId.ToLower())
                             {
                                 <div class="col-md-3 text-end">
                                     <a href="#" class="text-primary mx-2 fs-5"><i class="fa fa-edit"></i></a>

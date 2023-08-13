@@ -23,6 +23,7 @@ namespace RoadMateSystem.Services.Data
                 {
                     ReviewId = r.ReviewId.ToString(),
                     CarId = r.Car.Id,
+                    UserId = r.UserId.ToString(),
                     UserName = string.Concat(r.User.FirstName, " ", r.User.LastName),
                     Rating = r.Rating,
                     Comment = r.Comment,
