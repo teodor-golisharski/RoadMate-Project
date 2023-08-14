@@ -32,7 +32,7 @@ body {
 }
 
 .navbar-brand-custom {
-    font-family: 'Lemon', sans-serif; /* Apply the lemon font */
+    font-family: 'Lemon', sans-serif;
 }
 
 .image-container {
@@ -40,10 +40,20 @@ body {
     position: relative;
 }
 
-    .image-container img {
-        transition: transform 0.3s;
-    }
+.image-container img {
+    transition: transform 0.3s;
+}
 
-    .image-container:hover img {
-        transform: scale(1.05);
-    }
+.image-container:hover img {
+    transform: scale(1.05);
+}
+
+.rating {
+    display: inline-block;
+}
+
+.rating input {
+    display: none;
+}
+
+

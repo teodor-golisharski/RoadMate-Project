@@ -11,5 +11,7 @@
 
         Task<CarDetailViewModel> GetCarDetailAsync(int id, ICollection<ReviewViewModel> reviews, ICollection<CarImageViewModel> images);
         Task<IEnumerable<AllCarsViewModel>> GetAllCarsAsync();
+
+        Task<ReviewCarViewModel> GetReviewCarViewModelAsync(int id);
     }
 }

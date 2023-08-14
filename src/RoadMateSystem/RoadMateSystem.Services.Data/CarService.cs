@@ -123,5 +123,25 @@
 
             return allCarsViewModels;
         }
+
+        public async Task<ReviewCarViewModel> GetReviewCarViewModelAsync(int id)
+        {
+            ReviewCarViewModel viewModel = await dbContext
+                .Cars
+                .Select(c => new ReviewCarViewModel
+                { 
+                    Id= c.Id,
+                    MakeModel = string.Concat(c.CarMake.Make, " ", c.Model),
+                    ThumbnailImageUrl = $"..\\..\\CarImages\\{string.Concat(c.CarMake.Make, c.Model)}\\{string.Concat(c.ThumbnailImage!.FileName, c.ThumbnailImage.FileExtension)}",
+                    CarType = c.Type,
+                    Fuel = c.Fuel,
+                    Horsepower = c.Horsepower,
+                    Color = c.Color.Name,
+                    Seats = c.Seats
+                })
+                .FirstAsync(c => c.Id == id);
+
+            return viewModel;
+        }
     }
 }

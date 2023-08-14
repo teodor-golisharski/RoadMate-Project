@@ -6,6 +6,7 @@
     using RoadMateSystem.Data.Models;
     using RoadMateSystem.Data.Models.Car;
     using static RoadMateSystem.Common.EntityValidationConstants.Review;
+    using RoadMateSystem.Web.ViewModels.Car;
 
     public class ReviewFormModel
     {
@@ -14,14 +15,10 @@
         [Required]
         public int CarId { get; set; }
 
-        [ForeignKey(nameof(CarId))]
-        public virtual Car Car { get; set; } = null!;
+        public ReviewCarViewModel? Car { get; set; }
 
         [Required]
         public Guid UserId { get; set; }
-
-        [ForeignKey(nameof(UserId))]
-        public virtual ApplicationUser User { get; set; } = null!;
 
         [Required]
         [Range(RatingMinValue, RatingMaxValue)]

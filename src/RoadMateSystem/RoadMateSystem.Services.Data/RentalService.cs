@@ -80,7 +80,7 @@
         public async Task RentCarAsync(RentalViewModel model, string userId, int id)
         {
             TimeSpan rentalDuration = model.EndDate.Date - model.StartDate.Date;
-            double totalCost = 0;
+            double totalCost;
 
             if (rentalDuration.TotalDays + 1 >= 7)
             {

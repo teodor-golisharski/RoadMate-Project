@@ -1,0 +1,80 @@
+﻿@model ReviewFormModel
+
+@{
+    ViewBag.Title = "Edit car";
+}
+
+<div class="container px-5 py-4">
+    <h2 class="navbar-brand-custom text-warning text-center border-bottom border-3 border-warning pb-3 mb-4">@ViewBag.Title</h2>
+    <div class="card mb-3 border-3 border-warning">
+        <div class="row g-0">
+            <div class="col-xxl-3">
+                <img src="@Model.Car!.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@Model.Car.MakeModel">
+            </div>
+            <div class="col-xxl-9">
+                <div class="card-body px-4">
+                    <h2 class="card-title display-3 fw-normal">@Model.Car.MakeModel</h2>
+                    <p class="display-6">Brief description: </p>
+                    <p class="">Type: @Model.Car.CarType, Fuel: @Model.Car.Fuel, Color: @Model.Car.Color, Horsepower: @Model.Car.Horsepower, Seats: @Model.Car.Seats</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form asp-action="Edit" method="post">
+        <div class="form-group fs-3 py-3">
+            <label class="navbar-brand-custom" for="rating">Rating:</label>
+            <div class="rating">
+                <input type="radio" id="star1" name="Rating" value="1" required /><label for="star1"></label>
+                <input type="radio" id="star2" name="Rating" value="2" /><label for="star2"></label>
+                <input type="radio" id="star3" name="Rating" value="3" /><label for="star3"></label>
+                <input type="radio" id="star4" name="Rating" value="4" /><label for="star4"></label>
+                <input type="radio" id="star5" name="Rating" value="5" /><label for="star5"></label>
+                <input type="radio" id="star6" name="Rating" value="6" /><label for="star6"></label>
+                <input type="radio" id="star7" name="Rating" value="7" /><label for="star7"></label>
+                <input type="radio" id="star8" name="Rating" value="8" /><label for="star8"></label>
+                <input type="radio" id="star9" name="Rating" value="9" /><label for="star9"></label>
+                <input type="radio" id="star10" name="Rating" value="10" /><label for="star10"></label>
+            </div>
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+        <div class="form-group fs-3 pb-4">
+            <label class="navbar-brand-custom" for="comment">Comment:</label>
+            <textarea asp-for="Comment" class="form-control"></textarea>
+            <span asp-validation-for="Comment" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn fs-3 p-3 btn-outline-warning border-4 fw-bold">Submit Review</button>
+    </form>
+</div>
+
+<style>
+    .rating label:before {
+        content: "★";
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const stars = document.querySelectorAll('.rating input');
+        const labels = document.querySelectorAll('.rating label');
+
+        const initialRating = @Model.Rating; // Assuming Rating is the property in your model for the initial rating
+
+        stars.forEach((star, index) => {
+            if (index < initialRating) {
+                labels[index].style.color = 'orange';
+            }
+
+            star.addEventListener('change', () => {
+                labels.forEach((label, labelIndex) => {
+                    if (labelIndex <= index) {
+                        label.style.color = 'orange';
+                    } else {
+                        label.style.color = '';
+                    }
+                });
+            });
+        });
+    });
+</script>

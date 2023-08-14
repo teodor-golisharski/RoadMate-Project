@@ -51,9 +51,6 @@
         public string Description { get; set; } = null!;
 
         [Required]
-        public bool Availability { get; set; }
-
-        [Required]
         public Transmission Transmission { get; set; }
 
         [Required]
