@@ -1,6 +1,6 @@
-
 namespace RoadMateSystem.Web
 {
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
     using RoadMateSystem.Data.Models;
@@ -8,6 +8,7 @@ namespace RoadMateSystem.Web
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Web.Data;
     using RoadMateSystem.Web.Infrastructure.Extensions;
+    using RoadMateSystem.Web.Infrastructure.ModelBinders;
 
     public class Program
     {
@@ -38,7 +39,12 @@ namespace RoadMateSystem.Web
             builder.Services.AddApplicationServices(typeof(ICarService));
             builder.Services.AddApplicationServices(typeof(IRentalService));
 
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+                .AddMvcOptions(options =>
+                {
+                    options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+                    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+                });
 
             var app = builder.Build();
 

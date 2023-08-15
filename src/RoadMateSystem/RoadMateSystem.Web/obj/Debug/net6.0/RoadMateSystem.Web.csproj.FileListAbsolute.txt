@@ -269,3 +269,8 @@ C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\Ro
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Web.Infrastructure.dll
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\RoadMateSystem.Web.Infrastructure.pdb
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\obj\Debug\net6.0\RoadMateSystem.Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

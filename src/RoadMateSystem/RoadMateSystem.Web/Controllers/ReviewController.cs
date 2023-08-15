@@ -70,8 +70,9 @@
 
             await reviewService.EditReviewAsync(id, model);
 
-            TempData[SuccessMessage] = $"You successfully editted your review!";
+            
 
+            TempData[SuccessMessage] = $"You successfully editted your review!";
 
             return RedirectToAction("Details", "Car", new { id = carId});
         }
