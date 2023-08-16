@@ -143,16 +143,16 @@
                 .Rentals
                 .AsQueryable();
 
-            rentalsQuery = rentalsQuery
-                .Where(r => r.UserId == Guid.Parse(userId));
+            //rentalsQuery = rentalsQuery
+            //    .Where(r => r.UserId == Guid.Parse(userId));
 
             rentalsQuery = queryModel.RentalsSorting switch
             {
                 RentalsSorting.Relevance => rentalsQuery,
                 RentalsSorting.Newest => rentalsQuery
-                    .OrderBy(r => r.CreatedOn),
-                RentalsSorting.Oldest => rentalsQuery
                     .OrderByDescending(r => r.CreatedOn),
+                RentalsSorting.Oldest => rentalsQuery
+                    .OrderBy(r => r.CreatedOn),
                 RentalsSorting.TotalCostAscending => rentalsQuery
                     .OrderBy(r => r.TotalCost),
                 RentalsSorting.TotalCostDescending => rentalsQuery
@@ -167,6 +167,8 @@
                 {
                     RentalId = r.RentalId,
                     CarId = r.CarId, 
+                    MakeModel = string.Concat(r.Car.CarMake.Make, " ", r.Car.Model),
+                    ThumbnailImageUrl = $"..\\..\\CarImages\\{string.Concat(r.Car.CarMake.Make, r.Car.Model)}\\{string.Concat(r.Car.ThumbnailImage!.FileName, r.Car.ThumbnailImage.FileExtension)}",
                     StartDate = r.StartDate,
                     EndDate = r.EndDate,
                     UserId = r.UserId.ToString(),
@@ -174,27 +176,14 @@
                     isPaid = r.IsPaid,
                     CreatedOn = r.CreatedOn,
                 })
-                .ToListAsync();
-
-            //foreach (var item in rentals)
-            //{
-            //    item.Car = await dbContext
-            //        .Cars
-            //        .Select(c => new CarUserRentalsViewModel
-            //        {
-            //            Id = c.Id,
-            //            MakeModel = string.Concat(c.CarMake.Make, " ", c.Model),
-            //            ThumbnailImageUrl = $"..\\..\\CarImages\\{string.Concat(c.CarMake.Make, c.Model)}\\{string.Concat(c.ThumbnailImage!.FileName, c.ThumbnailImage.FileExtension)}"
-            //        })
-            //        .FirstAsync(c => c.Id == item.CarId);
-            //}
+                .ToArrayAsync();
 
             int rentalsCount = rentals.Count();
 
             return new AllRentalsFilteredAndPagedServiceModel()
             {
-                Rentals = rentals,
-                TotalRentals = rentalsCount
+                TotalRentals = rentalsCount,
+                Rentals = rentals
             };
         }
     }

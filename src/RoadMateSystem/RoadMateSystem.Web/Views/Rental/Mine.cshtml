@@ -1,10 +1,14 @@
 ﻿@model UserRentalsQueryModel
 
+@{
+    ViewBag.Title = "My rents";
+}
 
-<div class="container p-5">
+<h2 class="text-center m-3 navbar-brand-custom text-warning border-bottom border-warning border-5 pb-3 mb-4">@ViewBag.Title</h2>
+<div class="container px-5 pb-5">
     <form method="get">
         <div class="row">
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-3 p-0">
                 <div class="form-group">
                     <label asp-for="RentalsSorting"></label>
                     <select asp-for="RentalsSorting" class="form-control">
@@ -18,23 +22,57 @@
             </div>
 
             <div class="col-md-3">
-                <div class="form-group mt-3 p-2">
-                    <input type="submit" value="Search" class="btn btn-primary" />
+                <div class="form-group mt-4 mb-4">
+                    <input type="submit" value="Search" class="btn btn-warning" />
                 </div>
             </div>
         </div>
     </form>
-        @foreach (var item in Model.Rentals)
+    @{
+        int previousPage = Model.CurrentPage - 1;
+        if (previousPage < 1)
         {
+            previousPage = 1;
+        }
+
+        int maxPage = (int)Math.Ceiling((double)Model.TotalRentals /
+        Model.RentalsPerPage);
+
+    }
+    <div class="row mb-3">
+        <div class="col-md-6 d-grid d-md-flex justify-content-md-start p-0">
+            <a class="btn btn-warning @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+               asp-controller="Rental"
+               asp-action="Mine"
+               asp-route-currentPage="@previousPage"
+               asp-route-sorting="@((int)Model.RentalsSorting)"><<</a>
+        </div>
+
+        @{
+            bool shouldNextPageBeDisabled = Model.CurrentPage == maxPage ||
+            !Model.Rentals.Any();
+        }
+
+        <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end p-0">
+            <a class="btn btn-warning
+           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
+               asp-controller="Rental"
+               asp-action="Mine"
+               asp-route-currentPage="@(Model.CurrentPage + 1)"
+               asp-route-sorting="@((int)Model.RentalsSorting)">>></a>
+        </div>
+    </div>
+    @foreach (var item in Model.Rentals)
+    {
         <div class="row my-4 border ">
             <div class="col-md-3 image-container p-0">
                 <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId">
-                    <img src="@item.Car!.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@item.Car.MakeModel">
+                    <img src="@item.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@item.MakeModel">
                 </a>
             </div>
             <div class="col-md-9">
                 <div class="card-body">
-                    <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId"><h2 class="card-title">@item.Car.MakeModel</h2></a>
+                    <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId"><h2 class="card-title">@item.MakeModel</h2></a>
                     <h1>From: @item.StartDate.ToString("dd-MM-yyyy"), To: @item.EndDate.ToString("dd-MM-yyyy")</h1>
                     @{
                         if (item.isPaid)
@@ -51,5 +89,5 @@
                 </div>
             </div>
         </div>
-        }
+    }
 </div>

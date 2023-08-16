@@ -3,10 +3,15 @@
     using Enums;
     using System.ComponentModel;
 
+    using static RoadMateSystem.Common.GeneralApplicationConstants;
+
     public class UserRentalsQueryModel
     {
         public UserRentalsQueryModel()
         {
+            CurrentPage = DefaultPage;
+            RentalsPerPage = EntitiesPerPage;
+
             Rentals = new HashSet<UserRentalsViewModel>();        
         }
 

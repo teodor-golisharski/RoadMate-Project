@@ -8,7 +8,8 @@
         public Guid RentalId { get; set; }
         public string UserId { get; set; } = null!;
         public int CarId { get; set; }
-        public CarUserRentalsViewModel? Car { get; set; }
+        public string? ThumbnailImageUrl { get; set; }
+        public string? MakeModel { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public decimal TotalCost { get; set; }
