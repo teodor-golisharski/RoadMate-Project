@@ -1,5 +1,6 @@
 ﻿namespace RoadMateSystem.Services.Data.Interfaces
 {
+    using RoadMateSystem.Services.Data.Models.Rentals;
     using RoadMateSystem.Web.ViewModels.Rental;
 
     public interface IRentalService
@@ -13,5 +14,7 @@
         Task<IEnumerable<AllRentalsByCarIdViewModel>> GetAllRentalsByCarIdAsync(int id);
 
         Task<bool> IsCarAvailableAsync(IEnumerable<AllRentalsByCarIdViewModel> carRentals, RentalViewModel model);
+
+        Task<AllRentalsFilteredAndPagedServiceModel> GetAllRentalsOfUser(UserRentalsQueryModel queryModel, string userId);
     }
 }

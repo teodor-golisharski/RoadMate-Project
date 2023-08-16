@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Microsoft.EntityFrameworkCore.Metadata.Internal;
     using RoadMateSystem.Services.Data.Interfaces;
+    using RoadMateSystem.Services.Data.Models.Rentals;
     using RoadMateSystem.Web.ViewModels.Car;
     using RoadMateSystem.Web.ViewModels.Rental;
     using System.Globalization;
@@ -71,19 +72,16 @@
             return RedirectToAction("Details", "Car", new { id = id });
         }
 
-        public async Task<IActionResult> Mine()
+        public async Task<IActionResult> Mine([FromQuery] UserRentalsQueryModel queryModel)
         {
-            return View();
+            string userId = GetUserId();
+
+            AllRentalsFilteredAndPagedServiceModel serviceModel = await rentalService.GetAllRentalsOfUser(queryModel, userId);
+
+            queryModel.Rentals = serviceModel.Rentals;
+
+            return View(queryModel);
         }
 
-        public async Task<IActionResult> Available()
-        {
-            return View();
-        }
-
-        public async Task<IActionResult> All()
-        {
-            return View();
-        }
     }
 }

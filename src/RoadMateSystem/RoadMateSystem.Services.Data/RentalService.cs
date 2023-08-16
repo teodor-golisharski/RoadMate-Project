@@ -3,9 +3,12 @@
     using Microsoft.EntityFrameworkCore;
     using RoadMateSystem.Data.Models;
     using RoadMateSystem.Services.Data.Interfaces;
+    using RoadMateSystem.Services.Data.Models.Rentals;
     using RoadMateSystem.Web.Data;
     using RoadMateSystem.Web.ViewModels.Car;
+    using RoadMateSystem.Web.ViewModels.Car.Enums;
     using RoadMateSystem.Web.ViewModels.Rental;
+    using RoadMateSystem.Web.ViewModels.Rental.Enums;
     using System.ComponentModel;
 
     public class RentalService : IRentalService
@@ -132,6 +135,67 @@
                 .Any(r => (model.StartDate >= r.StartDate && model.StartDate <= r.EndDate) || (model.EndDate >= r.StartDate && model.EndDate <= r.EndDate));
 
             return result;
+        }
+
+        public async Task<AllRentalsFilteredAndPagedServiceModel> GetAllRentalsOfUser(UserRentalsQueryModel queryModel, string userId)
+        {
+            IQueryable<Rental> rentalsQuery = dbContext
+                .Rentals
+                .AsQueryable();
+
+            rentalsQuery = rentalsQuery
+                .Where(r => r.UserId == Guid.Parse(userId));
+
+            rentalsQuery = queryModel.RentalsSorting switch
+            {
+                RentalsSorting.Relevance => rentalsQuery,
+                RentalsSorting.Newest => rentalsQuery
+                    .OrderBy(r => r.CreatedOn),
+                RentalsSorting.Oldest => rentalsQuery
+                    .OrderByDescending(r => r.CreatedOn),
+                RentalsSorting.TotalCostAscending => rentalsQuery
+                    .OrderBy(r => r.TotalCost),
+                RentalsSorting.TotalCostDescending => rentalsQuery
+                    .OrderByDescending(r => r.TotalCost),
+                _ => rentalsQuery
+            };
+            
+            IEnumerable<UserRentalsViewModel> rentals = await rentalsQuery
+                .Skip((queryModel.CurrentPage - 1) * queryModel.RentalsPerPage)
+                .Take(queryModel.RentalsPerPage)
+                .Select(r => new UserRentalsViewModel
+                {
+                    RentalId = r.RentalId,
+                    CarId = r.CarId, 
+                    StartDate = r.StartDate,
+                    EndDate = r.EndDate,
+                    UserId = r.UserId.ToString(),
+                    TotalCost = r.TotalCost,
+                    isPaid = r.IsPaid,
+                    CreatedOn = r.CreatedOn,
+                })
+                .ToListAsync();
+
+            //foreach (var item in rentals)
+            //{
+            //    item.Car = await dbContext
+            //        .Cars
+            //        .Select(c => new CarUserRentalsViewModel
+            //        {
+            //            Id = c.Id,
+            //            MakeModel = string.Concat(c.CarMake.Make, " ", c.Model),
+            //            ThumbnailImageUrl = $"..\\..\\CarImages\\{string.Concat(c.CarMake.Make, c.Model)}\\{string.Concat(c.ThumbnailImage!.FileName, c.ThumbnailImage.FileExtension)}"
+            //        })
+            //        .FirstAsync(c => c.Id == item.CarId);
+            //}
+
+            int rentalsCount = rentals.Count();
+
+            return new AllRentalsFilteredAndPagedServiceModel()
+            {
+                Rentals = rentals,
+                TotalRentals = rentalsCount
+            };
         }
     }
 }

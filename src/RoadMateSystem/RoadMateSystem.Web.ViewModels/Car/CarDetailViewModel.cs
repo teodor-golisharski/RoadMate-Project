@@ -5,6 +5,7 @@
     using RoadMateSystem.Data.Models.Car;
     using RoadMateSystem.Web.ViewModels.Review;
     using RoadMateSystem.Web.ViewModels.CarImage;
+    using RoadMateSystem.Web.ViewModels.CarColor;
 
     public class CarDetailViewModel
     {

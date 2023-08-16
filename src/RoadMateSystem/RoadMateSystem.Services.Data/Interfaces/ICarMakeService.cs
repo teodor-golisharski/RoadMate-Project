@@ -2,5 +2,6 @@
 {
     public interface ICarMakeService
     {
+        Task<IEnumerable<string>> GetAllCarMakesAsync();
     }
 }

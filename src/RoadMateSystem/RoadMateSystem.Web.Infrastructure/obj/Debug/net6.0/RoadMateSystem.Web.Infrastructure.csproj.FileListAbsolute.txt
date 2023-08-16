@@ -21,3 +21,5 @@ C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.Infrastructure\obj\
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.Infrastructure\obj\Debug\net6.0\refint\RoadMateSystem.Web.Infrastructure.dll
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.Infrastructure\obj\Debug\net6.0\RoadMateSystem.Web.Infrastructure.pdb
 C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.Infrastructure\obj\Debug\net6.0\ref\RoadMateSystem.Web.Infrastructure.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.Infrastructure\bin\Debug\net6.0\RoadMateSystem.Services.Data.Models.dll
+C:\Users\Tedi\source\repos\RoadMateSystem\RoadMateSystem.Web.Infrastructure\bin\Debug\net6.0\RoadMateSystem.Services.Data.Models.pdb

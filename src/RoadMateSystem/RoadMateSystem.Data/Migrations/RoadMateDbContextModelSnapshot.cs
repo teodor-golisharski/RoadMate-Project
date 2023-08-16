@@ -314,7 +314,7 @@ namespace RoadMateSystem.Data.Migrations
                         .IsUnique()
                         .HasFilter("[ThumbnailImageId] IS NOT NULL");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Cars", (string)null);
 
                     b.HasData(
                         new
@@ -909,7 +909,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors");
+                    b.ToTable("Colors", (string)null);
 
                     b.HasData(
                         new
@@ -994,7 +994,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("CarImages");
+                    b.ToTable("CarImages", (string)null);
 
                     b.HasData(
                         new
@@ -2694,7 +2694,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarMakes");
+                    b.ToTable("CarMakes", (string)null);
 
                     b.HasData(
                         new
@@ -2797,7 +2797,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("RentalId");
 
-                    b.ToTable("Payment");
+                    b.ToTable("Payment", (string)null);
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Rental", b =>
@@ -2837,7 +2837,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Rentals");
+                    b.ToTable("Rentals", (string)null);
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Review", b =>
@@ -2868,7 +2868,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

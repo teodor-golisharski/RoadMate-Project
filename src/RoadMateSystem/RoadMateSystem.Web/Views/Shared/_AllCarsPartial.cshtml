@@ -1,0 +1,34 @@
+﻿@model AllCarsViewModel
+
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4 image-container">
+            <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@Model.Id">
+                <img src="@Model.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@Model.MakeModel">
+            </a>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@Model.Id"><h2 class="card-title">@Model.MakeModel</h2></a>
+                <p class="card-text fs-5 mb-0">Car Type: @Model.CarType</p>
+                <p class="card-text fs-5 mb-0">Horsepower: @Model.Horsepower</p>
+                <div class="row fs-5">
+                    <div class="col-sm-6">
+                        <p class="card-text">Fuel: @Model.Fuel</p>
+                    </div>
+                    <div class="col-sm-6 mb-sm-0">
+                        <span class="badge bg-primary text-bg-primary rounded-pill">Daily price: €@Model.PricePerDay</span>
+                    </div>
+                </div>
+                <div class="row fs-5">
+                    <div class="col-sm-6">
+                        <p class="card-text">Transmission: @Model.Transmission</p>
+                    </div>
+                    <div class="col-sm-6 mb-sm-0">
+                        <span class="badge bg-success text-bg-success rounded-pill">Weekly price: €@Model.PricePerWeek</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadMateSystem.Web.ViewMode
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FB8C4E82-6924-45DF-AD12-B95AE680391A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Services.Data", "RoadMateSystem.Services.Data\RoadMateSystem.Services.Data.csproj", "{F31EE873-0B46-4899-B8F2-DDDB09E81FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadMateSystem.Services.Data", "RoadMateSystem.Services.Data\RoadMateSystem.Services.Data.csproj", "{F31EE873-0B46-4899-B8F2-DDDB09E81FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Web.Infrastructure", "RoadMateSystem.Web.Infrastructure\RoadMateSystem.Web.Infrastructure.csproj", "{639FC1C6-22BD-41ED-A924-22F63659EE17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadMateSystem.Web.Infrastructure", "RoadMateSystem.Web.Infrastructure\RoadMateSystem.Web.Infrastructure.csproj", "{639FC1C6-22BD-41ED-A924-22F63659EE17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMateSystem.Services.Data.Models", "RoadMateSystem.Services.Data.Models\RoadMateSystem.Services.Data.Models.csproj", "{C2A85BD8-D50A-4E78-9B2C-338367D4B61F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{639FC1C6-22BD-41ED-A924-22F63659EE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{639FC1C6-22BD-41ED-A924-22F63659EE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{639FC1C6-22BD-41ED-A924-22F63659EE17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A85BD8-D50A-4E78-9B2C-338367D4B61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A85BD8-D50A-4E78-9B2C-338367D4B61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A85BD8-D50A-4E78-9B2C-338367D4B61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A85BD8-D50A-4E78-9B2C-338367D4B61F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{12DE5E6B-DC43-461A-BF86-09E6896065DA} = {48C45376-C688-49E1-A2E8-F66A74F44F3B}
 		{F31EE873-0B46-4899-B8F2-DDDB09E81FBB} = {FB8C4E82-6924-45DF-AD12-B95AE680391A}
 		{639FC1C6-22BD-41ED-A924-22F63659EE17} = {48C45376-C688-49E1-A2E8-F66A74F44F3B}
+		{C2A85BD8-D50A-4E78-9B2C-338367D4B61F} = {FB8C4E82-6924-45DF-AD12-B95AE680391A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F186EF6D-1D61-4914-BB2F-9F002E394F3B}

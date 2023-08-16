@@ -12,6 +12,7 @@
           "RoadMateSystem.Common": "1.0.0",
           "RoadMateSystem.Data": "1.0.0",
           "RoadMateSystem.Data.Models": "1.0.0",
+          "RoadMateSystem.Services.Data.Models": "1.0.0",
           "RoadMateSystem.Web.ViewModels": "1.0.0"
         },
         "runtime": {
@@ -841,6 +842,14 @@
           "RoadMateSystem.Data.Models.dll": {}
         }
       },
+      "RoadMateSystem.Services.Data.Models/1.0.0": {
+        "dependencies": {
+          "RoadMateSystem.Web.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "RoadMateSystem.Services.Data.Models.dll": {}
+        }
+      },
       "RoadMateSystem.Web.ViewModels/1.0.0": {
         "dependencies": {
           "RoadMateSystem.Common": "1.0.0",
@@ -1331,6 +1340,11 @@
       "sha512": ""
     },
     "RoadMateSystem.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RoadMateSystem.Services.Data.Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

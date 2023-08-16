@@ -1,0 +1,55 @@
+﻿@model UserRentalsQueryModel
+
+
+<div class="container p-5">
+    <form method="get">
+        <div class="row">
+            <div class="form-group col-md-3">
+                <div class="form-group">
+                    <label asp-for="RentalsSorting"></label>
+                    <select asp-for="RentalsSorting" class="form-control">
+                        <option value="0">Relevance</option>
+                        <option value="1">Newest</option>
+                        <option value="2">Oldest</option>
+                        <option value="3">Total cost (Ascending)</option>
+                        <option value="4">Total cost (Descending)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group mt-3 p-2">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+        @foreach (var item in Model.Rentals)
+        {
+        <div class="row my-4 border ">
+            <div class="col-md-3 image-container p-0">
+                <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId">
+                    <img src="@item.Car!.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@item.Car.MakeModel">
+                </a>
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId"><h2 class="card-title">@item.Car.MakeModel</h2></a>
+                    <h1>From: @item.StartDate.ToString("dd-MM-yyyy"), To: @item.EndDate.ToString("dd-MM-yyyy")</h1>
+                    @{
+                        if (item.isPaid)
+                        {
+                            ViewBag.Status = "Paid";
+                        }
+                        else
+                        {
+                            ViewBag.Status = "Not paid";
+                        }
+                    }
+                    <h4>Payment status: @ViewBag.Status</h4>
+                    <h2>Total cost: €@item.TotalCost</h2>
+                </div>
+            </div>
+        </div>
+        }
+</div>

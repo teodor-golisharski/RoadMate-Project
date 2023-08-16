@@ -23,6 +23,7 @@
     <ProjectReference Include="..\RoadMateSystem.Common\RoadMateSystem.Common.csproj" />
     <ProjectReference Include="..\RoadMateSystem.Data.Models\RoadMateSystem.Data.Models.csproj" />
     <ProjectReference Include="..\RoadMateSystem.Data\RoadMateSystem.Data.csproj" />
+    <ProjectReference Include="..\RoadMateSystem.Services.Data.Models\RoadMateSystem.Services.Data.Models.csproj" />
     <ProjectReference Include="..\RoadMateSystem.Services.Data\RoadMateSystem.Services.Data.csproj" />
     <ProjectReference Include="..\RoadMateSystem.Web.Infrastructure\RoadMateSystem.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\RoadMateSystem.Web.ViewModels\RoadMateSystem.Web.ViewModels.csproj" />

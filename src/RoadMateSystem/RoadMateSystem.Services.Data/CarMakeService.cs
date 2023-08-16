@@ -13,5 +13,15 @@
         {
             this.dbContext = dbContext;
         }
+
+        public async Task<IEnumerable<string>> GetAllCarMakesAsync()
+        {
+            IEnumerable<string> carMakes = await dbContext
+                .CarMakes
+                .Select(x => x.Make)
+                .ToListAsync();
+            
+            return carMakes;
+        }
     }
 }

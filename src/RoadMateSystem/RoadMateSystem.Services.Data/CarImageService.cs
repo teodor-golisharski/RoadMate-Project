@@ -3,8 +3,8 @@
     using Microsoft.EntityFrameworkCore;
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Web.Data;
-    using RoadMateSystem.Web.ViewModels.Car;
     using RoadMateSystem.Web.ViewModels.CarImage;
+    using RoadMateSystem.Web.ViewModels.CarMake;
 
     public class CarImageService : ICarImageService
     {

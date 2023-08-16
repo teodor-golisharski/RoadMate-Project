@@ -5252,6 +5252,7 @@
           "RoadMateSystem.Common": "1.0.0",
           "RoadMateSystem.Data": "1.0.0",
           "RoadMateSystem.Data.Models": "1.0.0",
+          "RoadMateSystem.Services.Data.Models": "1.0.0",
           "RoadMateSystem.Web.ViewModels": "1.0.0"
         },
         "compile": {
@@ -5259,6 +5260,19 @@
         },
         "runtime": {
           "bin/placeholder/RoadMateSystem.Services.Data.dll": {}
+        }
+      },
+      "RoadMateSystem.Services.Data.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "RoadMateSystem.Web.ViewModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RoadMateSystem.Services.Data.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RoadMateSystem.Services.Data.Models.dll": {}
         }
       },
       "RoadMateSystem.Web.Infrastructure/1.0.0": {
@@ -13779,6 +13793,11 @@
       "path": "../RoadMateSystem.Services.Data/RoadMateSystem.Services.Data.csproj",
       "msbuildProject": "../RoadMateSystem.Services.Data/RoadMateSystem.Services.Data.csproj"
     },
+    "RoadMateSystem.Services.Data.Models/1.0.0": {
+      "type": "project",
+      "path": "../RoadMateSystem.Services.Data.Models/RoadMateSystem.Services.Data.Models.csproj",
+      "msbuildProject": "../RoadMateSystem.Services.Data.Models/RoadMateSystem.Services.Data.Models.csproj"
+    },
     "RoadMateSystem.Web.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../RoadMateSystem.Web.Infrastructure/RoadMateSystem.Web.Infrastructure.csproj",
@@ -13802,6 +13821,7 @@
       "RoadMateSystem.Data >= 1.0.0",
       "RoadMateSystem.Data.Models >= 1.0.0",
       "RoadMateSystem.Services.Data >= 1.0.0",
+      "RoadMateSystem.Services.Data.Models >= 1.0.0",
       "RoadMateSystem.Web.Infrastructure >= 1.0.0",
       "RoadMateSystem.Web.ViewModels >= 1.0.0"
     ]
@@ -13847,6 +13867,9 @@
             },
             "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj": {
               "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj"
+            },
+            "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data.Models\\RoadMateSystem.Services.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data.Models\\RoadMateSystem.Services.Data.Models.csproj"
             },
             "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data\\RoadMateSystem.Services.Data.csproj": {
               "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data\\RoadMateSystem.Services.Data.csproj"

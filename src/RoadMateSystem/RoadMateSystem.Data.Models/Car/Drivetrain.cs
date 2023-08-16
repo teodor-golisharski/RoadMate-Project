@@ -2,8 +2,8 @@
 {
     public enum Drivetrain
     {
-        RWD,
-        AWD,
-        FWD
+        RWD = 0,
+        AWD = 1,
+        FWD = 2
     }
 }

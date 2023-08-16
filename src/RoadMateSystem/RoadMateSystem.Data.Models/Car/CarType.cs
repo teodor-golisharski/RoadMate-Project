@@ -2,13 +2,13 @@
 {
     public enum CarType
     {
-        Saloon,
-        SUV,
-        Pickup,
-        Coupe,
-        Hatchback,
-        Estate,
-        Convertible,
-        Van
+        Saloon = 0,
+        SUV = 1,
+        Pickup = 2,
+        Coupe = 3,
+        Hatchback = 4,
+        Estate = 5,
+        Convertible = 6,
+        Van = 7
     }
 }
