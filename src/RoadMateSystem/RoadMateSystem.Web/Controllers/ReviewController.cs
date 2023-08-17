@@ -51,6 +51,12 @@
         {
             ReviewFormModel formModel = await reviewService.GetReviewByIdAsync(id);
 
+            if(formModel.UserId.ToString() != GetUserId())
+            {
+                TempData[ErrorMessage] = "You are not the owner of the review!";
+                return RedirectToAction("Details", "Car", new { id = formModel.CarId });
+            }
+
             ReviewCarViewModel reviewCar = await carService.GetReviewCarViewModelAsync(formModel.CarId);
 
             formModel.Car = reviewCar;

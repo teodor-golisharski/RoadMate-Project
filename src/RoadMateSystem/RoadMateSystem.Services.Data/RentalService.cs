@@ -143,8 +143,8 @@
                 .Rentals
                 .AsQueryable();
 
-            //rentalsQuery = rentalsQuery
-            //    .Where(r => r.UserId == Guid.Parse(userId));
+            rentalsQuery = rentalsQuery
+                .Where(r => r.UserId == Guid.Parse(userId));
 
             rentalsQuery = queryModel.RentalsSorting switch
             {
