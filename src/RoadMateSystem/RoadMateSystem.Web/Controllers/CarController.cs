@@ -2,12 +2,14 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Services.Data.Models.Car;
     using RoadMateSystem.Web.ViewModels.Car;
     using RoadMateSystem.Web.ViewModels.CarImage;
-    using RoadMateSystem.Web.ViewModels.Home;
     using RoadMateSystem.Web.ViewModels.Review;
+
+    using static Common.NotificationMessagesConstants;
 
     [Authorize]
     public class CarController : BaseController
@@ -39,29 +41,49 @@
             return View(queryModel);
         }
 
-        public async Task<IActionResult> Edit()
-        {
-            return View();
-        }
 
-        public async Task<IActionResult> Add()
-        {
-            return View();
-        }
 
-        public async Task<IActionResult> Delete()
+        public async Task<IActionResult> RentalCars([FromQuery] RentalCarsQueryModel queryModel, DateTime? startDate, DateTime? endDate)
         {
-            return View();
+            AllCarsFilteredAndPagedServiceModel serviceModel = await this.carService.AllRentalCarsAsync(queryModel);
+
+            queryModel.Cars = serviceModel.Cars;
+
+            if (startDate != null && endDate != null)
+            {
+                queryModel.StartDate = (DateTime)startDate;
+                queryModel.EndDate = (DateTime)endDate;
+            }
+
+            queryModel.TotalCars = serviceModel.TotalCarsCount;
+            queryModel.CarMakes = await carMakeService.GetAllCarMakesAsync();
+
+            return View(queryModel);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            ICollection<ReviewViewModel> reviews = await reviewService.GetReviewsByCarIdAsync(id);
-            ICollection<CarImageViewModel> images = await carImageService.GetImagesByCarIdAsync(id);
+            bool doesCarExist = await carService.DoesCarExistAsync(id);
 
-            CarDetailViewModel model = await carService.GetCarDetailAsync(id, reviews, images);
+            if(!doesCarExist)
+            {
+                TempData[ErrorMessage] = "Car not found :(";
+                return RedirectToAction("All", "Car");
+            }
 
-            return View(model);
+            try
+            {
+                ICollection<ReviewViewModel> reviews = await reviewService.GetReviewsByCarIdAsync(id);
+                ICollection<CarImageViewModel> images = await carImageService.GetImagesByCarIdAsync(id);
+
+                CarDetailViewModel model = await carService.GetCarDetailAsync(id, reviews, images);
+
+                return View(model);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

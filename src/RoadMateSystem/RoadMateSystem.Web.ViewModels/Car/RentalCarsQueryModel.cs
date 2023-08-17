@@ -1,44 +1,29 @@
 ﻿namespace RoadMateSystem.Web.ViewModels.Car
 {
     using System.ComponentModel.DataAnnotations;
+    
     using RoadMateSystem.Data.Models.Car;
-
-    using static Common.GeneralApplicationConstants;
-    using static Common.EntityValidationConstants.Car;
-
     using Enums;
 
-    public class AllCarsQueryModel
+    using static RoadMateSystem.Common.GeneralApplicationConstants;
+
+    public class RentalCarsQueryModel
     {
-        public AllCarsQueryModel()
+        public RentalCarsQueryModel()
         {
             this.CurrentPage = DefaultPage;
             this.CarsPerPage = EntitiesPerPage;
 
-            this.MaxHorsepower = HorsepowerMaxValue;
-            this.MinHorsepower = HorsepowerMinValue;
-
-            this.CarSorting = CarSorting.Relevance;
-
             this.CarMakes = new HashSet<string>();
-            this.Colors = new HashSet<string>();
             this.Cars = new HashSet<AllCarsViewModel>();
         }
-
-        [Display(Name = "Car Type")]
-        public CarType? CarType { get; set; }
 
         [Display(Name = "Fuel Type")]
         public FuelType? FuelType { get; set; }
 
         public Transmission? Transmission { get; set; }
 
-        public Drivetrain? Drivetrain { get; set; }
-
-        public string? Color { get; set; }
-
-        public IEnumerable<string> Colors { get; set; } = null!;
-
+        [Display(Name = "Car Make")]
         public string? CarMake { get; set; }
 
         public IEnumerable<string> CarMakes { get; set; } = null!;
@@ -49,14 +34,18 @@
         [Display(Name = "Maximum Daily Price")]
         public MaximumPrice MaximumPrice { get; set; }
 
-        [Display(Name = "Minimum Horsepower")]
-        public int MinHorsepower { get; set; }
-
-        [Display(Name = "Maximum Horsepower")]
-        public int MaxHorsepower { get; set; }
-
         [Display(Name = "Sort Cars By")]
         public CarSorting CarSorting { get; set; }
+
+        [Display(Name ="Start Date")]
+        [Required(ErrorMessage = "Please select a start date!")]
+        [DataType(DataType.Date)]
+        public DateTime StartDate { get; set; }
+
+        [Display(Name = "End Date")]
+        [Required(ErrorMessage = "Please select an end date!")]
+        [DataType(DataType.Date)]
+        public DateTime EndDate { get; set; }
 
         public int CurrentPage { get; set; }
 

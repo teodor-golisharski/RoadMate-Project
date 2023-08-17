@@ -263,8 +263,6 @@
                 _ => carsQuery.OrderBy(h => h.Id)
             };
 
-
-
             IEnumerable<AllCarsViewModel> allCars = await carsQuery
                 .Skip((queryModel.CurrentPage - 1) * queryModel.CarsPerPage)
                 .Take(queryModel.CarsPerPage)
@@ -291,5 +289,140 @@
             };
 
         }
+
+        public async Task<AllCarsFilteredAndPagedServiceModel> AllRentalCarsAsync(RentalCarsQueryModel queryModel)
+        {
+
+            IQueryable<Car> carsQuery = dbContext
+                .Cars
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(queryModel.CarMake))
+            {
+                carsQuery = carsQuery
+                    .Where(c => c.CarMake.Make == queryModel.CarMake);
+            }
+
+            carsQuery = queryModel.Transmission switch
+            {
+                Transmission.Automatic => carsQuery
+                    .Where(c => c.Transmission == Transmission.Automatic),
+                Transmission.Manual => carsQuery
+                    .Where(c => c.Transmission == Transmission.Manual),
+                _ => carsQuery
+            };
+
+            carsQuery = queryModel.FuelType switch
+            {
+                FuelType.Gasoline => carsQuery
+                    .Where(c => c.Fuel == FuelType.Gasoline),
+                FuelType.Diesel => carsQuery
+                    .Where(c => c.Fuel == FuelType.Diesel),
+                FuelType.Hybrid => carsQuery
+                    .Where(c => c.Fuel == FuelType.Hybrid),
+                FuelType.LPG => carsQuery
+                    .Where(c => c.Fuel == FuelType.LPG),
+                FuelType.Electric => carsQuery
+                    .Where(c => c.Fuel == FuelType.Electric),
+                _ => carsQuery
+            };
+
+
+            carsQuery = queryModel.MinimumPrice switch
+            {
+                MinimumPrice.From25 => carsQuery
+                    .Where(c => c.PricePerDay >= 25),
+                MinimumPrice.From50 => carsQuery
+                    .Where(c => c.PricePerDay >= 50),
+                MinimumPrice.From75 => carsQuery
+                    .Where(c => c.PricePerDay >= 75),
+                MinimumPrice.From100 => carsQuery
+                    .Where(c => c.PricePerDay >= 100),
+                MinimumPrice.From150 => carsQuery
+                    .Where(c => c.PricePerDay >= 150),
+                MinimumPrice.From200 => carsQuery
+                    .Where(c => c.PricePerDay >= 200),
+                MinimumPrice.From250 => carsQuery
+                    .Where(c => c.PricePerDay >= 250),
+                MinimumPrice.From300 => carsQuery
+                    .Where(c => c.PricePerDay >= 300),
+                MinimumPrice.Any => carsQuery,
+                _ => carsQuery
+            };
+
+            carsQuery = queryModel.MaximumPrice switch
+            {
+                MaximumPrice.To50 => carsQuery
+                    .Where(c => c.PricePerDay <= 50),
+                MaximumPrice.To75 => carsQuery
+                    .Where(c => c.PricePerDay <= 75),
+                MaximumPrice.To100 => carsQuery
+                    .Where(c => c.PricePerDay <= 100),
+                MaximumPrice.To150 => carsQuery
+                    .Where(c => c.PricePerDay <= 150),
+                MaximumPrice.To200 => carsQuery
+                    .Where(c => c.PricePerDay <= 200),
+                MaximumPrice.To250 => carsQuery
+                    .Where(c => c.PricePerDay <= 250),
+                MaximumPrice.To300 => carsQuery
+                    .Where(c => c.PricePerDay <= 300),
+                MaximumPrice.To400 => carsQuery
+                    .Where(c => c.PricePerDay <= 400),
+                MaximumPrice.Any => carsQuery,
+                _ => carsQuery
+            };
+
+            carsQuery = queryModel.CarSorting switch
+            {
+                CarSorting.Relevance => carsQuery
+                    .OrderBy(h => h.Id),
+                CarSorting.PriceAscending => carsQuery
+                    .OrderBy(h => h.PricePerDay)
+                    .ThenBy(h => h.PricePerWeek),
+                CarSorting.PriceDescending => carsQuery
+                    .OrderByDescending(h => h.PricePerDay)
+                    .ThenBy(h => h.PricePerWeek),
+                CarSorting.HorsepowerAscending => carsQuery
+                    .OrderBy(h => h.Horsepower),
+                CarSorting.HorsepowerDescending => carsQuery
+                    .OrderByDescending(h => h.Horsepower),
+                _ => carsQuery.OrderBy(h => h.Id)
+            };
+
+            carsQuery = carsQuery
+                .Where(c => !dbContext
+                    .Rentals
+                    .Any(r => r.CarId == c.Id && (
+                        (queryModel.StartDate >= r.StartDate && queryModel.StartDate <= r.EndDate) || 
+                        (queryModel.EndDate >= r.StartDate && queryModel.EndDate <= r.EndDate))));
+
+
+            IEnumerable<AllCarsViewModel> allCars = await carsQuery
+                .Skip((queryModel.CurrentPage - 1) * queryModel.CarsPerPage)
+                .Take(queryModel.CarsPerPage)
+                .Select(c => new AllCarsViewModel()
+                {
+                    Id = c.Id,
+                    MakeModel = string.Concat(c.CarMake.Make, " ", c.Model),
+                    CarType = c.Type,
+                    Fuel = c.Fuel,
+                    Horsepower = c.Horsepower,
+                    Transmission = c.Transmission,
+                    PricePerWeek = c.PricePerWeek,
+                    PricePerDay = c.PricePerDay,
+                    ThumbnailImageUrl = $"..\\..\\CarImages\\{string.Concat(c.CarMake.Make, c.Model)}\\{string.Concat(c.ThumbnailImage!.FileName, c.ThumbnailImage.FileExtension)}"
+                })
+                .ToArrayAsync();
+
+            int totalCars = carsQuery.Count();
+
+            return new AllCarsFilteredAndPagedServiceModel()
+            {
+                TotalCarsCount = totalCars,
+                Cars = allCars,
+            };
+        }
+
+        public async Task<bool> DoesCarExistAsync(int id) => await dbContext.Cars.AnyAsync(c => c.Id == id);
     }
 }

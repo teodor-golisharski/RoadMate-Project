@@ -15,6 +15,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>@ViewBag.Title</title>
 </head>
 <body style="background-color: #edeef0;">
     <partial name="_NotificationsPartial"/>
@@ -34,7 +35,7 @@
                         @if (this.User.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Rental" asp-action="Rent">Rent a Car</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Rental" asp-action="Search">Rent a Car</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Car" asp-action="All">All cars</a>
@@ -50,7 +51,7 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3 bg-light rounded border mb-5">
+        <main role="main" class="bg-light rounded border mb-5 mt-4">
             @RenderBody()
         </main>
     </div>

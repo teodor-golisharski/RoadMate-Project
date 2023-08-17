@@ -72,7 +72,14 @@
             </div>
             <div class="col-md-9">
                 <div class="card-body">
-                    <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId"><h2 class="card-title">@item.MakeModel</h2></a>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId"><h2 class="card-title">@item.MakeModel</h2></a>
+                        </div>
+                        <div class="col-md-3">
+                            <p class="small text-end">Created on: @item.CreatedOn.ToString("dd-MM-yyyy HH:mm")</p>    
+                        </div>
+                    </div>
                     <h1>From: @item.StartDate.ToString("dd-MM-yyyy"), To: @item.EndDate.ToString("dd-MM-yyyy")</h1>
                     @{
                         if (item.isPaid)
@@ -90,4 +97,22 @@
             </div>
         </div>
     }
+    <div class="row mb-3">
+        <div class="col-md-6 d-grid d-md-flex justify-content-md-start p-0">
+            <a class="btn btn-warning @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+               asp-controller="Rental"
+               asp-action="Mine"
+               asp-route-currentPage="@previousPage"
+               asp-route-sorting="@((int)Model.RentalsSorting)"><<</a>
+        </div>
+
+        <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end p-0">
+            <a class="btn btn-warning
+           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
+               asp-controller="Rental"
+               asp-action="Mine"
+               asp-route-currentPage="@(Model.CurrentPage + 1)"
+               asp-route-sorting="@((int)Model.RentalsSorting)">>></a>
+        </div>
+    </div>
 </div>

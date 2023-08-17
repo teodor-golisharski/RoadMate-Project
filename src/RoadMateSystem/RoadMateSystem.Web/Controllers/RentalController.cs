@@ -24,9 +24,11 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Rent(int id)
+        public async Task<IActionResult> Rent(int id, DateTime startDate, DateTime endDate)
         {
             RentalViewModel model = await rentalService.GetRentCarAsync(id);
+            model.StartDate = startDate;
+            model.EndDate = endDate;
 
             return View(model);
         }
@@ -79,9 +81,17 @@
             AllRentalsFilteredAndPagedServiceModel serviceModel = await rentalService.GetAllRentalsOfUser(queryModel, userId);
 
             queryModel.Rentals = serviceModel.Rentals;
+            queryModel.TotalRentals = serviceModel.TotalRentals;
 
             return View(queryModel);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Search()
+        {
+            SearchViewModel model = new SearchViewModel();
+
+            return View(model);
+        }
     }
 }

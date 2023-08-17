@@ -70,12 +70,12 @@
             <form asp-action="Rent" method="post">
                 <div class="mb-3 fs-5">
                     <label asp-for="@Model.StartDate" class="form-label-add-edit fw-bold">From:</label>
-                    <input asp-for="@Model.StartDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="StartDate" />
+                    <input asp-for="@Model.StartDate" class="form-control" aria-required="true" value="@Model.StartDate.ToString("yyyy-MM-dd")" id="StartDate" />
                     <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
                 </div>
                 <div class="mb-4 fs-5">
                     <label asp-for="@Model.EndDate" class="form-label-add-edit fw-bold">To (inclusive):</label>
-                    <input asp-for="@Model.EndDate" class="form-control" aria-required="true" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="EndDate" />
+                    <input asp-for="@Model.EndDate" class="form-control" aria-required="true" value="@Model.EndDate.ToString("yyyy-MM-dd")" id="EndDate" />
                     <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
                 </div>
                 <div class="mb-3">

@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RoadMateSystem.Common\RoadMateSystem.Common.csproj" />
-    <ProjectReference Include="..\RoadMateSystem.Data.Models\RoadMateSystem.Data.Models.csproj" />
+    <Compile Remove="Payment\**" />
+    <EmbeddedResource Remove="Payment\**" />
+    <None Remove="Payment\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Payment\" />
+    <ProjectReference Include="..\RoadMateSystem.Common\RoadMateSystem.Common.csproj" />
+    <ProjectReference Include="..\RoadMateSystem.Data.Models\RoadMateSystem.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>

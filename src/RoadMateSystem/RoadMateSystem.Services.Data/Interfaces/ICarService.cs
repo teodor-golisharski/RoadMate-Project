@@ -15,5 +15,9 @@
         Task<ReviewCarViewModel> GetReviewCarViewModelAsync(int id);
 
         Task<AllCarsFilteredAndPagedServiceModel> AllAsync(AllCarsQueryModel queryModel);
+
+        Task<AllCarsFilteredAndPagedServiceModel> AllRentalCarsAsync(RentalCarsQueryModel queryModel);
+
+        Task<bool> DoesCarExistAsync(int id);
     }
 }

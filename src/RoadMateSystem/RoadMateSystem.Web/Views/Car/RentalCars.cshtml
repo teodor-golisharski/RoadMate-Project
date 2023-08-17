@@ -1,18 +1,28 @@
-﻿@model AllCarsQueryModel
+﻿@model RentalCarsQueryModel
 
 @{
-    ViewBag.Title = "All cars";
+    ViewBag.Title = "Available cars";
 }
-
 
 <h2 class="text-center m-3 navbar-brand-custom text-warning border-bottom border-warning border-5 pb-3 mb-4">@ViewBag.Title</h2>
 
 <div class="row px-3 rounded">
     <div class="col-md-4">
-        <div class="card mb-3 border-4 border-warning  bg-black bg-opacity-10">
+        <div class="card mb-3 border-4 border-warning bg-dark text-white">
             <div class="card-body">
-
                 <form method="get">
+                    <h4 class="card-title navbar-brand-custom">Choose dates</h4>
+                    <div class="mb-3 fs-5">
+                        <label asp-for="@Model.StartDate" class="form-label-add-edit fw-bold text-warning">From:</label>
+                        <input asp-for="@Model.StartDate" class="form-control" aria-required="true" value="@Model.StartDate.ToString("yyyy-MM-dd")" id="StartDate" />
+                        <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 fs-5">
+                        <label asp-for="@Model.EndDate" class="form-label-add-edit fw-bold text-warning">To (inclusive):</label>
+                        <input asp-for="@Model.EndDate" class="form-control" aria-required="true" value="@Model.EndDate.ToString("yyyy-MM-dd")" id="EndDate" />
+                        <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+                    </div>
+                    <hr />
                     <h4 class="card-title navbar-brand-custom">Sorting</h4>
                     <div class="form-group pb-3">
                         <div class="form-group">
@@ -39,7 +49,7 @@
                         </select>
                     </div>
                     <div class="row pb-2">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-sm-6">
                             <label asp-for="MinimumPrice"></label>
                             <select asp-for="MinimumPrice" class="form-control">
                                 <option value="0">Any</option>
@@ -53,7 +63,7 @@
                                 <option value="8">From 300</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-sm-6">
                             <label asp-for="MaximumPrice"></label>
                             <select asp-for="MaximumPrice" class="form-control">
                                 <option value="0">Any</option>
@@ -68,30 +78,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row pb-2">
-                        <div class="col-md-6">
-                            <label asp-for="MinHorsepower"></label>
-                            <input asp-for="MinHorsepower" class="form-control" value="none" />
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="MaxHorsepower"></label>
-                            <input asp-for="MaxHorsepower" class="form-control" value="none" />
-                        </div>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label asp-for="CarType"></label>
-                        <select asp-for="CarType" class="form-control">
-                            <option value="">All</option>
-                            <option value="0">Saloon</option>
-                            <option value="1">SUV</option>
-                            <option value="2">Pickup</option>
-                            <option value="3">Coupe</option>
-                            <option value="4">Hatchback</option>
-                            <option value="5">Estate</option>
-                            <option value="6">Convertible</option>
-                            <option value="7">Van</option>
-                        </select>
-                    </div>
                     <div class="form-group pb-2">
                         <label asp-for="FuelType"></label>
                         <select asp-for="FuelType" class="form-control">
@@ -103,37 +89,14 @@
                             <option value="4">Electric</option>
                         </select>
                     </div>
-
-                    <div class="row pb-2">
-                        <div class="col-md-6">
-                            <label asp-for="Drivetrain"></label>
-                            <select asp-for="Drivetrain" class="form-control">
-                                <option value="">Any</option>
-                                <option value="0">Rear Wheel Drive</option>
-                                <option value="1">All Wheel Drive</option>
-                                <option value="2">Front Wheel Drive</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="Transmission"></label>
-                            <select asp-for="Transmission" class="form-control">
-                                <option value="">Any</option>
-                                <option value="0">Automatic</option>
-                                <option value="1">Manual</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group pb-1">
-                        <label asp-for="Color"></label>
-                        <select asp-for="Color" class="form-control">
-                            <option value="">All</option>
-                            @foreach (var color in Model.Colors)
-                            {
-                                <option value="@color">@color</option>
-                            }
+                    <div class="">
+                        <label asp-for="Transmission"></label>
+                        <select asp-for="Transmission" class="form-control">
+                            <option value="">Any</option>
+                            <option value="0">Automatic</option>
+                            <option value="1">Manual</option>
                         </select>
                     </div>
-
                     <div class="row">
                         <div class="form-group mt-3">
                             <input type="submit" value="Search" class="btn btn-warning p-3 w-100 fw-bold fs-5" />
@@ -157,19 +120,16 @@
             <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
                 <a class="btn btn-warning fw-bolder @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
                    asp-controller="Car"
-                   asp-action="All"
+                   asp-action="RentalCars"
                    asp-route-currentPage="@previousPage"
                    asp-route-carMake="@Model.CarMake"
                    asp-route-minimumPrice="@Model.MinimumPrice"
                    asp-route-maximumPrice="@Model.MaximumPrice"
-                   asp-route-minHorsepower="@Model.MinHorsepower"
-                   asp-route-maxHorsepower="@Model.MaxHorsepower"
-                   asp-route-carType="@Model.CarType"
+                   asp-route-startDate="@Model.StartDate"
+                   asp-route-endDate="@Model.EndDate"
                    asp-route-fuelType="@Model.FuelType"
-                   asp-route-drivetrain="@Model.Drivetrain"
                    asp-route-transmission="@Model.Transmission"
-                   asp-route-color="@Model.Color"
-                   asp-route-sorting="@((int)Model.CarSorting)"><<</a>
+                   asp-route-carSorting="@((int)Model.CarSorting)"><<</a>
             </div>
 
             @{
@@ -181,19 +141,16 @@
                 <a class="btn btn-warning fw-bolder
            @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
                    asp-controller="Car"
-                   asp-action="All"
+                   asp-action="RentalCars"
                    asp-route-currentPage="@(Model.CurrentPage + 1)"
                    asp-route-carMake="@Model.CarMake"
                    asp-route-minimumPrice="@Model.MinimumPrice"
                    asp-route-maximumPrice="@Model.MaximumPrice"
-                   asp-route-minHorsepower="@Model.MinHorsepower"
-                   asp-route-maxHorsepower="@Model.MaxHorsepower"
-                   asp-route-carType="@Model.CarType"
+                   asp-route-startDate="@Model.StartDate"
+                   asp-route-endDate="@Model.EndDate"
                    asp-route-fuelType="@Model.FuelType"
-                   asp-route-drivetrain="@Model.Drivetrain"
                    asp-route-transmission="@Model.Transmission"
-                   asp-route-color="@Model.Color"
-                   asp-route-sorting="@((int)Model.CarSorting)">>></a>
+                   asp-route-carSorting="@((int)Model.CarSorting)">>></a>
             </div>
         </div>
 
@@ -201,7 +158,38 @@
     <div class="col-md-8 container-fluid">
         @foreach (var car in Model.Cars)
         {
-            <partial name="_AllCarsPartial" model="@car" />
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4 image-container">
+                        <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Rental" asp-action="Rent" asp-route-id="@car.Id" asp-route-startDate="@Model.StartDate" asp-route-endDate="@Model.EndDate">
+                            <img src="@car.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@car.MakeModel">
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Rental" asp-action="Rent" asp-route-id="@car.Id" asp-route-startDate="@Model.StartDate" asp-route-endDate="@Model.EndDate"><h2 class="card-title">@car.MakeModel</h2></a>
+                            <p class="card-text fs-5 mb-0">Car Type: @car.CarType</p>
+                            <p class="card-text fs-5 mb-0">Horsepower: @car.Horsepower</p>
+                            <div class="row fs-5">
+                                <div class="col-sm-6">
+                                    <p class="card-text">Fuel: @car.Fuel</p>
+                                </div>
+                                <div class="col-sm-6 mb-sm-0">
+                                    <span class="badge bg-primary text-bg-primary rounded-pill">Daily price: €@car.PricePerDay</span>
+                                </div>
+                            </div>
+                            <div class="row fs-5">
+                                <div class="col-sm-6">
+                                    <p class="card-text">Transmission: @car.Transmission</p>
+                                </div>
+                                <div class="col-sm-6 mb-sm-0">
+                                    <span class="badge bg-success text-bg-success rounded-pill">Weekly price: €@car.PricePerWeek</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
         @if (!Model.Cars.Any())
         {
@@ -209,3 +197,24 @@
         }
     </div>
 </div>
+
+
+<script>
+    $(function () {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var minDate = year + '-' + month + '-' + day;
+
+        $('#StartDate').attr('min', minDate);
+        $('#EndDate').attr('min', minDate);
+    });
+
+</script>

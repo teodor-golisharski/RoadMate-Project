@@ -1,0 +1,49 @@
+﻿@model SearchViewModel;
+
+@{
+    ViewBag.Title = "Search for Cars";
+}
+
+<div class="p-5 text-white bg-dark">
+    <h1 class="navbar-brand-custom mb-3 text-center text-warning">Search for available cars</h1>
+    <form asp-action="RentalCars" asp-controller="Car" method="post">
+        <div class="mb-3 fs-5">
+            <label asp-for="@Model.StartDate" class="form-label-add-edit fw-bold">From:</label>
+            <input asp-for="@Model.StartDate" class="form-control fs-4" aria-required="true" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="StartDate" />
+            <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+        </div>
+        <div class="mb-4 fs-5">
+            <label asp-for="@Model.EndDate" class="form-label-add-edit fw-bold">To (inclusive):</label>
+            <input asp-for="@Model.EndDate" class="form-control fs-4" aria-required="true" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="EndDate" />
+            <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3 mt-5">
+            <button type="submit" class="w-100 btn btn-lg btn-warning fw-bolder py-4 fs-2">Search</button>
+        </div>
+
+        <input type="hidden" name="startDate" value="@Model.StartDate" />
+        <input type="hidden" name="endDate" value="@Model.EndDate" />
+    </form>
+</div>
+
+<script>
+    $(function () {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var minDate = year + '-' + month + '-' + day;
+
+        $('#StartDate').attr('min', minDate);
+        $('#EndDate').attr('min', minDate);
+    });
+
+</script>
+
+
