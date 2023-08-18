@@ -178,7 +178,7 @@
                 })
                 .ToArrayAsync();
 
-            int rentalsCount = rentals.Count();
+            int rentalsCount = rentalsQuery.Count();
 
             return new AllRentalsFilteredAndPagedServiceModel()
             {

@@ -965,6 +965,10 @@
       "PackagePath": "staticwebassets\\CarImages\\VolkswagenTouareg\\Photo7.jpeg"
     },
     {
+      "Id": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\ErrorImages\\errorImage1.png",
+      "PackagePath": "staticwebassets\\ErrorImages\\errorImage1.png"
+    },
+    {
       "Id": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

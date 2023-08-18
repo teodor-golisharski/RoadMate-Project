@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "n8g3JaNEMM35QpiuT/WQ0VvX3e/NZMmuzbfr+nmfwGg=",
+  "Hash": "UWYrTj+e88KCzDPEDWDMWH7A4IFyfeydFtu4ZRdk/Y4=",
   "Source": "RoadMateSystem.Web",
   "BasePath": "_content/RoadMateSystem.Web",
   "Mode": "Default",
@@ -5166,6 +5166,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\ErrorImages\\errorImage1.png",
+      "SourceId": "RoadMateSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\",
+      "BasePath": "_content/RoadMateSystem.Web",
+      "RelativePath": "ErrorImages/errorImage1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ErrorImages\\errorImage1.png"
     },
     {
       "Identity": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web\\wwwroot\\favicon.ico",

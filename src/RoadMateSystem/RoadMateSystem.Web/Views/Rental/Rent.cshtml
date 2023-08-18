@@ -100,25 +100,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script>
-        $(function () {
-            var dtToday = new Date();
-
-            var month = dtToday.getMonth() + 1;
-            var day = dtToday.getDate();
-            var year = dtToday.getFullYear();
-            if (month < 10)
-                month = '0' + month.toString();
-            if (day < 10)
-                day = '0' + day.toString();
-
-            var minDate = year + '-' + month + '-' + day;
-
-            $('#StartDate').attr('min', minDate);
-            $('#EndDate').attr('min', minDate);
-        });
-
-    </script>
-    <script>
         $(document).ready(function () {
             var startDateInput = $("#StartDate");
             var endDateInput = $("#EndDate");
@@ -146,15 +127,6 @@
                 rentalPriceElement.text("Total Price: €" + totalPrice.toFixed(2));
             }
 
-            startDateInput.change(calculatePrice);
-            endDateInput.change(calculatePrice);
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            var startDateInput = $("#StartDate");
-            var endDateInput = $("#EndDate");
-
             function calculateDuration() {
                 var startDate = new Date(startDateInput.val());
                 var endDate = new Date(endDateInput.val());
@@ -164,19 +136,35 @@
                     daysDifference = 0
                 }
                 $("#rentalDuration").text("Rental Duration: " + daysDifference + " days");
-
             }
 
-            startDateInput.change(calculateDuration);
-            endDateInput.change(calculateDuration);
+            // Call functions on input change and page load
+            startDateInput.on("input", function () {
+                calculatePrice();
+                calculateDuration();
+            });
+
+            endDateInput.on("input", function () {
+                calculatePrice();
+                calculateDuration();
+            });
+
+            // Trigger functions on page load
+            calculatePrice();
+            calculateDuration();
+
+            // Set min date on page load
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+            var minDate = year + '-' + month + '-' + day;
+            startDateInput.attr('min', minDate);
+            endDateInput.attr('min', minDate);
         });
     </script>
 }
-
-
-
-
-
-
-
-

@@ -16,6 +16,7 @@
 
             this.CarMakes = new HashSet<string>();
             this.Cars = new HashSet<AllCarsViewModel>();
+
         }
 
         [Display(Name = "Fuel Type")]

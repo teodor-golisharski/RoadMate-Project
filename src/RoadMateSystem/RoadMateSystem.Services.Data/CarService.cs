@@ -389,12 +389,14 @@
                 _ => carsQuery.OrderBy(h => h.Id)
             };
 
+
             carsQuery = carsQuery
                 .Where(c => !dbContext
                     .Rentals
                     .Any(r => r.CarId == c.Id && (
-                        (queryModel.StartDate >= r.StartDate && queryModel.StartDate <= r.EndDate) || 
+                        (queryModel.StartDate >= r.StartDate && queryModel.StartDate <= r.EndDate) ||
                         (queryModel.EndDate >= r.StartDate && queryModel.EndDate <= r.EndDate))));
+
 
 
             IEnumerable<AllCarsViewModel> allCars = await carsQuery

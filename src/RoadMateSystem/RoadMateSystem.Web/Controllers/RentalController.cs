@@ -2,35 +2,54 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
-    using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Services.Data.Models.Rentals;
     using RoadMateSystem.Web.ViewModels.Car;
     using RoadMateSystem.Web.ViewModels.Rental;
-    using System.Globalization;
 
     using static RoadMateSystem.Common.NotificationMessagesConstants;
-
+    using static RoadMateSystem.Common.NotificationTextConstants;
 
     [Authorize]
     public class RentalController : BaseController
     {
         private readonly IRentalService rentalService;
+        private readonly ICarService carService;
 
-        public RentalController(IRentalService rentalService)
+        public RentalController(IRentalService rentalService, ICarService carService)
         {
             this.rentalService = rentalService;
+            this.carService = carService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Rent(int id, DateTime startDate, DateTime endDate)
         {
-            RentalViewModel model = await rentalService.GetRentCarAsync(id);
-            model.StartDate = startDate;
-            model.EndDate = endDate;
 
-            return View(model);
+            bool doesCarExist = await carService.DoesCarExistAsync(id);
+
+            if (!doesCarExist)
+            {
+                TempData[ErrorMessage] = 
+                    CarNotifications.CarNotFound;
+
+                return RedirectToAction("RentalCars", "Car");
+            }
+
+            try
+            {
+                RentalViewModel model = await rentalService.GetRentCarAsync(id);
+
+                model.StartDate = startDate;
+                model.EndDate = endDate;
+
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
 
         [HttpPost]
@@ -56,22 +75,32 @@
 
             if (flag)
             {
-                TempData[ErrorMessage] = $"{model.Car!.MakeModel} is unavailable from {model.StartDate.ToString("dd-MMMM-yyyy")} to {model.EndDate.ToString("dd-MMMM-yyyy")}!";
+                TempData[WarningMessage] =
+                    $"{model.Car!.MakeModel} is unavailable from {model.StartDate.ToString("dd-MMMM-yyyy")} to {model.EndDate.ToString("dd-MMMM-yyyy")}!";
 
                 return View(model);
             }
 
             if (ModelState.IsValid == false)
             {
-                TempData[ErrorMessage] = $"Error occurred!";
+                TempData[ErrorMessage] = 
+                    GeneralErrors.ErrorOccurred;
+
                 return View(model);
             }
 
-            await rentalService.RentCarAsync(model, GetUserId(), id);
+            try
+            {
+                await rentalService.RentCarAsync(model, GetUserId(), id);
 
-            TempData[SuccessMessage] = $"You successfully rented {model.Car!.MakeModel} from {model.StartDate.ToString("dd-MMMM-yyyy")} to {model.EndDate.ToString("dd-MMMM-yyyy")}!";
+                TempData[SuccessMessage] = $"You successfully rented {model.Car!.MakeModel} from {model.StartDate.ToString("dd-MMMM-yyyy")} to {model.EndDate.ToString("dd-MMMM-yyyy")}!";
 
-            return RedirectToAction("Details", "Car", new { id = id });
+                return RedirectToAction("Mine", "Rental", new { RentalsSorting = 1 });
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
 
         public async Task<IActionResult> Mine([FromQuery] UserRentalsQueryModel queryModel)
@@ -89,9 +118,24 @@
         [HttpGet]
         public async Task<IActionResult> Search()
         {
+            await Task.Yield();
+
             SearchViewModel model = new SearchViewModel();
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(SearchViewModel model)
+        {
+            await Task.Yield();
+
+            RentalCarsQueryModel queryModel = new RentalCarsQueryModel();
+
+            queryModel.StartDate = model.StartDate;
+            queryModel.EndDate = model.EndDate;
+
+            return RedirectToAction("RentalCars", "Car", queryModel);
         }
     }
 }

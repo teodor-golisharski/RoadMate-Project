@@ -52,13 +52,13 @@
     <div class="b-example-divider"></div>
     <div class="container my-5 px-5">
         <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded">
-            <h1 class="text-body-emphasis mt-5 text-warning">Placeholder jumbotron</h1>
+            <h1 class="text-body-emphasis mt-5 text-warning">Diversity</h1>
             <p class="col-lg-6 mx-auto mb-4 text-white fs-5">
                 At RoadMate, we redefine convenience and flexibility when it comes to getting you on the road. Whether you're a business traveler seeking efficiency or a leisure explorer embracing adventure, we have the perfect wheels for your journey. Our extensive fleet of vehicles caters to all preferences and needs, ensuring you find the right vehicle to suit your style.
             </p>
             @if (this.User.Identity?.IsAuthenticated ?? false)
             {
-                <a class="text-dark fs-4 btn btn-warning px-5 mb-5" asp-area="" asp-controller="Rental" asp-action="Rent">Rent a Car</a>
+                <a class="text-dark fs-4 btn btn-warning px-5 mb-5" asp-area="" asp-controller="Car" asp-action="All">See our cars!</a>
             }
             else
             {

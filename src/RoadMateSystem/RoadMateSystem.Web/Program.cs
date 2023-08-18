@@ -1,5 +1,6 @@
 namespace RoadMateSystem.Web
 {
+    using Microsoft.AspNetCore.Localization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace RoadMateSystem.Web
     using RoadMateSystem.Web.Data;
     using RoadMateSystem.Web.Infrastructure.Extensions;
     using RoadMateSystem.Web.Infrastructure.ModelBinders;
+    using System.Globalization;
 
     public class Program
     {
@@ -39,6 +41,20 @@ namespace RoadMateSystem.Web
             builder.Services.AddApplicationServices(typeof(ICarService));
             builder.Services.AddApplicationServices(typeof(IRentalService));
 
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("fr-FR")
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("fr-FR");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures; 
+                options.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
+            });
+
             builder.Services.AddControllersWithViews()
                 .AddMvcOptions(options =>
                 {
@@ -55,7 +71,8 @@ namespace RoadMateSystem.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Home/Error/500");
+                app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode={0}");
                 app.UseHsts();
             }
 
@@ -67,10 +84,11 @@ namespace RoadMateSystem.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-            app.MapRazorPages();
+            app.UseEndpoints(config =>
+            { 
+                config.MapDefaultControllerRoute();
+                config.MapRazorPages();
+            });
 
             app.Run();
         }

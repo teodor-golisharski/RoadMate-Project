@@ -1,7 +1,5 @@
 ﻿namespace RoadMateSystem.Web.ViewModels.Car
 {
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.ComponentModel.DataAnnotations;
     using RoadMateSystem.Data.Models.Car;
     using RoadMateSystem.Web.ViewModels.Review;
     using RoadMateSystem.Web.ViewModels.CarImage;
@@ -29,5 +27,6 @@
         public virtual IEnumerable<CarImageViewModel> Images { get; set; } = new List<CarImageViewModel>();
 
         public virtual IEnumerable<ReviewViewModel> Reviews { get; set; } = new List<ReviewViewModel>();
+
     }
 }

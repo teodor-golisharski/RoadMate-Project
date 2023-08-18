@@ -7,7 +7,7 @@
 
     public class ReviewViewModel
     {
-        public string ReviewId { get; set; }
+        public string ReviewId { get; set; } = null!;
         public int CarId { get; set; }
         public string UserId { get; set; } = null!;
         public string UserName  { get; set; } = null!;

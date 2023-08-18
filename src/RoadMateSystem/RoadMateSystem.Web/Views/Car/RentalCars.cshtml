@@ -42,7 +42,7 @@
                         <label asp-for="CarMake"></label>
                         <select asp-for="CarMake" class="form-control">
                             <option value="">All</option>
-                            @foreach (var carmMake in Model.CarMakes)
+                            @foreach (var carmMake in Model.CarMakes.OrderBy(x => x))
                             {
                                 <option value="@carmMake">@carmMake</option>
                             }

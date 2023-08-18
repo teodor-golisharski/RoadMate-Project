@@ -10,6 +10,7 @@
     using RoadMateSystem.Web.ViewModels.Review;
 
     using static Common.NotificationMessagesConstants;
+    using static Common.NotificationTextConstants;
 
     [Authorize]
     public class CarController : BaseController
@@ -41,19 +42,12 @@
             return View(queryModel);
         }
 
-
-
-        public async Task<IActionResult> RentalCars([FromQuery] RentalCarsQueryModel queryModel, DateTime? startDate, DateTime? endDate)
+        public async Task<IActionResult> RentalCars([FromQuery] RentalCarsQueryModel queryModel)
         {
+
             AllCarsFilteredAndPagedServiceModel serviceModel = await this.carService.AllRentalCarsAsync(queryModel);
 
             queryModel.Cars = serviceModel.Cars;
-
-            if (startDate != null && endDate != null)
-            {
-                queryModel.StartDate = (DateTime)startDate;
-                queryModel.EndDate = (DateTime)endDate;
-            }
 
             queryModel.TotalCars = serviceModel.TotalCarsCount;
             queryModel.CarMakes = await carMakeService.GetAllCarMakesAsync();
@@ -64,10 +58,11 @@
         public async Task<IActionResult> Details(int id)
         {
             bool doesCarExist = await carService.DoesCarExistAsync(id);
-
+  
             if(!doesCarExist)
             {
-                TempData[ErrorMessage] = "Car not found :(";
+                TempData[ErrorMessage] = 
+                    CarNotifications.CarNotFound;
                 return RedirectToAction("All", "Car");
             }
 
@@ -82,8 +77,9 @@
             }
             catch (Exception)
             {
-                throw;
+                return GeneralError();
             }
         }
+
     }
 }

@@ -3,6 +3,9 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Security.Claims;
 
+    using static Common.NotificationMessagesConstants;
+    using static Common.NotificationTextConstants;
+
     public class BaseController : Controller
     {
         protected string GetUserId()
@@ -15,6 +18,14 @@
             }
 
             return id;
+        }
+
+        protected IActionResult GeneralError()
+        {
+            TempData[ErrorMessage] =
+                GeneralErrors.SomethingWentWrong;
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
