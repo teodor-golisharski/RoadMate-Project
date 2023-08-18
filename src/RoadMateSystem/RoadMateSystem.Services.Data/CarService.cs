@@ -37,7 +37,7 @@
                 .Select(x => new ImageViewModel
                 {
                     Id = x.ThumbnailImage!.Id,
-                    FileUrl = $"CarImages\\{string.Concat(x.CarMake.Make, x.Model)}\\{string.Concat(x.ThumbnailImage!.FileName, x.ThumbnailImage.FileExtension)}"
+                    FileUrl = $"..\\CarImages\\{string.Concat(x.CarMake.Make, x.Model)}\\{string.Concat(x.ThumbnailImage!.FileName, x.ThumbnailImage.FileExtension)}"
                 })
                 .ToListAsync();
 

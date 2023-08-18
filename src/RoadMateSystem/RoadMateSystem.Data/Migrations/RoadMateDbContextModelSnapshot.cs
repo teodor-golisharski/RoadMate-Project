@@ -211,8 +211,8 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -314,7 +314,7 @@ namespace RoadMateSystem.Data.Migrations
                         .IsUnique()
                         .HasFilter("[ThumbnailImageId] IS NOT NULL");
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
 
                     b.HasData(
                         new
@@ -909,7 +909,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors", (string)null);
+                    b.ToTable("Colors");
 
                     b.HasData(
                         new
@@ -994,7 +994,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("CarImages", (string)null);
+                    b.ToTable("CarImages");
 
                     b.HasData(
                         new
@@ -2694,7 +2694,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarMakes", (string)null);
+                    b.ToTable("CarMakes");
 
                     b.HasData(
                         new
@@ -2797,7 +2797,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("RentalId");
 
-                    b.ToTable("Payment", (string)null);
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Rental", b =>
@@ -2812,7 +2812,7 @@ namespace RoadMateSystem.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 14, 17, 26, 58, 759, DateTimeKind.Utc).AddTicks(29));
+                        .HasDefaultValue(new DateTime(2023, 8, 18, 20, 57, 37, 141, DateTimeKind.Utc).AddTicks(5783));
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -2837,7 +2837,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Rentals", (string)null);
+                    b.ToTable("Rentals");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Review", b =>
@@ -2868,7 +2868,7 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

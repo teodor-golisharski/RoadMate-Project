@@ -23,7 +23,7 @@
         public string LastName { get; set; } = null!;
 
         [Required]
-        [StringLength(PhoneNumberLength, MinimumLength = PhoneNumberLength)]
+        [StringLength(PhoneNumberMaxLength, MinimumLength = PhoneNumberMinLength)]
         public string Phone { get; set; } = null!;
 
         [Required]

@@ -62,40 +62,47 @@
                asp-route-sorting="@((int)Model.RentalsSorting)">>></a>
         </div>
     </div>
-    @foreach (var item in Model.Rentals)
+    @if (Model.TotalRentals == 0)
     {
-        <div class="row my-4 border ">
-            <div class="col-md-3 image-container p-0">
-                <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId">
-                    <img src="@item.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@item.MakeModel">
-                </a>
-            </div>
-            <div class="col-md-9">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId"><h2 class="card-title">@item.MakeModel</h2></a>
+        <h1 class="text-center">No rents yet!</h1>
+    }
+    else
+    {
+        @foreach (var item in Model.Rentals)
+        {
+            <div class="row my-4 border ">
+                <div class="col-md-3 image-container p-0">
+                    <a class="nav-link p-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId">
+                        <img src="@item.ThumbnailImageUrl" class="img-fluid rounded-start" alt="@item.MakeModel">
+                    </a>
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <a class="nav-link px-0 pt-0 text-decoration-underline" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId"><h2 class="card-title">@item.MakeModel</h2></a>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="small text-end">Created on: @item.CreatedOn.ToString("dd-MM-yyyy HH:mm")</p>
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <p class="small text-end">Created on: @item.CreatedOn.ToString("dd-MM-yyyy HH:mm")</p>    
-                        </div>
+                        <h1>From: @item.StartDate.ToString("dd-MM-yyyy"), To: @item.EndDate.ToString("dd-MM-yyyy")</h1>
+                        @{
+                            if (item.isPaid)
+                            {
+                                ViewBag.Status = "Paid";
+                            }
+                            else
+                            {
+                                ViewBag.Status = "Not paid";
+                            }
+                        }
+                        <h4>Payment status: @ViewBag.Status</h4>
+                        <h2>Total cost: €@item.TotalCost</h2>
                     </div>
-                    <h1>From: @item.StartDate.ToString("dd-MM-yyyy"), To: @item.EndDate.ToString("dd-MM-yyyy")</h1>
-                    @{
-                        if (item.isPaid)
-                        {
-                            ViewBag.Status = "Paid";
-                        }
-                        else
-                        {
-                            ViewBag.Status = "Not paid";
-                        }
-                    }
-                    <h4>Payment status: @ViewBag.Status</h4>
-                    <h2>Total cost: €@item.TotalCost</h2>
                 </div>
             </div>
-        </div>
+        }
     }
     <div class="row mb-3">
         <div class="col-md-6 d-grid d-md-flex justify-content-md-start p-0">

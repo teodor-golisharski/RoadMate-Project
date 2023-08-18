@@ -12,7 +12,7 @@
     using static Common.NotificationMessagesConstants;
     using static Common.NotificationTextConstants;
 
-    [Authorize]
+    [Authorize()]
     public class CarController : BaseController
     {
         private readonly ICarService carService;

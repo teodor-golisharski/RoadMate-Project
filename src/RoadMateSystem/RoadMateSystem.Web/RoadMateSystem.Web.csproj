@@ -29,4 +29,8 @@
     <ProjectReference Include="..\RoadMateSystem.Web.ViewModels\RoadMateSystem.Web.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Account\" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,61 @@
+﻿@model RegisterFormModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1 class="text-center p-2 navbar-brand-custom text-warning mt-2">@ViewData["Title"]</h1>
+<hr style="border: 5px solid #ffc107" />
+
+<div class="row fs-5">
+    <div class="col-md-6 pb-3 mx-auto">
+        <form id="registerForm" method="post">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Email"></label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Password"></label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="ConfirmPassword"></label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-floating col-md-6 mb-3">
+                    <input asp-for="FirstName" class="form-control" autocomplete="on" aria-required="true" />
+                    <label style="left:auto" asp-for="FirstName"></label>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                </div>
+                <div class="form-floating col-md-6 mb-3">
+                    <input asp-for="LastName" class="form-control" autocomplete="on" aria-required="true" />
+                    <label style="left:auto" asp-for="LastName"></label>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Address" class="form-control" autocomplete="on" aria-required="true" />
+                <label asp-for="Address"></label>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Phone" class="form-control" autocomplete="on" pattern="^0[0-9]{9}$" aria-required="true" />
+                <label asp-for="Phone"></label>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-warning fw-bold">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

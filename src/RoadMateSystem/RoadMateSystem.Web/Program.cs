@@ -41,6 +41,12 @@ namespace RoadMateSystem.Web
             builder.Services.AddApplicationServices(typeof(ICarService));
             builder.Services.AddApplicationServices(typeof(IRentalService));
 
+            builder.Services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = "/User/Login";
+                config.AccessDeniedPath = "/Home/Error/401";
+            });
+
             builder.Services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedCultures = new[]
