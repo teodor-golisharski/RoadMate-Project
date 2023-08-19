@@ -13,6 +13,7 @@ namespace RoadMateSystem.Web
     using static Common.GeneralApplicationConstants;
 
     using System.Globalization;
+    using Ganss.Xss;
 
     public class Program
     {
@@ -43,6 +44,7 @@ namespace RoadMateSystem.Web
 
             builder.Services.AddApplicationServices(typeof(ICarService));
             builder.Services.AddApplicationServices(typeof(IRentalService));
+            builder.Services.AddScoped<HtmlSanitizer>();
 
             builder.Services.ConfigureApplicationCookie(config =>
             {
@@ -97,7 +99,13 @@ namespace RoadMateSystem.Web
 
             app.UseEndpoints(config =>
             {
+                config.MapControllerRoute(
+                    name: "areas",
+                    pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 config.MapDefaultControllerRoute();
+
                 config.MapRazorPages();
             });
 

@@ -21,8 +21,10 @@
         public Transmission Transmission { get; set; }
         public Drivetrain Drivetrain { get; set; }
         public decimal PricePerDay { get; set; }
-        public decimal? PricePerWeek { get; set; }
+        public decimal PricePerWeek { get; set; }
         public string ThumbnailUrl { get; set; } = null!;
+        public bool IsDeleted { get; set; }
+
 
         public virtual IEnumerable<CarImageViewModel> Images { get; set; } = new List<CarImageViewModel>();
 

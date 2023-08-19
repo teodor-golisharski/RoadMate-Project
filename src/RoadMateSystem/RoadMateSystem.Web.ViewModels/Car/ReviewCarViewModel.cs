@@ -12,5 +12,7 @@
         public int Horsepower { get; set; }
         public int Seats { get; set; }
         public string ThumbnailImageUrl { get; set; } = null!;
+        public bool IsDeleted { get; set; }
+
     }
 }

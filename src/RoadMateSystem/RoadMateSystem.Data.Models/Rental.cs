@@ -39,5 +39,8 @@
 
         [Required]
         public DateTime CreatedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
     }
 }

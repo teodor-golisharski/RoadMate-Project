@@ -11,6 +11,10 @@
             builder
                .Property(p => p.PaymentMethod)
                .HasConversion<string>();
+
+            builder
+                .Property(c => c.IsDeleted)
+                .HasDefaultValue(false);
         }
     }
 }

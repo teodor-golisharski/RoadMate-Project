@@ -60,7 +60,8 @@
         [Range(PricePerDayMinValue, PricePerDayMaxValue)]
         public decimal PricePerDay { get; set; }
 
-        public decimal? PricePerWeek { get; set; }
+        [Required]
+        public decimal PricePerWeek { get; set; }
 
         public int? ThumbnailImageId { get; set; }
 
@@ -72,5 +73,7 @@
         public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
 
         public virtual ICollection<Rental> Rentals { get; set; } = new HashSet<Rental>();
+
+        public bool IsDeleted { get; set; }
     }
 }

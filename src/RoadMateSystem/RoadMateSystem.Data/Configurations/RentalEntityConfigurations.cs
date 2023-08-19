@@ -25,6 +25,10 @@
                 .HasDefaultValue(false);
 
             builder
+                .Property(c => c.IsDeleted)
+                .HasDefaultValue(false);
+
+            builder
                 .Property(r => r.CreatedOn)
                 .HasDefaultValue(DateTime.UtcNow);
         }

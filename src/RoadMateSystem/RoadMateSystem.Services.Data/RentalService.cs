@@ -24,6 +24,7 @@
         {
             RentCarViewModel model = await dbContext
                 .Cars
+                .Where(x => x.IsDeleted == false)
                 .Select(c => new RentCarViewModel
                 {
                     Id = c.Id,
@@ -50,11 +51,11 @@
             return currentModel;
         }
 
-        // Rent HttpGet
         public async Task<RentalViewModel> GetRentCarAsync(int id)
         {
             RentCarViewModel model = await dbContext
                 .Cars
+                .Where(x => x.IsDeleted == false)
                 .Select(c => new RentCarViewModel
                 {
                     Id = c.Id,
@@ -79,7 +80,6 @@
             return viewModel;
         }
 
-        // Rent HttpPost
         public async Task RentCarAsync(RentalViewModel model, string userId, int id)
         {
             TimeSpan rentalDuration = model.EndDate.Date - model.StartDate.Date;
@@ -114,6 +114,7 @@
             IEnumerable<AllRentalsByCarIdViewModel> viewModel = 
                 await dbContext
                 .Rentals
+                .Where(x => x.IsDeleted == false)
                 .Select(r => new AllRentalsByCarIdViewModel 
                 { 
                     RentalId = r.RentalId, 
@@ -141,6 +142,7 @@
         {
             IQueryable<Rental> rentalsQuery = dbContext
                 .Rentals
+                .Where(x => x.IsDeleted == false)
                 .AsQueryable();
 
             rentalsQuery = rentalsQuery
@@ -175,6 +177,55 @@
                     TotalCost = r.TotalCost,
                     isPaid = r.IsPaid,
                     CreatedOn = r.CreatedOn,
+                })
+                .ToArrayAsync();
+
+            int rentalsCount = rentalsQuery.Count();
+
+            return new AllRentalsFilteredAndPagedServiceModel()
+            {
+                TotalRentals = rentalsCount,
+                Rentals = rentals
+            };
+        }
+
+        public async Task<AllRentalsFilteredAndPagedServiceModel> GetAllRentalsAsync(UserRentalsQueryModel queryModel)
+        {
+            IQueryable<Rental> rentalsQuery = dbContext
+                .Rentals
+                .AsQueryable();
+
+            rentalsQuery = queryModel.RentalsSorting switch
+            {
+                RentalsSorting.Relevance => rentalsQuery,
+                RentalsSorting.Newest => rentalsQuery
+                    .OrderByDescending(r => r.CreatedOn),
+                RentalsSorting.Oldest => rentalsQuery
+                    .OrderBy(r => r.CreatedOn),
+                RentalsSorting.TotalCostAscending => rentalsQuery
+                    .OrderBy(r => r.TotalCost),
+                RentalsSorting.TotalCostDescending => rentalsQuery
+                    .OrderByDescending(r => r.TotalCost),
+                _ => rentalsQuery
+            };
+
+            IEnumerable<UserRentalsViewModel> rentals = await rentalsQuery
+                .Skip((queryModel.CurrentPage - 1) * queryModel.RentalsPerPage)
+                .Take(queryModel.RentalsPerPage)
+                .Select(r => new UserRentalsViewModel
+                {
+                    RentalId = r.RentalId,
+                    CarId = r.CarId,
+                    MakeModel = string.Concat(r.Car.CarMake.Make, " ", r.Car.Model),
+                    ThumbnailImageUrl = $"..\\..\\CarImages\\{string.Concat(r.Car.CarMake.Make, r.Car.Model)}\\{string.Concat(r.Car.ThumbnailImage!.FileName, r.Car.ThumbnailImage.FileExtension)}",
+                    StartDate = r.StartDate,
+                    EndDate = r.EndDate,
+                    UserId = r.UserId.ToString(),
+                    UserName = string.Concat(r.User.FirstName, " ", r.User.LastName),
+                    TotalCost = r.TotalCost,
+                    isPaid = r.IsPaid,
+                    CreatedOn = r.CreatedOn,
+                    IsDeleted = r.IsDeleted,
                 })
                 .ToArrayAsync();
 

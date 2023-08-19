@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="mt-2 p-5 pb-0 bg-light">
+    <h2 class="p-4 display-6">Welcome back, Admin!</h2>
+    <hr />
+</div>
+<div class=" p-5 bg-light text-center">
+
+    <h2 class="display-3">Admin Dashboard</h2>
+    <p class="lead mb-4 mt-3">
+        Welcome to the Admin Dashboard! Here you can manage various resources.
+    </p>
+    <hr class="my-4" />
+
+    <h4 class="text-start border-bottom border-3 border-warning">Cars operations:</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <a asp-area="Admin" asp-controller="Car" asp-action="All"
+               class="btn btn-dark text-warning btn-lg container-fluid">All Cars</a>
+        </div>
+        <div class="col-md-4">
+            <a asp-area="Admin" asp-controller="Car" asp-action="Add"
+               class="btn btn-dark text-warning btn-lg container-fluid">Add Car</a>
+        </div>
+        <div class="col-md-4">
+            <a asp-area="Admin" asp-controller="Car" asp-action="Archive"
+               class="btn btn-dark text-warning btn-lg container-fluid">Cars Archive</a>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="text-start border-bottom border-3 border-warning">Car makes operations:</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <a asp-area="Admin" asp-controller="CarMake" asp-action="All"
+                       class="btn btn-dark text-warning btn-lg container-fluid">All Car makes</a>
+                </div>
+                <div class="col-md-6">
+                    <a asp-area="Admin" asp-controller="CarMake" asp-action="Add"
+                       class="btn btn-dark text-warning btn-lg container-fluid">Add Car makes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-start border-bottom border-3 border-warning">Car colors operations:</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <a asp-area="Admin" asp-controller="CarColor" asp-action="All"
+                       class="btn btn-dark text-warning btn-lg container-fluid">All Car Colors</a>
+                </div>
+                <div class="col-md-6">
+                    <a asp-area="Admin" asp-controller="CarColor" asp-action="Add"
+                       class="btn btn-dark text-warning btn-lg container-fluid">Add Car Colors</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <a asp-area="Admin" asp-controller="Rental" asp-action="All"
+       class="btn btn-primary btn-lg">All Rents</a>
+    <span> | </span>
+    <a asp-area="Admin" asp-controller="User" asp-action="All"
+       class="btn btn-primary btn-lg">User Management</a>
+</div>

@@ -65,5 +65,6 @@
         public int TotalCars { get; set; }
 
         public IEnumerable<AllCarsViewModel> Cars { get; set; }
+
     }
 }

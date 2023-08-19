@@ -7,7 +7,8 @@
         public const int DefaultPage = 1;
         public const int EntitiesPerPage = 12;
 
-        public const string AdminRoleName = "Admin";
+        public const string AdminRoleName = "Administrator";
         public const string AdminEmail = "admin@admin.com";
+        public const string AdminAreaName = "Admin";
     }
 }

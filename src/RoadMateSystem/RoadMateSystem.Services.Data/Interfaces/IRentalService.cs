@@ -16,5 +16,6 @@
         Task<bool> IsCarAvailableAsync(IEnumerable<AllRentalsByCarIdViewModel> carRentals, RentalViewModel model);
 
         Task<AllRentalsFilteredAndPagedServiceModel> GetAllRentalsOfUser(UserRentalsQueryModel queryModel, string userId);
+        Task<AllRentalsFilteredAndPagedServiceModel> GetAllRentalsAsync(UserRentalsQueryModel queryModel);
     }
 }

@@ -20,5 +20,7 @@
         public string Hex { get; set; } = null!;
         
         public virtual ICollection<Car> Cars { get; set; } = new HashSet<Car>();
+        
+        public bool IsDeleted { get; set; }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model ColorViewModel
+
+@{
+    ViewData["Title"] = "Add Car Color";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+
+<div class="container p-5 fs-2">
+
+    <h1 class="text-center pb-3 display-3">@ViewData["Title"]</h1>
+    <br />
+    <br />
+    <form method="post">
+        <label asp-for="Hex"></label>
+        <input asp-for="Hex" class="form-control fs-2 container-fluid" id="colorPicker" name="Hex" />
+        <span asp-validation-for="Hex" class="text-danger"></span>
+        <div class="row mb-1">
+            <div class="col-md-6">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control fs-2" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-warning fs-2 container-fluid align-bottom mt-5">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#colorPicker').spectrum({
+            showInput: true,
+            preferredFormat: "hex"
+        });
+    });
+</script>

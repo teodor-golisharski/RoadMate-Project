@@ -23,5 +23,8 @@
 
         [Required]
         public PaymentMethod PaymentMethod { get; set; }
+
+        public bool IsDeleted { get; set; }
+
     }
 }

@@ -22,7 +22,29 @@
         public static class CarNotifications
         {
             public const string CarNotFound = "Car not found!";
+            public const string CarDeleted = "You deleted the car!";
+            public const string CarRecovered = "You recovered the car!";
+            public const string SuccessfullyEdited = "You successfully edited the car!";
+            public const string SuccessfullyAdded = "You successfully added the car!";
         }
 
+        public static class CarMakeNotifications
+        {
+            public const string SuccessfullyAdded = "You successfully added the car make!";
+            public const string SuccessfullyEdited = "You successfully edited the car make!";
+            public const string CarMakeRecovered = "You recovered the car make!";
+            public const string CarMakeDeleted = "You deleted the car make!";
+            public const string CarMakeNotFound = "Car make not found!";
+
+        }
+        public static class CarColorNotifications
+        {
+            public const string SuccessfullyAdded = "You successfully added the color!";
+            public const string SuccessfullyEdited = "You successfully edited the color!";
+            public const string ColorRecovered = "You recovered the color!";
+            public const string ColorDeleted = "You deleted the color!";
+            public const string ColorNotFound = "Color not found!";
+
+        }
     }
 }

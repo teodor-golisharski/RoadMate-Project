@@ -1,0 +1,234 @@
+﻿@model AllCarsQueryModel
+
+@{
+    ViewBag.Title = "All cars";
+}
+
+<a asp-area="@AdminAreaName" asp-action="Index" asp-controller="Home" class="small text-black-50 p-3">Go back to Home</a>
+<h2 class="text-center mx-3 mt-3 border-bottom border-dark border-5 pb-3 mb-0">Car Registry</h2>
+<div class="card-body">
+    <form method="get" class=" bg-opacity-10 bg-dark p-3 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group pb-2">
+                    <label asp-for="CarMake"></label>
+                    <select asp-for="CarMake" class="form-control">
+                        <option value="">All</option>
+                        @foreach (var carmMake in Model.CarMakes.OrderBy(x => x))
+                        {
+                            <option value="@carmMake">@carmMake</option>
+                        }
+                    </select>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group pb-2">
+                            <label asp-for="CarType"></label>
+                            <select asp-for="CarType" class="form-control">
+                                <option value="">All</option>
+                                <option value="0">Saloon</option>
+                                <option value="1">SUV</option>
+                                <option value="2">Pickup</option>
+                                <option value="3">Coupe</option>
+                                <option value="4">Hatchback</option>
+                                <option value="5">Estate</option>
+                                <option value="6">Convertible</option>
+                                <option value="7">Van</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group pb-2">
+                            <label asp-for="FuelType"></label>
+                            <select asp-for="FuelType" class="form-control">
+                                <option value="">All</option>
+                                <option value="0">Gasoline</option>
+                                <option value="1">Diesel</option>
+                                <option value="2">LPG</option>
+                                <option value="3">Hybrid</option>
+                                <option value="4">Electric</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <label asp-for="Transmission"></label>
+                <select asp-for="Transmission" class="form-control">
+                    <option value="">Any</option>
+                    <option value="0">Automatic</option>
+                    <option value="1">Manual</option>
+                </select>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group pb-1">
+                            <label asp-for="Color"></label>
+                            <select asp-for="Color" class="form-control">
+                                <option value="">All</option>
+                                @foreach (var color in Model.Colors)
+                                {
+                                    <option value="@color">@color</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Drivetrain"></label>
+                        <select asp-for="Drivetrain" class="form-control">
+                            <option value="">Any</option>
+                            <option value="0">Rear Wheel Drive</option>
+                            <option value="1">All Wheel Drive</option>
+                            <option value="2">Front Wheel Drive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group pb-2">
+                    <label asp-for="CarSorting" class="text-warning"></label>
+                    <select asp-for="CarSorting" class="form-control border border-warning">
+                        <option value="0">By Relevance</option>
+                        <option value="1">Price (Ascending)</option>
+                        <option value="2">Price (Descending)</option>
+                        <option value="3">Horsepower (Ascending)</option>
+                        <option value="4">Horsepower (Descending)</option>
+                    </select>
+                </div>
+                <div class="row pb-2">
+                    <div class="form-group col-md-6">
+                        <label asp-for="MinimumPrice"></label>
+                        <select asp-for="MinimumPrice" class="form-control">
+                            <option value="0">Any</option>
+                            <option value="1">From 25</option>
+                            <option value="2">From 50</option>
+                            <option value="3">From 75</option>
+                            <option value="4">From 100</option>
+                            <option value="5">From 150</option>
+                            <option value="6">From 200</option>
+                            <option value="7">From 250</option>
+                            <option value="8">From 300</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="MaximumPrice"></label>
+                        <select asp-for="MaximumPrice" class="form-control">
+                            <option value="0">Any</option>
+                            <option value="1">To 50</option>
+                            <option value="2">To 75</option>
+                            <option value="3">To 100</option>
+                            <option value="4">To 150</option>
+                            <option value="5">To 200</option>
+                            <option value="6">To 250</option>
+                            <option value="7">To 300</option>
+                            <option value="8">To 400</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div class="col-md-6">
+                        <label asp-for="MinHorsepower"></label>
+                        <input asp-for="MinHorsepower" class="form-control" value="none" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="MaxHorsepower"></label>
+                        <input asp-for="MaxHorsepower" class="form-control" value="none" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Search" class="btn btn-warning px-3 w-100 fw-bold" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th scope="col">CarId</th>
+                <th scope="col">Make model</th>
+                <th scope="col">Type</th>
+                <th scope="col">Transmission</th>
+                <th scope="col">Fuel</th>
+                <th scope="col">HP</th>
+                <th scope="col">Details</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model.Cars)
+            {
+                <tr>
+                    <td>@car.Id</td>
+                    <td>@car.MakeModel</td>
+                    <td>@car.CarType</td>
+                    <td>@car.Transmission</td>
+                    <td>@car.Fuel</td>
+                    <td>@car.Horsepower</td>
+                    <td class="bg-dark"><a class=" text-primary text-center text-decoration-none fw-bold" asp-area="" asp-controller="Car" asp-action="Details" asp-route-id="@car.Id">User page</a></td>
+                    <td class="bg-dark"><a class=" text-success text-center text-decoration-none fw-bold" asp-area="@AdminAreaName" asp-controller="Car" asp-action="Edit" asp-route-id="@car.Id">Edit car</a></td>
+                    <td class="bg-dark"><a class=" text-danger text-center text-decoration-none fw-bold" asp-area="@AdminAreaName" asp-controller="Car" asp-action="Delete" asp-route-id="@car.Id" onclick="return confirm('Are you sure you want to delete this car?')">Delete car</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="row px-3 rounded">
+    @{
+        int previousPage = Model.CurrentPage - 1;
+        if (previousPage < 1)
+        {
+            previousPage = 1;
+        }
+
+        int maxPage = (int)Math.Ceiling((double)Model.TotalCars /
+        Model.CarsPerPage);
+
+    }
+    <div class="row mb-5">
+        <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
+            <a class="btn btn-warning fw-bolder @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+               asp-controller="Car"
+               asp-action="All"
+               asp-route-currentPage="@previousPage"
+               asp-route-carMake="@Model.CarMake"
+               asp-route-minimumPrice="@Model.MinimumPrice"
+               asp-route-maximumPrice="@Model.MaximumPrice"
+               asp-route-minHorsepower="@Model.MinHorsepower"
+               asp-route-maxHorsepower="@Model.MaxHorsepower"
+               asp-route-carType="@Model.CarType"
+               asp-route-fuelType="@Model.FuelType"
+               asp-route-drivetrain="@Model.Drivetrain"
+               asp-route-transmission="@Model.Transmission"
+               asp-route-color="@Model.Color"
+               asp-route-sorting="@((int)Model.CarSorting)"><<</a>
+        </div>
+
+        @{
+            bool shouldNextPageBeDisabled = Model.CurrentPage == maxPage ||
+            !Model.Cars.Any();
+        }
+
+        <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-warning fw-bolder
+           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
+               asp-controller="Car"
+               asp-action="All"
+               asp-route-currentPage="@(Model.CurrentPage + 1)"
+               asp-route-carMake="@Model.CarMake"
+               asp-route-minimumPrice="@Model.MinimumPrice"
+               asp-route-maximumPrice="@Model.MaximumPrice"
+               asp-route-minHorsepower="@Model.MinHorsepower"
+               asp-route-maxHorsepower="@Model.MaxHorsepower"
+               asp-route-carType="@Model.CarType"
+               asp-route-fuelType="@Model.FuelType"
+               asp-route-drivetrain="@Model.Drivetrain"
+               asp-route-transmission="@Model.Transmission"
+               asp-route-color="@Model.Color"
+               asp-route-sorting="@((int)Model.CarSorting)">>></a>
+        </div>
+    </div>
+</div>

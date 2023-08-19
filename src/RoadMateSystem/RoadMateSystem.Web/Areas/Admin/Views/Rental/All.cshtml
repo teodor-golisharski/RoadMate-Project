@@ -1,0 +1,136 @@
+﻿@model UserRentalsQueryModel
+
+@{
+    ViewBag.Title = "All rentals";
+}
+
+<a asp-area="@AdminAreaName" asp-action="Index" asp-controller="Home" class="small text-black-50 p-3">Go back to Home</a>
+<h2 class="text-center mx-3 mt-3 border-bottom border-dark border-5 pb-3 mb-2">@ViewBag.Title</h2>
+<div class="container p-5">
+    
+    <form method="get">
+        <div class="row">
+            <div class="form-group col-md-3 p-0">
+                <div class="form-group">
+                    <label asp-for="RentalsSorting"></label>
+                    <select asp-for="RentalsSorting" class="form-control">
+                        <option value="0">Relevance</option>
+                        <option value="1">Newest</option>
+                        <option value="2">Oldest</option>
+                        <option value="3">Total cost (Ascending)</option>
+                        <option value="4">Total cost (Descending)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group mt-4 mb-4">
+                    <input type="submit" value="Search" class="btn btn-warning" />
+                </div>
+            </div>
+        </div>
+    </form>
+    @{
+        int previousPage = Model.CurrentPage - 1;
+        if (previousPage < 1)
+        {
+            previousPage = 1;
+        }
+
+        int maxPage = (int)Math.Ceiling((double)Model.TotalRentals /
+        Model.RentalsPerPage);
+
+    }
+    <div class="row mb-3">
+        <div class="col-md-6 d-grid d-md-flex justify-content-md-start p-0">
+            <a class="btn btn-warning @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+               asp-controller="Rental"
+               asp-action="All"
+               asp-route-currentPage="@previousPage"
+               asp-route-sorting="@((int)Model.RentalsSorting)"><<</a>
+        </div>
+
+        @{
+            bool shouldNextPageBeDisabled = Model.CurrentPage == maxPage ||
+            !Model.Rentals.Any();
+        }
+
+        <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end p-0">
+            <a class="btn btn-warning
+           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
+               asp-controller="Rental"
+               asp-action="All"
+               asp-route-currentPage="@(Model.CurrentPage + 1)"
+               asp-route-sorting="@((int)Model.RentalsSorting)">>></a>
+        </div>
+    </div>
+    <table class="container-fluid">
+        <thead>
+            <tr>
+                <th scope="col">Make model</th>
+                <th scope="col">User</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Total Cost</th>
+                <th scope="col">Created On:</th>
+                <th scope="col">Payment</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.TotalRentals == 0)
+            {
+                <h1 class="text-center">No rents yet!</h1>
+            }
+            else
+            {
+                @foreach (var item in Model.Rentals)
+                {
+                    <tr>
+                        <td>@item.MakeModel</td>
+                        <td>@item.UserName</td>
+                        <td>@item.StartDate.ToString("dd-MMMM-yyyy")</td>
+                        <td>@item.EndDate.ToString("dd-MMMM-yyyy")</td>
+                        <td>€@item.TotalCost</td>
+                        <td>@item.CreatedOn.ToString("dd-MMMM-yyyy HH:mm")</td>
+                        @if(item.isPaid == true)
+                        {
+                            <td class="bg-dark"><a class=" text-primary text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Payment" asp-action="Edit" asp-route-rentalId="@item.RentalId">Edit</a></td>
+                        }
+                        else
+                        {
+                            <td class="bg-dark"><a class=" text-primary text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Payment" asp-action="Add">Add</a></td>
+                        }
+                        @if (item.IsDeleted == true)
+                        {
+                            <td class="bg-dark"><a class=" text-primary text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Rental" asp-action="Recover" asp-route-rentalId="@item.RentalId">Recover</a></td>
+                        }
+                        else
+                        {
+                            <td class="bg-dark"><a class=" text-danger text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Rental" asp-action="Delete" asp-route-rentalId="@item.RentalId" onclick="return confirm('Are you sure you want to delete this rental?')">Delete</a></td>
+                        }
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+    <div class="row mb-3">
+        <div class="col-md-6 d-grid d-md-flex justify-content-md-start p-0">
+            <a class="btn btn-warning @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+               asp-controller="Rental"
+               asp-action="All"
+               asp-route-currentPage="@previousPage"
+               asp-route-sorting="@((int)Model.RentalsSorting)"><<</a>
+        </div>
+
+        <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end p-0">
+            <a class="btn btn-warning
+           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
+               asp-controller="Rental"
+               asp-action="All"
+               asp-route-currentPage="@(Model.CurrentPage + 1)"
+               asp-route-sorting="@((int)Model.RentalsSorting)">>></a>
+        </div>
+    </div>
+</div>

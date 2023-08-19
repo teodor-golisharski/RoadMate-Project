@@ -4,5 +4,7 @@
     {
         public int Id { get; set; }
         public string Make { get; set; } = null!;
+
+        public bool IsDeleted { get; set; }
     }
 }

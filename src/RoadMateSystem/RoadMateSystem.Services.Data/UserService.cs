@@ -1,18 +1,24 @@
 ﻿namespace RoadMateSystem.Services.Data
 {
+    using AngleSharp.Html.Parser;
+    using Ganss.Xss;
     using Microsoft.EntityFrameworkCore;
     using RoadMateSystem.Data.Models;
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Web.Data;
     using System.Security.Claims;
+    using System.Text.Encodings.Web;
 
     public class UserService : IUserService
     {
         private readonly RoadMateDbContext dbContext;
+        private readonly HtmlSanitizer sanitizer;
 
-        public UserService(RoadMateDbContext dbContext)
+        public UserService(RoadMateDbContext dbContext, HtmlSanitizer sanitizer)
         {
             this.dbContext = dbContext;
+            this.sanitizer = sanitizer;
+
         }
 
         public async Task<string> GetFullNameByIdAsync(string userId)
@@ -25,7 +31,7 @@
                 return string.Empty;
             }
 
-            return $"{user.FirstName} {user.LastName}";
+            return sanitizer.Sanitize($"{user.FirstName} {user.LastName}");
         }
 
         public async Task<string> GetFullNameByEmailAsync(string email)
@@ -38,7 +44,7 @@
                 return string.Empty;
             }
 
-            return $"{user.FirstName} {user.LastName}";
+            return sanitizer.Sanitize($"{user.FirstName} {user.LastName}");
         }
 
     }

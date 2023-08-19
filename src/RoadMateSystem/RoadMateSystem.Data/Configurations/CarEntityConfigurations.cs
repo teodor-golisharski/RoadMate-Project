@@ -29,6 +29,10 @@
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder
+                .Property(c => c.IsDeleted)
+                .HasDefaultValue(false);
+
+            builder
                 .Property(c => c.Drivetrain)
                 .HasConversion<string>();
 

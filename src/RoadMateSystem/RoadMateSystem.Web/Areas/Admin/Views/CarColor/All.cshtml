@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ColorViewModel>
+
+@{
+    ViewBag.Title = "All Car Colors";
+}
+
+<a asp-area="@AdminAreaName" asp-action="Index" asp-controller="Home" class="small text-black-50 p-3">Go back to Home</a>
+<h2 class="text-center mx-3 mt-3 border-bottom border-dark border-5 pb-3 mb-0">@ViewBag.Title</h2>
+<div class="card-body">
+
+    <table class="table table-striped d-xl-table fs-4">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Color</th>
+                <th scope="col">Status</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var color in Model)
+            {
+                <tr>
+                    <td>@color.Id</td>
+                    <td>@color.Name</td>
+                    <td style="background-color: @color.Hex">@color.Hex</td>
+                    @if (color.IsDeleted == true)
+                    {
+                        <td>Archived</td>
+                    }
+                    else
+                    {
+                        <td>Active</td>
+                    }
+                    <td class="bg-dark"><a class=" text-success text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="CarColor" asp-action="Edit" asp-route-id="@color.Id">Edit</a></td>
+                    @if (color.IsDeleted == true)
+                    {
+                        <td class="bg-dark"><a class=" text-primary text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="CarColor" asp-action="Recover" asp-route-id="@color.Id">Recover</a></td>
+                    }
+                    else
+                    {
+                        <td class="bg-dark"><a class=" text-danger text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="CarColor" asp-action="Delete" asp-route-id="@color.Id" onclick="return confirm('Are you sure you want to delete this car?')">Delete</a></td>
+                    }
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

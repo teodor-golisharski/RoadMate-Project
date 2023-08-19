@@ -14,6 +14,7 @@
                 .HasForeignKey(r => r.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
             builder
                 .HasOne(r => r.Car)
                 .WithMany(u => u.Reviews)

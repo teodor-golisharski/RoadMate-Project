@@ -17,7 +17,7 @@ namespace RoadMateSystem.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.20")
+                .HasAnnotation("ProductVersion", "6.0.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -279,6 +279,11 @@ namespace RoadMateSystem.Data.Migrations
                     b.Property<int>("Horsepower")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasMaxLength(40)
@@ -287,7 +292,7 @@ namespace RoadMateSystem.Data.Migrations
                     b.Property<decimal>("PricePerDay")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("PricePerWeek")
+                    b.Property<decimal>("PricePerWeek")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Seats")
@@ -328,6 +333,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1598,
                             Fuel = "Hybrid",
                             Horsepower = 140,
+                            IsDeleted = false,
                             Model = "Clio",
                             PricePerDay = 52.99m,
                             PricePerWeek = 319.99m,
@@ -347,6 +353,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1461,
                             Fuel = "Diesel",
                             Horsepower = 115,
+                            IsDeleted = false,
                             Model = "Duster",
                             PricePerDay = 45.99m,
                             PricePerWeek = 279.99m,
@@ -366,6 +373,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1496,
                             Fuel = "Gasoline",
                             Horsepower = 200,
+                            IsDeleted = false,
                             Model = "Fiesta",
                             PricePerDay = 59.99m,
                             PricePerWeek = 374.99m,
@@ -385,6 +393,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1498,
                             Fuel = "Hybrid",
                             Horsepower = 122,
+                            IsDeleted = false,
                             Model = "Jazz",
                             PricePerDay = 49.99m,
                             PricePerWeek = 289.99m,
@@ -404,6 +413,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1598,
                             Fuel = "Hybrid",
                             Horsepower = 220,
+                            IsDeleted = false,
                             Model = "308",
                             PricePerDay = 61.99m,
                             PricePerWeek = 384.99m,
@@ -423,6 +433,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 999,
                             Fuel = "Gasoline",
                             Horsepower = 110,
+                            IsDeleted = false,
                             Model = "Fabia",
                             PricePerDay = 48.99m,
                             PricePerWeek = 279.99m,
@@ -442,6 +453,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1968,
                             Fuel = "Diesel",
                             Horsepower = 150,
+                            IsDeleted = false,
                             Model = "Golf",
                             PricePerDay = 59.99m,
                             PricePerWeek = 374.99m,
@@ -461,6 +473,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 0,
                             Fuel = "Electric",
                             Horsepower = 65,
+                            IsDeleted = false,
                             Model = "Spring",
                             PricePerDay = 42.99m,
                             PricePerWeek = 239.99m,
@@ -480,6 +493,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 999,
                             Fuel = "Gasoline",
                             Horsepower = 110,
+                            IsDeleted = false,
                             Model = "T-Cross",
                             PricePerDay = 52.99m,
                             PricePerWeek = 329.99m,
@@ -499,6 +513,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1987,
                             Fuel = "Hybrid",
                             Horsepower = 196,
+                            IsDeleted = false,
                             Model = "Corolla",
                             PricePerDay = 61.99m,
                             PricePerWeek = 379.99m,
@@ -518,6 +533,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1968,
                             Fuel = "Gasoline",
                             Horsepower = 245,
+                            IsDeleted = false,
                             Model = "Octavia",
                             PricePerDay = 84.99m,
                             PricePerWeek = 579.99m,
@@ -537,6 +553,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1968,
                             Fuel = "Diesel",
                             Horsepower = 200,
+                            IsDeleted = false,
                             Model = "Superb",
                             PricePerDay = 94.99m,
                             PricePerWeek = 619.99m,
@@ -556,6 +573,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1968,
                             Fuel = "Diesel",
                             Horsepower = 200,
+                            IsDeleted = false,
                             Model = "Passat",
                             PricePerDay = 89.99m,
                             PricePerWeek = 574.99m,
@@ -575,6 +593,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 2967,
                             Fuel = "Diesel",
                             Horsepower = 262,
+                            IsDeleted = false,
                             Model = "Touareg",
                             PricePerDay = 94.99m,
                             PricePerWeek = 619.99m,
@@ -594,6 +613,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1997,
                             Fuel = "Diesel",
                             Horsepower = 180,
+                            IsDeleted = false,
                             Model = "508",
                             PricePerDay = 79.99m,
                             PricePerWeek = 519.99m,
@@ -613,6 +633,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1598,
                             Fuel = "Hybrid",
                             Horsepower = 225,
+                            IsDeleted = false,
                             Model = "3008",
                             PricePerDay = 79.99m,
                             PricePerWeek = 529.99m,
@@ -632,6 +653,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 2191,
                             Fuel = "Diesel",
                             Horsepower = 184,
+                            IsDeleted = false,
                             Model = "6",
                             PricePerDay = 79.99m,
                             PricePerWeek = 529.99m,
@@ -651,6 +673,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 2191,
                             Fuel = "Diesel",
                             Horsepower = 184,
+                            IsDeleted = false,
                             Model = "CX-5",
                             PricePerDay = 79.99m,
                             PricePerWeek = 529.99m,
@@ -670,6 +693,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 1995,
                             Fuel = "Diesel",
                             Horsepower = 190,
+                            IsDeleted = false,
                             Model = "120d",
                             PricePerDay = 89.99m,
                             PricePerWeek = 549.99m,
@@ -689,6 +713,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 2967,
                             Fuel = "Diesel",
                             Horsepower = 286,
+                            IsDeleted = false,
                             Model = "A4 Allroad",
                             PricePerDay = 109.99m,
                             PricePerWeek = 689.99m,
@@ -708,6 +733,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 3982,
                             Fuel = "Gasoline",
                             Horsepower = 639,
+                            IsDeleted = false,
                             Model = "AMG GT63 S",
                             PricePerDay = 249.99m,
                             PricePerWeek = 1649.99m,
@@ -727,6 +753,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 3982,
                             Fuel = "Gasoline",
                             Horsepower = 612,
+                            IsDeleted = false,
                             Model = "E63 S",
                             PricePerDay = 229.99m,
                             PricePerWeek = 1549.99m,
@@ -746,6 +773,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 2925,
                             Fuel = "Diesel",
                             Horsepower = 286,
+                            IsDeleted = false,
                             Model = "S350d",
                             PricePerDay = 239.99m,
                             PricePerWeek = 1599.99m,
@@ -765,6 +793,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 4395,
                             Fuel = "Gasoline",
                             Horsepower = 625,
+                            IsDeleted = false,
                             Model = "M5 Competition",
                             PricePerDay = 229.99m,
                             PricePerWeek = 1549.99m,
@@ -784,6 +813,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 2993,
                             Fuel = "Diesel",
                             Horsepower = 286,
+                            IsDeleted = false,
                             Model = "730d",
                             PricePerDay = 229.99m,
                             PricePerWeek = 1549.99m,
@@ -803,6 +833,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 2995,
                             Fuel = "Gasoline",
                             Horsepower = 340,
+                            IsDeleted = false,
                             Model = "Q7",
                             PricePerDay = 189.99m,
                             PricePerWeek = 1299.99m,
@@ -822,6 +853,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 3996,
                             Fuel = "Hybrid",
                             Horsepower = 680,
+                            IsDeleted = false,
                             Model = "Cayenne",
                             PricePerDay = 279.99m,
                             PricePerWeek = 1699.99m,
@@ -841,6 +873,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 2894,
                             Fuel = "Hybrid",
                             Horsepower = 560,
+                            IsDeleted = false,
                             Model = "Panamera",
                             PricePerDay = 269.99m,
                             PricePerWeek = 1649.99m,
@@ -860,6 +893,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 5000,
                             Fuel = "Gasoline",
                             Horsepower = 575,
+                            IsDeleted = false,
                             Model = "Sport",
                             PricePerDay = 229.99m,
                             PricePerWeek = 1499.99m,
@@ -879,6 +913,7 @@ namespace RoadMateSystem.Data.Migrations
                             EngineCapacity = 3799,
                             Fuel = "Gasoline",
                             Horsepower = 590,
+                            IsDeleted = false,
                             Model = "Levante",
                             PricePerDay = 229.99m,
                             PricePerWeek = 1499.99m,
@@ -902,6 +937,11 @@ namespace RoadMateSystem.Data.Migrations
                         .HasMaxLength(7)
                         .HasColumnType("nvarchar(7)");
 
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -916,54 +956,63 @@ namespace RoadMateSystem.Data.Migrations
                         {
                             Id = 1,
                             Hex = "#FFFFFF",
+                            IsDeleted = false,
                             Name = "White"
                         },
                         new
                         {
                             Id = 2,
                             Hex = "#000000",
+                            IsDeleted = false,
                             Name = "Black"
                         },
                         new
                         {
                             Id = 3,
                             Hex = "#D9D9D9",
+                            IsDeleted = false,
                             Name = "Silver"
                         },
                         new
                         {
                             Id = 4,
                             Hex = "#003399",
+                            IsDeleted = false,
                             Name = "Blue"
                         },
                         new
                         {
                             Id = 5,
                             Hex = "#737373",
+                            IsDeleted = false,
                             Name = "Grey"
                         },
                         new
                         {
                             Id = 6,
                             Hex = "#B30000",
+                            IsDeleted = false,
                             Name = "Red"
                         },
                         new
                         {
                             Id = 7,
                             Hex = "#FF9900",
+                            IsDeleted = false,
                             Name = "Orange"
                         },
                         new
                         {
                             Id = 8,
                             Hex = "#008000",
+                            IsDeleted = false,
                             Name = "Green"
                         },
                         new
                         {
                             Id = 9,
                             Hex = "#FFE800",
+                            IsDeleted = false,
                             Name = "Yellow"
                         });
                 });
@@ -975,9 +1024,6 @@ namespace RoadMateSystem.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Caption")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CarId")
                         .HasColumnType("int");
@@ -2687,6 +2733,11 @@ namespace RoadMateSystem.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.Property<string>("Make")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -2700,76 +2751,91 @@ namespace RoadMateSystem.Data.Migrations
                         new
                         {
                             Id = 1,
+                            IsDeleted = false,
                             Make = "Renault"
                         },
                         new
                         {
                             Id = 2,
+                            IsDeleted = false,
                             Make = "Dacia"
                         },
                         new
                         {
                             Id = 3,
+                            IsDeleted = false,
                             Make = "Ford"
                         },
                         new
                         {
                             Id = 4,
+                            IsDeleted = false,
                             Make = "Honda"
                         },
                         new
                         {
                             Id = 5,
+                            IsDeleted = false,
                             Make = "Peugeot"
                         },
                         new
                         {
                             Id = 6,
+                            IsDeleted = false,
                             Make = "Skoda"
                         },
                         new
                         {
                             Id = 7,
+                            IsDeleted = false,
                             Make = "Volkswagen"
                         },
                         new
                         {
                             Id = 8,
+                            IsDeleted = false,
                             Make = "Toyota"
                         },
                         new
                         {
                             Id = 9,
+                            IsDeleted = false,
                             Make = "Mazda"
                         },
                         new
                         {
                             Id = 10,
+                            IsDeleted = false,
                             Make = "BMW"
                         },
                         new
                         {
                             Id = 11,
+                            IsDeleted = false,
                             Make = "Audi"
                         },
                         new
                         {
                             Id = 12,
+                            IsDeleted = false,
                             Make = "Mercedes-Benz"
                         },
                         new
                         {
                             Id = 13,
+                            IsDeleted = false,
                             Make = "Porsche"
                         },
                         new
                         {
                             Id = 14,
+                            IsDeleted = false,
                             Make = "Range Rover"
                         },
                         new
                         {
                             Id = 15,
+                            IsDeleted = false,
                             Make = "Maserati"
                         });
                 });
@@ -2782,6 +2848,11 @@ namespace RoadMateSystem.Data.Migrations
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<DateTime>("PaymentDate")
                         .HasColumnType("datetime2");
@@ -2812,10 +2883,15 @@ namespace RoadMateSystem.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 18, 20, 57, 37, 141, DateTimeKind.Utc).AddTicks(5783));
+                        .HasDefaultValue(new DateTime(2023, 8, 19, 21, 1, 28, 974, DateTimeKind.Utc).AddTicks(5905));
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("IsPaid")
                         .ValueGeneratedOnAdd()

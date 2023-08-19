@@ -1,11 +1,11 @@
 ﻿namespace RoadMateSystem.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using System.Diagnostics;
 
     using RoadMateSystem.Web.ViewModels.Home;
-    using RoadMateSystem.Services.Data;
     using RoadMateSystem.Services.Data.Interfaces;
+
+    using static Common.GeneralApplicationConstants;
 
     public class HomeController : BaseController
     {
@@ -18,6 +18,11 @@
 
         public async Task<IActionResult> Index()
         {
+            if(this.User.IsInRole(AdminRoleName))
+            {
+                return RedirectToAction("Index", "Home", new { Area = AdminAreaName });
+            }    
+
             ImagesViewModel model = await carService.PreviewCarImagesAsync();
 
             return View(model);

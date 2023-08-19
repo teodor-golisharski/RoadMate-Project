@@ -1,10 +1,7 @@
 ﻿namespace RoadMateSystem.Web.ViewModels.Review
 {
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.ComponentModel.DataAnnotations;
 
-    using RoadMateSystem.Data.Models;
-    using RoadMateSystem.Data.Models.Car;
     using static RoadMateSystem.Common.EntityValidationConstants.Review;
     using RoadMateSystem.Web.ViewModels.Car;
 

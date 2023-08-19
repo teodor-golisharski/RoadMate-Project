@@ -1,0 +1,24 @@
+﻿@model CarMakeViewModel
+
+@{
+    ViewData["Title"] = "Add Car Make";
+}
+
+<div class="container p-5 fs-2">
+
+    <h1 class="text-center pb-3 display-3">@ViewData["Title"]</h1>
+    <br />
+    <br />
+    <form method="post">
+        <div class="row mb-1">
+            <div class="col-md-6">
+                <label asp-for="Make"></label>
+                <input asp-for="Make" class="form-control fs-2" />
+                <span asp-validation-for="Make" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-warning fs-2 container-fluid align-bottom mt-5">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -8,6 +8,10 @@
     {
         public void Configure(EntityTypeBuilder<CarColor> builder)
         {
+            builder
+                .Property(b => b.IsDeleted)
+                .HasDefaultValue(false);
+
             builder.HasData(GenerateCarColors());
         }
 

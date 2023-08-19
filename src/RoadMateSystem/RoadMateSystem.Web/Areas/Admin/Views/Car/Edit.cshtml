@@ -1,0 +1,141 @@
+﻿@model EditCarViewModel
+
+@{
+    ViewData["Title"] = "Edit Car";
+}
+
+<div class="container p-5">
+
+    <h1 class="text-center pb-3">@ViewData["Title"]</h1>
+
+    <form asp-controller="Car" asp-action="Edit" method="post">
+@*        <input type="hidden" asp-for="Id" />
+*@
+        <div class="row">
+            <div class="form-group pb-2 fs-5 col-md-6">
+                <label asp-for="CarMakeId"></label>
+                <select asp-for="CarMakeId" class="form-control fs-5">
+                    @foreach (var carmMake in Model.CarMakes.OrderBy(x => x.Make))
+                    {
+                        <option value="@carmMake.Id">@carmMake.Make</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group pb-2 fs-5 col-md-6">
+                <label asp-for="Model"></label>
+                <input asp-for="Model" class="form-control fs-5" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="Type"></label>
+                <select asp-for="Type" class="form-control fs-5">
+                    <option value="0">Saloon</option>
+                    <option value="1">SUV</option>
+                    <option value="2">Pickup</option>
+                    <option value="3">Coupe</option>
+                    <option value="4">Hatchback</option>
+                    <option value="5">Estate</option>
+                    <option value="6">Convertible</option>
+                    <option value="7">Van</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="Fuel"></label>
+                <select asp-for="Fuel" class="form-control fs-5">
+                    <option value="0">Gasoline</option>
+                    <option value="1">Diesel</option>
+                    <option value="2">LPG</option>
+                    <option value="3">Hybrid</option>
+                    <option value="4">Electric</option>
+                </select>
+                <span asp-validation-for="Fuel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="ColorId"></label>
+                <select asp-for="ColorId" class="form-control fs-5">
+                    @foreach (var color in Model.CarColors.OrderBy(x => x.Name))
+                    {
+                        <option value="@color.Id">@color.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="Horsepower"></label>
+                <input asp-for="Horsepower" class="form-control fs-5" />
+                <span asp-validation-for="Horsepower" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="form-group pb-2 fs-5 col-md-6">
+                        <label asp-for="Seats"></label>
+                        <input asp-for="Seats" class="form-control fs-5" />
+                        <span asp-validation-for="Seats" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group pb-2 fs-5 col-md-6">
+                        <label asp-for="Doors"></label>
+                        <input asp-for="Doors" class="form-control fs-5" />
+                        <span asp-validation-for="Doors" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="EngineCapacity"></label>
+                <input asp-for="EngineCapacity" class="form-control fs-5" />
+                <span asp-validation-for="EngineCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="Transmission"></label>
+                <select asp-for="Transmission" class="form-control fs-5">
+                    <option value="0">Automatic</option>
+                    <option value="1">Manual</option>
+                </select>
+                <span asp-validation-for="Transmission" class="text-danger"></span>
+            </div>
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="Drivetrain"></label>
+                <select asp-for="Drivetrain" class="form-control fs-5">
+                    <option value="0">Rear Wheel Drive</option>
+                    <option value="1">All Wheel Drive</option>
+                    <option value="2">Front Wheel Drive</option>
+                </select>
+                <span asp-validation-for="Drivetrain" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group pb-2 fs-5">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control fs-5" rows="8"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="PricePerDay"></label>
+                <input asp-for="PricePerDay" class="form-control fs-5" />
+                <span asp-validation-for="PricePerDay" class="text-danger"></span>
+            </div>
+
+            <div class="form-group pb-2 fs-5 col-md-3">
+                <label asp-for="PricePerWeek"></label>
+                <input asp-for="PricePerWeek" class="form-control fs-5" />
+                <span asp-validation-for="PricePerWeek" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-warning fs-5 container-fluid align-bottom mt-4">Save Changes</button>
+            </div>
+        </div>
+
+    </form>
+</div>
