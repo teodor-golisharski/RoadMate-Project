@@ -3,13 +3,15 @@ namespace RoadMateSystem.Web
     using Microsoft.AspNetCore.Localization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Identity;
 
     using RoadMateSystem.Data.Models;
-    using RoadMateSystem.Services.Data;
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Web.Data;
     using RoadMateSystem.Web.Infrastructure.Extensions;
     using RoadMateSystem.Web.Infrastructure.ModelBinders;
+    using static Common.GeneralApplicationConstants;
+
     using System.Globalization;
 
     public class Program
@@ -36,6 +38,7 @@ namespace RoadMateSystem.Web
                 options.Password.RequiredLength =
                     builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
             })
+            .AddRoles<IdentityRole<Guid>>()
             .AddEntityFrameworkStores<RoadMateDbContext>();
 
             builder.Services.AddApplicationServices(typeof(ICarService));
@@ -57,7 +60,7 @@ namespace RoadMateSystem.Web
 
                 options.DefaultRequestCulture = new RequestCulture("fr-FR");
                 options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures; 
+                options.SupportedUICultures = supportedCultures;
                 options.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
             });
 
@@ -90,8 +93,10 @@ namespace RoadMateSystem.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.SeedAdministration(AdminEmail);
+
             app.UseEndpoints(config =>
-            { 
+            {
                 config.MapDefaultControllerRoute();
                 config.MapRazorPages();
             });
