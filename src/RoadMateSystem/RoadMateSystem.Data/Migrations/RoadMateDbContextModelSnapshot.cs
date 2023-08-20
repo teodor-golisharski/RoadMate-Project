@@ -2840,37 +2840,6 @@ namespace RoadMateSystem.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RoadMateSystem.Data.Models.Payment.Payment", b =>
-                {
-                    b.Property<Guid>("PaymentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<DateTime>("PaymentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PaymentMethod")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("RentalId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("PaymentId");
-
-                    b.HasIndex("RentalId");
-
-                    b.ToTable("Payment");
-                });
-
             modelBuilder.Entity("RoadMateSystem.Data.Models.Rental", b =>
                 {
                     b.Property<Guid>("RentalId")
@@ -2883,7 +2852,7 @@ namespace RoadMateSystem.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 19, 21, 1, 28, 974, DateTimeKind.Utc).AddTicks(5905));
+                        .HasDefaultValue(new DateTime(2023, 8, 19, 23, 12, 34, 601, DateTimeKind.Utc).AddTicks(325));
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -3032,17 +3001,6 @@ namespace RoadMateSystem.Data.Migrations
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("RoadMateSystem.Data.Models.Payment.Payment", b =>
-                {
-                    b.HasOne("RoadMateSystem.Data.Models.Rental", "Rental")
-                        .WithMany()
-                        .HasForeignKey("RentalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Rental");
                 });
 
             modelBuilder.Entity("RoadMateSystem.Data.Models.Rental", b =>

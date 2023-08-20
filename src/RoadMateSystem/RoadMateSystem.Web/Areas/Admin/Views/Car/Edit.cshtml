@@ -15,7 +15,7 @@
             <div class="form-group pb-2 fs-5 col-md-6">
                 <label asp-for="CarMakeId"></label>
                 <select asp-for="CarMakeId" class="form-control fs-5">
-                    @foreach (var carmMake in Model.CarMakes.OrderBy(x => x.Make))
+                    @foreach (var carmMake in Model.CarMakes)
                     {
                         <option value="@carmMake.Id">@carmMake.Make</option>
                     }
@@ -60,7 +60,7 @@
             <div class="form-group pb-2 fs-5 col-md-3">
                 <label asp-for="ColorId"></label>
                 <select asp-for="ColorId" class="form-control fs-5">
-                    @foreach (var color in Model.CarColors.OrderBy(x => x.Name))
+                    @foreach (var color in Model.CarColors)
                     {
                         <option value="@color.Id">@color.Name</option>
                     }
@@ -139,3 +139,8 @@
 
     </form>
 </div>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

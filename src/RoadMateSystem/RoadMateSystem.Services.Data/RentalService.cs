@@ -111,13 +111,13 @@
 
         public async Task<IEnumerable<AllRentalsByCarIdViewModel>> GetAllRentalsByCarIdAsync(int id)
         {
-            IEnumerable<AllRentalsByCarIdViewModel> viewModel = 
+            IEnumerable<AllRentalsByCarIdViewModel> viewModel =
                 await dbContext
                 .Rentals
                 .Where(x => x.IsDeleted == false)
-                .Select(r => new AllRentalsByCarIdViewModel 
-                { 
-                    RentalId = r.RentalId, 
+                .Select(r => new AllRentalsByCarIdViewModel
+                {
+                    RentalId = r.RentalId,
                     CarId = r.CarId,
                     StartDate = r.StartDate,
                     EndDate = r.EndDate,
@@ -161,14 +161,14 @@
                     .OrderByDescending(r => r.TotalCost),
                 _ => rentalsQuery
             };
-            
+
             IEnumerable<UserRentalsViewModel> rentals = await rentalsQuery
                 .Skip((queryModel.CurrentPage - 1) * queryModel.RentalsPerPage)
                 .Take(queryModel.RentalsPerPage)
                 .Select(r => new UserRentalsViewModel
                 {
                     RentalId = r.RentalId,
-                    CarId = r.CarId, 
+                    CarId = r.CarId,
                     MakeModel = string.Concat(r.Car.CarMake.Make, " ", r.Car.Model),
                     ThumbnailImageUrl = $"..\\..\\CarImages\\{string.Concat(r.Car.CarMake.Make, r.Car.Model)}\\{string.Concat(r.Car.ThumbnailImage!.FileName, r.Car.ThumbnailImage.FileExtension)}",
                     StartDate = r.StartDate,
@@ -236,6 +236,45 @@
                 TotalRentals = rentalsCount,
                 Rentals = rentals
             };
+        }
+
+        public async Task UserPaidAsync(string rentalId)
+        {
+            Rental? rental = await dbContext.Rentals.FindAsync(Guid.Parse(rentalId));
+
+            if (rental != null)
+            {
+                rental.IsPaid = true;
+                await dbContext.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+
+        public async Task<bool> DoesRentalExistAsync(string rentalId) => await dbContext.Rentals.AnyAsync(r => r.RentalId == Guid.Parse(rentalId));
+
+        public async Task RecoverAsync(string rentalId)
+        {
+            Rental? rental = await dbContext.Rentals.FindAsync(Guid.Parse(rentalId));
+
+            if (rental != null && rental.IsDeleted == true)
+            {
+                rental.IsDeleted = false;
+                await dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteAsync(string rentalId)
+        {
+            Rental? rental = await dbContext.Rentals.FindAsync(Guid.Parse(rentalId));
+
+            if (rental != null && rental.IsDeleted == false)
+            {
+                rental.IsDeleted = true;
+                await dbContext.SaveChangesAsync();
+            }
         }
     }
 }

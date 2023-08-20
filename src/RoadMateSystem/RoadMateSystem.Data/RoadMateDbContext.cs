@@ -8,14 +8,15 @@
 
     using RoadMateSystem.Data.Models;
     using RoadMateSystem.Data.Models.Car;
-    using RoadMateSystem.Data.Models.Payment;
 
 
     public class RoadMateDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
-        public RoadMateDbContext(DbContextOptions<RoadMateDbContext> options)
+        private readonly bool seedDb;
+        public RoadMateDbContext(DbContextOptions<RoadMateDbContext> options, bool seedDb = true)
             : base(options)
         {
+            this.seedDb = seedDb;
         }
 
         public DbSet<Car> Cars { get; set; } = null!;
@@ -24,7 +25,6 @@
         public DbSet<CarColor> Colors { get; set; } = null!;  
         public DbSet<Rental> Rentals { get; set; } = null!; 
         public DbSet<Review> Reviews { get; set; } = null!;
-        public DbSet<Payment> Payment { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder builder)

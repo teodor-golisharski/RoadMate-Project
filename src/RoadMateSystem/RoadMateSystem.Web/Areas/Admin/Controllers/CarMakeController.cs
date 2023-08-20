@@ -1,7 +1,6 @@
 ﻿namespace RoadMateSystem.Web.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using RoadMateSystem.Services.Data;
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Web.ViewModels.CarMake;
 

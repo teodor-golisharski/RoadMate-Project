@@ -46,5 +46,13 @@
             public const string ColorNotFound = "Color not found!";
 
         }
+
+        public static class RentalNotifications
+        {
+            public const string RentalRecovered = "You recovered the rental!";
+            public const string RentalDeleted = "You deleted the rental!";
+            public const string RentalNotFound = "Rental not found!";
+
+        }
     }
 }

@@ -22,5 +22,7 @@
         Task EditCarAsync(int id, EditCarViewModel model);
         Task DeleteAsync(int id);
         Task RecoverAsync(int id);
+        Task AddCarAsync(EditCarViewModel model);
+        Task<string> GetMakeModelByIdAsync(int id);
     }
 }

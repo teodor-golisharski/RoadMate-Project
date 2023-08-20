@@ -61,10 +61,16 @@
     </div>
 
     <br />
-
-    <a asp-area="Admin" asp-controller="Rental" asp-action="All"
-       class="btn btn-primary btn-lg">All Rents</a>
-    <span> | </span>
-    <a asp-area="Admin" asp-controller="User" asp-action="All"
-       class="btn btn-primary btn-lg">User Management</a>
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="text-start border-bottom border-3 border-warning">Rental operations:</h4>
+            <a asp-area="Admin" asp-controller="Rental" asp-action="All"
+               class="btn btn-dark text-warning btn-lg container-fluid">All Rents</a>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-start border-bottom border-3 border-warning">Users:</h4>
+            <a asp-area="Admin" asp-controller="User" asp-action="All"
+               class="btn btn-dark text-warning btn-lg container-fluid">User Management</a>
+        </div>
+    </div>
 </div>

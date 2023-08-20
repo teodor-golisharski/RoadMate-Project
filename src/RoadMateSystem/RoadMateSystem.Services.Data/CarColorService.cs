@@ -21,7 +21,7 @@
             CarColor carColor = new CarColor()
             {
                 Name = model.Name,
-                Hex = model.Hex,
+                Hex = model.Hex,  
             };
 
             await dbContext.Colors.AddAsync(carColor);

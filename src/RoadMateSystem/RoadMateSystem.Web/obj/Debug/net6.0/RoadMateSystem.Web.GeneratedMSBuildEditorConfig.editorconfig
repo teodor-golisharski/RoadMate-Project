@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2FyQ29sb3JcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Tedi/source/repos/RoadMateSystem/RoadMateSystem.Web/Areas/Admin/Views/CarImage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2FySW1hZ2VcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Tedi/source/repos/RoadMateSystem/RoadMateSystem.Web/Areas/Admin/Views/CarMake/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2FyTWFrZVxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Tedi/source/repos/RoadMateSystem/RoadMateSystem.Web/Areas/Admin/Views/CarMake/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2FyTWFrZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tedi/source/repos/RoadMateSystem/RoadMateSystem.Web/Areas/Admin/Views/Car/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2FyXEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Tedi/source/repos/RoadMateSystem/RoadMateSystem.Web/Areas/Admin/Views/Car/All.cshtml]
@@ -58,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Tedi/source/repos/RoadMateSystem/RoadMateSystem.Web/Areas/Admin/Views/Rental/All.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVudGFsXEFsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tedi/source/repos/RoadMateSystem/RoadMateSystem.Web/Areas/Admin/Views/User/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Tedi/source/repos/RoadMateSystem/RoadMateSystem.Web/Areas/Admin/Views/_ViewImports.cshtml]

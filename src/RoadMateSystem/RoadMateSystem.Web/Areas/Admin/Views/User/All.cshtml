@@ -1,0 +1,34 @@
+﻿@model IEnumerable<UserViewModel>
+
+@{
+    ViewBag.Title = "All Users";
+}
+
+<a asp-area="@AdminAreaName" asp-action="Index" asp-controller="Home" class="small text-black-50 p-3">Go back to Home</a>
+<h2 class="text-center mx-3 mt-3 border-bottom border-dark border-5 pb-3 mb-0">@ViewBag.Title</h2>
+<div class="card-body">
+
+    <table class="table table-striped d-xl-table fs-4">
+        <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Phone</td>
+                    <td>@user.Address</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

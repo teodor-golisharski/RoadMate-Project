@@ -95,19 +95,19 @@
                         <td>@item.CreatedOn.ToString("dd-MMMM-yyyy HH:mm")</td>
                         @if(item.isPaid == true)
                         {
-                            <td class="bg-dark"><a class=" text-primary text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Payment" asp-action="Edit" asp-route-rentalId="@item.RentalId">Edit</a></td>
+                            <td>Paid</td>
                         }
                         else
                         {
-                            <td class="bg-dark"><a class=" text-primary text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Payment" asp-action="Add">Add</a></td>
+                            <td class="bg-dark"><a class=" text-primary text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Rental" asp-action="Pay" asp-route-id="@item.RentalId">Paid</a></td>
                         }
                         @if (item.IsDeleted == true)
                         {
-                            <td class="bg-dark"><a class=" text-primary text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Rental" asp-action="Recover" asp-route-rentalId="@item.RentalId">Recover</a></td>
+                            <td class="bg-dark"><a class=" text-success text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Rental" asp-action="Recover" asp-route-id="@item.RentalId">Recover</a></td>
                         }
                         else
                         {
-                            <td class="bg-dark"><a class=" text-danger text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Rental" asp-action="Delete" asp-route-rentalId="@item.RentalId" onclick="return confirm('Are you sure you want to delete this rental?')">Delete</a></td>
+                            <td class="bg-dark"><a class=" text-danger text-center text-decoration-underline fw-bold" asp-area="@AdminAreaName" asp-controller="Rental" asp-action="Delete" asp-route-id="@item.RentalId" onclick="return confirm('Are you sure you want to delete this rental?')">Delete</a></td>
                         }
                     </tr>
                 }

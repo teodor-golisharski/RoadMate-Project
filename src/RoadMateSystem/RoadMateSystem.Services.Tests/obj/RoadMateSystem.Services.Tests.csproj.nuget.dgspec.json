@@ -1,0 +1,525 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Tests\\RoadMateSystem.Services.Tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj",
+        "projectName": "RoadMateSystem.Common",
+        "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj",
+        "packagesPath": "C:\\Users\\Tedi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tedi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj",
+        "projectName": "RoadMateSystem.Data.Models",
+        "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\Tedi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tedi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj",
+        "projectName": "RoadMateSystem.Data",
+        "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj",
+        "packagesPath": "C:\\Users\\Tedi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tedi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.16, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data.Models\\RoadMateSystem.Services.Data.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data.Models\\RoadMateSystem.Services.Data.Models.csproj",
+        "projectName": "RoadMateSystem.Services.Data.Models",
+        "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data.Models\\RoadMateSystem.Services.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\Tedi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tedi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web.ViewModels\\RoadMateSystem.Web.ViewModels.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web.ViewModels\\RoadMateSystem.Web.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data\\RoadMateSystem.Services.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data\\RoadMateSystem.Services.Data.csproj",
+        "projectName": "RoadMateSystem.Services.Data",
+        "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data\\RoadMateSystem.Services.Data.csproj",
+        "packagesPath": "C:\\Users\\Tedi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tedi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj"
+              },
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj"
+              },
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj"
+              },
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data.Models\\RoadMateSystem.Services.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data.Models\\RoadMateSystem.Services.Data.Models.csproj"
+              },
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web.ViewModels\\RoadMateSystem.Web.ViewModels.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web.ViewModels\\RoadMateSystem.Web.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "HtmlSanitizer": {
+              "target": "Package",
+              "version": "[8.0.692, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Tests\\RoadMateSystem.Services.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Tests\\RoadMateSystem.Services.Tests.csproj",
+        "projectName": "RoadMateSystem.Services.Tests",
+        "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Tests\\RoadMateSystem.Services.Tests.csproj",
+        "packagesPath": "C:\\Users\\Tedi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tedi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data\\RoadMateSystem.Data.csproj"
+              },
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data\\RoadMateSystem.Services.Data.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Services.Data\\RoadMateSystem.Services.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.21, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.69, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.6.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.4.2, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web.ViewModels\\RoadMateSystem.Web.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web.ViewModels\\RoadMateSystem.Web.ViewModels.csproj",
+        "projectName": "RoadMateSystem.Web.ViewModels",
+        "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web.ViewModels\\RoadMateSystem.Web.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\Tedi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Web.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tedi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Common\\RoadMateSystem.Common.csproj"
+              },
+              "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Tedi\\source\\repos\\RoadMateSystem\\RoadMateSystem.Data.Models\\RoadMateSystem.Data.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

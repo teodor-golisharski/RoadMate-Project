@@ -1,8 +1,7 @@
 ﻿namespace RoadMateSystem.Web.Areas.Admin.Controllers
 {
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
-    using RoadMateSystem.Common;
-    using RoadMateSystem.Services.Data;
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Services.Data.Models.Car;
     using RoadMateSystem.Web.ViewModels.Car;
@@ -18,11 +17,13 @@
         private readonly ICarService carService;
         private readonly ICarMakeService carMakeService;
         private readonly ICarColorService carColorService;
-        public CarController(ICarService carService, ICarMakeService carMakeService, ICarColorService carColorService)
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public CarController(ICarService carService, ICarMakeService carMakeService, ICarColorService carColorService, IWebHostEnvironment webHostEnvironment)
         {
             this.carService = carService;
             this.carMakeService = carMakeService;
             this.carColorService = carColorService;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<IActionResult> All([FromQuery] AllCarsQueryModel queryModel)
@@ -42,7 +43,7 @@
         {
             EditCarViewModel model = await carService.GetCarForEditAsync(id);
 
-            if(model == null)
+            if (model == null)
             {
                 TempData[ErrorMessage] = CarNotifications.CarNotFound;
                 return RedirectToAction("All", "Car", new { Area = AdminAreaName });
@@ -54,13 +55,13 @@
             model.CarColors = colorsModel;
             model.CarMakes = carMakesModel;
 
-            return View(model);  
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(EditCarViewModel viewModel)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 TempData[ErrorMessage] =
                     GeneralErrors.ErrorOccurred;
@@ -104,7 +105,7 @@
             catch (Exception)
             {
                 return GeneralError();
-            }    
+            }
         }
 
         public async Task<IActionResult> Archive([FromQuery] ArchivedCarsQueryModel queryModel)
@@ -142,5 +143,58 @@
                 return GeneralError();
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+            EditCarViewModel model = new EditCarViewModel();
+
+            IEnumerable<ColorViewModel> colorsModel = await carColorService.GetAllColorsAsync();
+            IEnumerable<CarMakeViewModel> carMakesModel = await carMakeService.GetAllMakesAsync();
+
+            model.CarColors = colorsModel;
+            model.CarMakes = carMakesModel;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(EditCarViewModel carFormModel)
+        {
+            string make = await carMakeService.GetMakeByIdAsync(carFormModel.CarMakeId);
+
+            if (!ModelState.IsValid)
+            {
+                TempData[ErrorMessage] =
+                    GeneralErrors.ErrorOccurred;
+
+                return View(carFormModel);
+            }
+
+            try
+            {
+                await carService.AddCarAsync(carFormModel);
+
+                string makeModel = string.Concat(make, carFormModel.Model);
+
+                string carImagesFolderPath = Path.Combine("CarImages", makeModel);
+
+
+                if (!Directory.Exists(carImagesFolderPath))
+                {
+                    Directory.CreateDirectory(carImagesFolderPath);
+                }
+
+                TempData[SuccessMessage] =
+                CarNotifications.SuccessfullyAdded;
+
+                return RedirectToAction("Add", "CarImage", new { Area = AdminAreaName, id=carFormModel.Id });
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
+        }
     }
 }
+

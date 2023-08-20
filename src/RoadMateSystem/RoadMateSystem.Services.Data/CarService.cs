@@ -579,26 +579,6 @@
 
         public async Task EditCarAsync(int id, EditCarViewModel model)
         {
-            //ADD
-            //Car car = new Car()
-            //{
-            //    Id = model.Id,
-            //    CarMakeId = model.CarMakeId,
-            //    Model = model.Model,
-            //    Type = model.Type,
-            //    Fuel = model.Fuel,
-            //    ColorId = model.ColorId,
-            //    Horsepower = model.Horsepower,
-            //    EngineCapacity = model.EngineCapacity,
-            //    Seats = model.Seats,
-            //    Doors = model.Doors,
-            //    Description = model.Description,
-            //    Transmission = model.Transmission,
-            //    Drivetrain = model.Drivetrain,
-            //    PricePerDay = model.PricePerDay,
-            //    PricePerWeek = model.PricePerWeek,
-            //};
-
             Car? car = await dbContext.Cars.FindAsync(id);
 
             if (car != null)
@@ -642,6 +622,45 @@
                 car.IsDeleted = false;
                 await dbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task AddCarAsync(EditCarViewModel model)
+        {
+            Car car = new Car()
+            {
+                CarMakeId = model.CarMakeId,
+                Model = model.Model,
+                Type = model.Type,
+                Fuel = model.Fuel,
+                ColorId = model.ColorId,
+                Horsepower = model.Horsepower,
+                EngineCapacity = model.EngineCapacity,
+                Seats = model.Seats,
+                Doors = model.Doors,
+                Description = model.Description,
+                Transmission = model.Transmission,
+                Drivetrain = model.Drivetrain,
+                PricePerDay = model.PricePerDay,
+                PricePerWeek = model.PricePerWeek,
+            };
+
+            await dbContext.AddAsync(car);
+            await dbContext.SaveChangesAsync(); 
+        }
+
+        public async Task<string> GetMakeModelByIdAsync(int id)
+        {
+            CarMakeModelViewModel makeModel = await dbContext
+                .Cars
+                .Select(c => new CarMakeModelViewModel
+                {
+                    Id = c.Id,
+                    Make = c.CarMake.Make,
+                    Model = c.Model
+                })
+                .FirstAsync(c => c.Id == id);
+
+            return string.Concat(makeModel.Make, makeModel.Model);
         }
     }
 }

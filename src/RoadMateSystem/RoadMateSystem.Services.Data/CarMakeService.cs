@@ -16,6 +16,20 @@
             this.dbContext = dbContext;
         }
 
+        public async Task<string> GetMakeByIdAsync(int id)
+        {
+            CarMakeViewModel carMake = await dbContext
+                .CarMakes
+                .Select(x => new CarMakeViewModel
+                {
+                    Id = id,
+                    Make = x.Make
+                })
+                .FirstAsync(x => x.Id == id);
+
+            return carMake.Make;
+        }
+
         public async Task<IEnumerable<string>> GetAllCarMakesAsync()
         {
             IEnumerable<string> carMakes = await dbContext
@@ -40,14 +54,14 @@
 
             return carMakeViewModels;
         }
-        
+
         public async Task<CarMakeViewModel> GetViewModelByIdAsync(int id)
         {
             CarMakeViewModel viewModel = await dbContext
                 .CarMakes
                 .Select(x => new CarMakeViewModel
-                { 
-                    Id= x.Id, 
+                {
+                    Id = x.Id,
                     Make = x.Make,
                     IsDeleted = x.IsDeleted,
                 })
@@ -63,9 +77,10 @@
             if (carMake != null)
             {
                 carMake.Make = model.Make;
+
+                await dbContext.SaveChangesAsync();
             }
 
-            await dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)

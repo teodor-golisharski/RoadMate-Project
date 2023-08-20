@@ -1,13 +1,11 @@
 ﻿namespace RoadMateSystem.Services.Data
 {
-    using AngleSharp.Html.Parser;
     using Ganss.Xss;
     using Microsoft.EntityFrameworkCore;
     using RoadMateSystem.Data.Models;
     using RoadMateSystem.Services.Data.Interfaces;
     using RoadMateSystem.Web.Data;
-    using System.Security.Claims;
-    using System.Text.Encodings.Web;
+    using RoadMateSystem.Web.ViewModels.User;
 
     public class UserService : IUserService
     {
@@ -45,6 +43,23 @@
             }
 
             return sanitizer.Sanitize($"{user.FirstName} {user.LastName}");
+        }
+
+        public async Task<IEnumerable<UserViewModel>> GetAllUsers()
+        {
+            IEnumerable<UserViewModel> userViewModels = await dbContext
+                .Users
+                .Select(x => new UserViewModel
+                {
+                    Address = x.Address,
+                    Email = x.Email,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Phone = x.Phone
+                })
+                .ToListAsync();
+
+            return userViewModels;
         }
 
     }

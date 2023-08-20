@@ -12,6 +12,6 @@
         Task RecoverAsync(int id);
         Task<bool> DoesCarMakeExistAsync(int id);
         Task AddAsync(CarMakeViewModel model);
-
+        Task<string> GetMakeByIdAsync(int id);
     }
 }
